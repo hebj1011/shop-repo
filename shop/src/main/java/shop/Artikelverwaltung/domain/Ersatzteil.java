@@ -3,6 +3,7 @@ package shop.Artikelverwaltung.domain;
 import java.util.List;
 
 public class Ersatzteil extends Artikel {
+	
 	public Ersatzteil(Long artikelnummer, String name, String beschreibung,
 			String mengeneinheit, Double einzelpreis, Integer bestand,
 			Boolean lieferbar, Unterklasse unterklasse,
