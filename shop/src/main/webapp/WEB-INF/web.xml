@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<web-app …>
+<web-app>
 <context-param>
 <param-name>resteasy.media.type.mappings</param-name>
 <param-value>
