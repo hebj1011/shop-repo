@@ -12,14 +12,14 @@ public class Fahrrad extends Artikel {
 	private String felgen;
 	private String sattel;
 	private String farbe;
-	private String art;
+	private Unterklasse unterklasse;
 	
 	public Fahrrad(Long artikelnummer, String name, String beschreibung,
 			String mengeneinheit, Double einzelpreis, Integer bestand,
 			Boolean lieferbar, String rahmentyp, String rahmenmaterial,
 			Double rahmenhoehe, String gangschaltung, Double gewicht,
 			String bremse_vorne, String bremse_hinten, String bereifung,
-			String felgen, String sattel, String farbe, String art) {
+			String felgen, String sattel, String farbe, Unterklasse unterklasse) {
 		super(artikelnummer, name, beschreibung, mengeneinheit, einzelpreis,
 				bestand, lieferbar);
 		this.rahmentyp = rahmentyp;
@@ -33,7 +33,7 @@ public class Fahrrad extends Artikel {
 		this.felgen = felgen;
 		this.sattel = sattel;
 		this.farbe = farbe;
-		this.art = art;
+		this.unterklasse = unterklasse;
 	}
 
 	public String getRahmentyp() {
@@ -102,10 +102,10 @@ public class Fahrrad extends Artikel {
 	public void setFarbe(String farbe) {
 		this.farbe = farbe;
 	}
-	public String getArt() {
-		return art;
+	public Unterklasse getUnterklasse() {
+		return unterklasse;
 	}
-	public void setArt(String art) {
-		this.art = art;
+	public void setUnterklasse(Unterklasse unterklasse) {
+		this.unterklasse = unterklasse;
 	}
 }
