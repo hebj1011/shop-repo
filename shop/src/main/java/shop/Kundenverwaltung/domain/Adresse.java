@@ -1,60 +1,60 @@
 package shop.Kundenverwaltung.domain;
 
 public class Adresse {
-	private String Land;
-	private int Postleitzahl;
-	private String Wohnort;
-	private String Straﬂe;
-	private int Hausnummer;
+	private String land;
+	private int postleitzahl;
+	private String wohnort;
+	private String strasse;
+	private int hausnummer;
 	
 	public Adresse(String land, int postleitzahl, String wohnort,
-			String straﬂe, int hausnummer) {
+			String strasse, int hausnummer) {
 		super();
-		Land = land;
-		Postleitzahl = postleitzahl;
-		Wohnort = wohnort;
-		Straﬂe = straﬂe;
-		Hausnummer = hausnummer;
+		this.land = land;
+		this.postleitzahl = postleitzahl;
+		this.wohnort = wohnort;
+		this.strasse = strasse;
+		this.hausnummer = hausnummer;
 	}
 
 	public String getLand() {
-		return Land;
+		return this.land;
 	}
 
 	public void setLand(String land) {
-		Land = land;
+		this.land = land;
 	}
 
 	public int getPostleitzahl() {
-		return Postleitzahl;
+		return this.postleitzahl;
 	}
 
 	public void setPostleitzahl(int postleitzahl) {
-		Postleitzahl = postleitzahl;
+		this.postleitzahl = postleitzahl;
 	}
 
 	public String getWohnort() {
-		return Wohnort;
+		return this.wohnort;
 	}
 
 	public void setWohnort(String wohnort) {
-		Wohnort = wohnort;
+		this.wohnort = wohnort;
 	}
 
 	public String getStraﬂe() {
-		return Straﬂe;
+		return this.strasse;
 	}
 
-	public void setStraﬂe(String straﬂe) {
-		Straﬂe = straﬂe;
+	public void setStraﬂe(String strasse) {
+		this.strasse = strasse;
 	}
 
 	public int getHausnummer() {
-		return Hausnummer;
+		return this.hausnummer;
 	}
 
 	public void setHausnummer(int hausnummer) {
-		Hausnummer = hausnummer;
+		this.hausnummer = hausnummer;
 	}
 	
 }
