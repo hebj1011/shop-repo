@@ -1,50 +1,52 @@
 package shop.Kundenverwaltung.domain;
 
+import java.util.List;
+
 public class Kunde {
-	private String Nachname;
-	private String Vorname;
-	private Adresse Adresse;
-	private Bestellung Bestellung;
+	private String nachname;
+	private String vorname;
+	private Adresse adresse;
+	private List<Bestellung> bestellung;
 	
 	public Kunde(String nachname, String vorname, Adresse adresse,
-			Bestellung bestellung) {
+			List<Bestellung> bestellung) {
 		super();
-		Nachname = nachname;
-		Vorname = vorname;
-		this.Adresse = adresse;
-		this.Bestellung = bestellung;
+		this.nachname = nachname;
+		this.vorname = vorname;
+		this.adresse = adresse;
+		this.bestellung = bestellung;
 	}
 
 	public String getNachname() {
-		return Nachname;
+		return nachname;
 	}
 
 	public void setNachname(String nachname) {
-		Nachname = nachname;
+		this.nachname = nachname;
 	}
 
 	public String getVorname() {
-		return Vorname;
+		return vorname;
 	}
 
 	public void setVorname(String vorname) {
-		Vorname = vorname;
+		this.vorname = vorname;
 	}
 
 	public Adresse getAdresse() {
-		return Adresse;
+		return adresse;
 	}
 
 	public void setAdresse(Adresse adresse) {
-		Adresse = adresse;
+		this.adresse = adresse;
 	}
 
-	public Bestellung getBestellung() {
-		return Bestellung;
+	public List<Bestellung> getBestellung() {
+		return bestellung;
 	}
 
-	public void setBestellung(Bestellung bestellung) {
-		Bestellung = bestellung;
+	public void setBestellung(List<Bestellung> bestellung) {
+		this.bestellung = bestellung;
 	}
 	
 	
