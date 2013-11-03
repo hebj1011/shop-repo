@@ -2,22 +2,22 @@ package shop.Artikelverwaltung.domain;
 
 public class Unterklasse {
 	
-	public Unterklasse(Long klassen_id, String name, String beschreibeung) {
+	public Unterklasse(Long klassenId, String name, String beschreibung) {
 		super();
-		this.klassen_id = klassen_id;
+		this.klassenId = klassenId;
 		this.name = name;
-		this.beschreibeung = beschreibeung;
+		this.beschreibung = beschreibung;
 	}
 	
-	private Long klassen_id;
+	private Long klassenId;
 	private String name;
-	private String beschreibeung;
+	private String beschreibung;
 	
-	public Long getKlassen_id() {
-		return klassen_id;
+	public Long getKlassenId() {
+		return klassenId;
 	}
-	public void setKlassen_id(Long klassen_id) {
-		this.klassen_id = klassen_id;
+	public void setKlassenId(Long klassenId) {
+		this.klassenId = klassenId;
 	}
 	public String getName() {
 		return name;
@@ -25,11 +25,17 @@ public class Unterklasse {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBeschreibeung() {
-		return beschreibeung;
+	public String getBeschreibung() {
+		return beschreibung;
 	}
-	public void setBeschreibeung(String beschreibeung) {
-		this.beschreibeung = beschreibeung;
+	public void setBeschreibung(String beschreibung) {
+		this.beschreibung = beschreibung;
+	}
+	
+	@Override
+	public String toString() {
+		return "Unterklasse [" + "ID=" + klassenId + ", Name:" + name
+				+ ", Beschreibung:" + beschreibung + "]";
 	}
 
 }
