@@ -11,13 +11,12 @@ import java.util.List;
 import java.util.Set;
 
 import shop.bestellverwaltung.domain.Bestellung;
-import shop.kundenverwaltung.domain.AbstractKunde;
-import shop.kundenverwaltung.domain.Adresse;
-import shop.kundenverwaltung.domain.Firmenkunde;
-import shop.kundenverwaltung.domain.HobbyType;
-import shop.kundenverwaltung.domain.Privatkunde;
+import shop.Kundenverwaltung.domain.Kunde;
+import shop.Kundenverwaltung.domain.Adresse;
+import shop.Kundenverwaltung.domain.Firmenkunde;
+import shop.Kundenverwaltung.domain.HobbyType;
+import shop.Kundenverwaltung.domain.Privatkunde;
 */
-
 
 /**
  * Emulation des Anwendungskerns
