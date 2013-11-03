@@ -1,8 +1,16 @@
 package shop.Artikelverwaltung.domain;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Ersatzteil extends Artikel {
+/**
+ * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
+ */
+
+@XmlRootElement
+public class Ersatzteil extends AbstractArtikel {
+	
+	private static final long serialVersionUID = 6258156986876418100L;
 	
 	private Unterklasse unterklasse;
 	private List<Fahrrad> zugehörigkeit;
