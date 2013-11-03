@@ -10,11 +10,14 @@ public class Rechnung {
 	private List<AbstractArtikel> artikel;
 	private String adresseRechnung;
 	private String adresseLieferung;
+	/*
+	 * TODO ENUM werte zuweisen
+	 */
 	private Enum Zahlungsmittel;
 	private Date datumRechnung;
 	private Date datumZahlung;
 	private double versandkosten;
-	
+
 	
 
 	public String getAdresseRechnung() {
