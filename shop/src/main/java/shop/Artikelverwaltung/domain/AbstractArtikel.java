@@ -44,16 +44,7 @@ public abstract class AbstractArtikel implements Serializable {
 	private List<String> bestellungen;
 	
 	private URI bestellungenUri;
-	
-	public AbstractArtikel(Long artikelnummer, String name, Double einzelpreis,
-			Integer bestand) {
-		super();
-		this.artikelnummer = artikelnummer;
-		this.name = name;
-		this.einzelpreis = einzelpreis;
-		this.bestand = bestand;
-	}
-	
+		
 	public Long getArtikelnummer() {
 		return artikelnummer;
 	}

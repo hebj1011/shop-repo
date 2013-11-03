@@ -1,44 +1,35 @@
 package shop.Artikelverwaltung.domain;
 
-public class Fahrrad extends Artikel {
-	private String rahmenmaterial;
-	private String bremse;
-	private String sattel;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Set;
+
+/**
+ * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
+ */
+
+@XmlRootElement
+public class Fahrrad extends AbstractArtikel {
+	
+	private static final long serialVersionUID = -3177911520687689458L;
+	
 	private Unterklasse unterklasse;
+	private Set<Farbe> farbe;
 	
-	public Fahrrad(Long artikelnummer, String name, Double einzelpreis,
-			Integer bestand, String rahmenmaterial, String bremse,
-			String sattel, Unterklasse unterklasse) {
-		super(artikelnummer, name, einzelpreis, bestand);
-		this.rahmenmaterial = rahmenmaterial;
-		this.bremse = bremse;
-		this.sattel = sattel;
-		this.unterklasse = unterklasse;
-	}
-	
-	public String getRahmenmaterial() {
-		return rahmenmaterial;
-	}
-	public void setRahmenmaterial(String rahmenmaterial) {
-		this.rahmenmaterial = rahmenmaterial;
-	}
-	public String getBremse() {
-		return bremse;
-	}
-	public void setBremse(String bremse) {
-		this.bremse = bremse;
-	}
-	public String getSattel() {
-		return sattel;
-	}
-	public void setSattel(String sattel) {
-		this.sattel = sattel;
-	}
 	public Unterklasse getUnterklasse() {
 		return unterklasse;
 	}
 	public void setUnterklasse(Unterklasse unterklasse) {
 		this.unterklasse = unterklasse;
-	}	
+	}
+	public Set<Farbe> getFarbe() {
+		return farbe;
+	}
+	public void setFarbe(Set<Farbe> farbe) {
+		this.farbe = farbe;
+	}
 	
+	@Override
+	public String toString() {
+		return "Fahrrad [" + super.toString() + ", Unterklasse=" + unterklasse.toString() + ", Farbe:" + farbe + "]";
+	}
 }
