@@ -4,20 +4,19 @@ import java.util.List;
 
 public class Ersatzteil extends Artikel {
 	
-	public Ersatzteil(Long artikelnummer, String name, String beschreibung,
-			String mengeneinheit, Double einzelpreis, Integer bestand,
-			Boolean lieferbar, Unterklasse unterklasse,
+	private Unterklasse unterklasse;
+	private List<Fahrrad> zugehörigkeit;
+	private String datenblatt;
+	
+	public Ersatzteil(Long artikelnummer, String name, Double einzelpreis,
+			Integer bestand, Unterklasse unterklasse,
 			List<Fahrrad> zugehörigkeit, String datenblatt) {
-		super(artikelnummer, name, beschreibung, mengeneinheit, einzelpreis,
-				bestand, lieferbar);
+		super(artikelnummer, name, einzelpreis, bestand);
 		this.unterklasse = unterklasse;
 		this.zugehörigkeit = zugehörigkeit;
 		this.datenblatt = datenblatt;
 	}
 	
-	private Unterklasse unterklasse;
-	private List<Fahrrad> zugehörigkeit;
-	private String datenblatt;
 	public Unterklasse getUnterklasse() {
 		return unterklasse;
 	}
@@ -36,5 +35,6 @@ public class Ersatzteil extends Artikel {
 	public void setDatenblatt(String datenblatt) {
 		this.datenblatt = datenblatt;
 	}
+	
 
 }
