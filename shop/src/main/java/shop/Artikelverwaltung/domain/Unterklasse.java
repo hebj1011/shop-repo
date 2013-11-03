@@ -1,15 +1,18 @@
 package shop.Artikelverwaltung.domain;
 
 public class Unterklasse {
+	
 	public Unterklasse(Long klassen_id, String name, String beschreibeung) {
 		super();
 		this.klassen_id = klassen_id;
 		this.name = name;
 		this.beschreibeung = beschreibeung;
 	}
+	
 	private Long klassen_id;
 	private String name;
 	private String beschreibeung;
+	
 	public Long getKlassen_id() {
 		return klassen_id;
 	}
