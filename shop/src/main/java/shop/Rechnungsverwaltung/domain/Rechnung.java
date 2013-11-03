@@ -10,10 +10,7 @@ public class Rechnung {
 	private List<AbstractArtikel> artikel;
 	private String adresseRechnung;
 	private String adresseLieferung;
-	/*
-	 * TODO ENUM werte zuweisen
-	 */
-	private Enum Zahlungsmittel;
+	private Enum<Zahlungsmittel> Zahlungsmittel;
 	private Date datumRechnung;
 	private Date datumZahlung;
 	private double versandkosten;
@@ -36,11 +33,11 @@ public class Rechnung {
 		this.adresseLieferung = adresseLieferung;
 	}
 
-	public Enum getZahlungsmittel() {
+	public Enum<Zahlungsmittel> getZahlungsmittel() {
 		return Zahlungsmittel;
 	}
 
-	public void setZahlungsmittel(Enum zahlungsmittel) {
+	public void setZahlungsmittel(Enum<Zahlungsmittel> zahlungsmittel) {
 		Zahlungsmittel = zahlungsmittel;
 	}
 
@@ -69,7 +66,7 @@ public class Rechnung {
 	}
 
 	public Rechnung(List<AbstractArtikel> artikel, String adresseRechnung,
-			String adresseLieferung, Enum zahlungsmittel, Date datumRechnung,
+			String adresseLieferung, Enum<Zahlungsmittel> zahlungsmittel, Date datumRechnung,
 			Date datumZahlung, double versandkosten) {
 		super();
 		this.artikel = artikel;
