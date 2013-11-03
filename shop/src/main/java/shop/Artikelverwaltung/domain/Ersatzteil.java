@@ -44,5 +44,10 @@ public class Ersatzteil extends AbstractArtikel {
 		this.datenblatt = datenblatt;
 	}
 	
+	@Override
+	public String toString() {
+		return "Ersatzteil [" + super.toString() + ", Unterklasse=" + unterklasse.toString() 
+				+ ", Zugehörigkeit= " + zugehörigkeit.toString() + ", Datenblatt:" + datenblatt + "]";
+	}
 
 }
