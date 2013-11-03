@@ -16,15 +16,6 @@ public class Ersatzteil extends AbstractArtikel {
 	private List<Fahrrad> zugehörigkeit;
 	private String datenblatt;
 	
-	public Ersatzteil(Long artikelnummer, String name, Double einzelpreis,
-			Integer bestand, Unterklasse unterklasse,
-			List<Fahrrad> zugehörigkeit, String datenblatt) {
-		super(artikelnummer, name, einzelpreis, bestand);
-		this.unterklasse = unterklasse;
-		this.zugehörigkeit = zugehörigkeit;
-		this.datenblatt = datenblatt;
-	}
-	
 	public Unterklasse getUnterklasse() {
 		return unterklasse;
 	}
