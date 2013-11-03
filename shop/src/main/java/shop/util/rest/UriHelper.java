@@ -1,17 +1,13 @@
-/* TODO
- * anpassen auf eigene bedürfnisse
- */
-
 package shop.util.rest;
 
 import java.net.URI;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
+ * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
  */
+
 @ApplicationScoped
 public class UriHelper {
 	public URI getUri(Class<?> clazz, UriInfo uriInfo) {
