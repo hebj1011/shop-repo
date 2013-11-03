@@ -1,8 +1,6 @@
-package shop.Kundenverwaltung.rest;
-/*
- * TODO Nur Grundaufbau, Konfiguration benötigt
- */
-/*
+/*package shop.Kundenverwaltung.rest;
+
+
 import static de.shop.util.Constants.ADD_LINK;
 import static de.shop.util.Constants.FIRST_LINK;
 import static de.shop.util.Constants.LAST_LINK;
@@ -72,7 +70,7 @@ public class KundeResource {
 		final AbstractKunde kunde = Mock.findKundeById(id);
 		if (kunde == null) {
 			throw new NotFoundException("Kein Kunde mit der ID " + id + " gefunden.");
-1		}
+		}
 		
 		setStructuralLinks(kunde, uriInfo);
 		
