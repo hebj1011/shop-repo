@@ -14,8 +14,15 @@ public class Rechnung {
 	private Date datumRechnung;
 	private Date datumZahlung;
 	private double versandkosten;
+	private Boolean bezahlt; 
 
-	
+	public Boolean getBezahlt() {
+		return bezahlt;
+	}
+
+	public void setBezahlt(Boolean bezahlt) {
+		this.bezahlt = bezahlt;
+	}
 
 	public String getAdresseRechnung() {
 		return adresseRechnung;
