@@ -1,4 +1,14 @@
+/*TODO 
+ * Herausfinden warum Syntaxfehler
+ * @XmlAccessorType(FIELD)
+ */
 package shop.Artikelverwaltung.domain;
+
+/*TODO
+ * einbinden wenn benötigt
+ * import static javax.xml.bind.annotation.XmlAccessType.FIELD;
+ * import javax.xml.bind.annotation.XmlAccessorType;
+ */
 
 public abstract class Artikel {
 	private Long artikelnummer;
