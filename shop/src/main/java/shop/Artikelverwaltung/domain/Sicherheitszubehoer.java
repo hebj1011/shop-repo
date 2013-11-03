@@ -1,19 +1,15 @@
 package shop.Artikelverwaltung.domain;
 
-public class Sicherheitszubehoer extends Artikel {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Sicherheitszubehoer extends AbstractArtikel {
+	
+	private static final long serialVersionUID = 254184158546556162L;
 	
 	private Boolean tuev;
 	private String groesse;
 	private Unterklasse sUnterklasse;
-	
-	public Sicherheitszubehoer(Long artikelnummer, String name,
-			Double einzelpreis, Integer bestand, Boolean tuev, String groesse,
-			Unterklasse sUnterklasse) {
-		super(artikelnummer, name, einzelpreis, bestand);
-		this.tuev = tuev;
-		this.groesse = groesse;
-		this.sUnterklasse = sUnterklasse;
-	}
 	
 	public Boolean getTuev() {
 		return tuev;
@@ -34,5 +30,9 @@ public class Sicherheitszubehoer extends Artikel {
 		this.sUnterklasse = sUnterklasse;
 	}
 	
+	@Override
+	public String toString() {
+		return "Sicherheitszubehoer [" + super.toString() + ", Tuev:" + tuev + ", Groesse=" + groesse.toString() + ", Unterklasse=" + sUnterklasse.toString() + "]";
+	}
 
 }
