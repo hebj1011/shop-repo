@@ -17,7 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
+//import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -31,17 +31,14 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-/* TODO
- * auskommentieren wenn angelegt
- */
 
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 //import shop.bestellverwaltung.domain.Bestellung;
 //import shop.bestellverwaltung.rest.BestellungResource;
-//import shop.util.Mock;
+import shop.Artikelverwaltung.service.Mock;
 import shop.util.rest.UriHelper;
-//import shop.util.exception.NotFoundException;
+import shop.util.rest.NotFoundException;
 
 /**
  * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
@@ -77,8 +74,8 @@ public class ArtikelResource {
 		return "1.0";
 	}
 	
-	/* TODO auskommentieren wenn Mock,exceptions und links angelegt
-	@Get
+	
+	@GET
 	@Path("{" + ARTIKEL_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	public Response findArtikelByID(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
@@ -93,7 +90,7 @@ public class ArtikelResource {
 		                       .links(getTransitionalLinks(artikel, uriInfo))
 		                       .build();
 	}
-	*/
+	
 	
 	public void setStructuralLinks(AbstractArtikel artikel, UriInfo uriInfo) {
 		// URI fuer Bestellungen setzen
@@ -130,19 +127,17 @@ public class ArtikelResource {
 		return uriHelper.getUri(ArtikelResource.class, "findKundeById", artikel.getArtikelnummer(), uriInfo);
 	}
 	
-	/* TODO mock anlegen
+	
 	@GET
 	public Response findArtikelByName(@QueryParam(ARTIKEL_NAME_QUERY_PARAM) String name) {
 		List<? extends AbstractArtikel> artikel = null;
 		if (name != null) {
-			// TODO Anwendungskern statt Mock, Verwendung von Locale
 			artikel = Mock.findArtikelByName(name);
 			if (artikel.isEmpty()) {
 				throw new NotFoundException("Kein Artikel mit Name " + name + " gefunden.");
 			}
 		}
 		else {
-			// TODO Anwendungskern statt Mock, Verwendung von Locale
 			artikel = Mock.findAllArtikel();
 			if (artikel.isEmpty()) {
 				throw new NotFoundException("Keine Artikel vorhanden.");
@@ -157,7 +152,7 @@ public class ArtikelResource {
                        .links(getTransitionalLinksArtikel(artikel, uriInfo))
                        .build();
 	}
-	*/
+	
 	private Link[] getTransitionalLinksArtikel(List<? extends AbstractArtikel> artikel, UriInfo uriInfo) {
 		if (artikel == null || artikel.isEmpty()) {
 			return null;
@@ -173,7 +168,7 @@ public class ArtikelResource {
 		
 		return new Link[] { first, last };
 	}
-/* TODO Bestellungen und mock anlegen dann auskommentieren	
+/* TODO bestellung anlegen	
 	@GET
 	@Path("{id:[1-9][0-9]*}/bestellungen")
 	public Response findBestellungenByArtikelnummer(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
@@ -214,12 +209,11 @@ public class ArtikelResource {
 		
 		return new Link[] { self, first, last };
 	}
-
+*/
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createArtikel(AbstractArtikel artikel) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		artikel = Mock.createArtikel(artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo))
 			           .build();
@@ -229,7 +223,6 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateArtikel(AbstractArtikel artikel) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		Mock.updateArtikel(artikel);
 	}
 	
@@ -237,9 +230,8 @@ public class ArtikelResource {
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteArtikel(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		Mock.deleteArtikel(artikelnummer);
 	}
-	*/
+	
 }
 
