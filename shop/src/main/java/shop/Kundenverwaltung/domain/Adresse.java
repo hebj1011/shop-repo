@@ -14,7 +14,7 @@ public class Adresse implements Serializable {
 	private String ort;
 	
 	@XmlTransient
-	private Kunde kunde;
+	private AbstractKunde kunde;
 	
 	public Long getId() {
 		return id;
@@ -35,10 +35,10 @@ public class Adresse implements Serializable {
 		this.ort = ort;
 	}
 	
-	public Kunde getKunde() {
+	public AbstractKunde getKunde() {
 		return kunde;
 	}
-	public void setKunde(Kunde kunde) {
+	public void setKunde(AbstractKunde kunde) {
 		this.kunde = kunde;
 	}
 	@Override
@@ -82,6 +82,6 @@ public class Adresse implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", plz=" + plz + ", ort=" + ort + "]";
+		return "Adresse [id=" + id + ", Plz=" + plz + ", Ort=" + ort + "]";
 	}
 }

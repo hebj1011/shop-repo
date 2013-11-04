@@ -1,25 +1,35 @@
-package shop.Kundenverwaltung.domain;
+package de.shop.kundenverwaltung.domain;
 
 import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonSubTypes.Type;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 
-import shop.Bestellverwaltung.domain.Bestellung;
+import de.shop.bestellverwaltung.domain.Bestellung;
 
 /**
- * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
+ * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
  */
 @XmlRootElement
-
-public class Kunde implements Serializable {
+@XmlSeeAlso({ Firmenkunde.class, Privatkunde.class })
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+	@Type(value = Privatkunde.class, name = AbstractKunde.PRIVATKUNDE),
+	@Type(value = Firmenkunde.class, name = AbstractKunde.FIRMENKUNDE) })
+public abstract class AbstractKunde implements Serializable {
 	private static final long serialVersionUID = 7401524595142572933L;
 	
+	public static final String PRIVATKUNDE = "P";
+	public static final String FIRMENKUNDE = "F";
+	
 	private Long id;
-	private String vorname;
 	private String nachname;
 	private String email;
 	private Adresse adresse;
@@ -66,14 +76,6 @@ public class Kunde implements Serializable {
 	public void setBestellungenUri(URI bestellungenUri) {
 		this.bestellungenUri = bestellungenUri;
 	}
-	
-	public String getVorname() {
-		return vorname;
-	}
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,7 +92,7 @@ public class Kunde implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Kunde other = (Kunde) obj;
+		AbstractKunde other = (AbstractKunde) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -102,7 +104,7 @@ public class Kunde implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Kunde [id=" + id + ",Vorname="+ vorname + ", Nachname=" + nachname + ", email=" + email
-			   + ", BestellungenUri=" + bestellungenUri + "]";
+		return "AbstractKunde [id=" + id + ", nachname=" + nachname + ", email=" + email
+			   + ", bestellungenUri=" + bestellungenUri + "]";
 	}
 }
