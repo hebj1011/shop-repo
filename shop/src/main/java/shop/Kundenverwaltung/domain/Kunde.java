@@ -1,35 +1,23 @@
-package de.shop.kundenverwaltung.domain;
+package shop.Kundenverwaltung.domain;
 
-import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
+
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonSubTypes.Type;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 
-import de.shop.bestellverwaltung.domain.Bestellung;
+
+import shop.Bestellverwaltung.domain.Bestellung;
 
 /**
  * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
  */
-@XmlRootElement
-@XmlSeeAlso({ Firmenkunde.class, Privatkunde.class })
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({
-	@Type(value = Privatkunde.class, name = AbstractKunde.PRIVATKUNDE),
-	@Type(value = Firmenkunde.class, name = AbstractKunde.FIRMENKUNDE) })
-public abstract class AbstractKunde implements Serializable {
-	private static final long serialVersionUID = 7401524595142572933L;
-	
-	public static final String PRIVATKUNDE = "P";
-	public static final String FIRMENKUNDE = "F";
+
+public class Kunde  {
 	
 	private Long id;
+	private String vorname;
 	private String nachname;
 	private String email;
 	private Adresse adresse;
@@ -44,6 +32,12 @@ public abstract class AbstractKunde implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getVorname() {
+		return vorname;
+	}
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
 	}
 	public String getNachname() {
 		return nachname;
@@ -92,7 +86,7 @@ public abstract class AbstractKunde implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstractKunde other = (AbstractKunde) obj;
+		Kunde other = (Kunde) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -104,7 +98,7 @@ public abstract class AbstractKunde implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "AbstractKunde [id=" + id + ", nachname=" + nachname + ", email=" + email
+		return "AbstractKunde [id=" + id + ", Vorname=" + vorname + ", nachname=" + nachname + ", email=" + email
 			   + ", bestellungenUri=" + bestellungenUri + "]";
 	}
 }

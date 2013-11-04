@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 public class Adresse implements Serializable {
 	private static final long serialVersionUID = -3029272617931844501L;
@@ -14,7 +14,7 @@ public class Adresse implements Serializable {
 	private String ort;
 	
 	@XmlTransient
-	private AbstractKunde kunde;
+	private Kunde kunde;
 	
 	public Long getId() {
 		return id;
@@ -35,10 +35,10 @@ public class Adresse implements Serializable {
 		this.ort = ort;
 	}
 	
-	public AbstractKunde getKunde() {
+	public Kunde getKunde() {
 		return kunde;
 	}
-	public void setKunde(AbstractKunde kunde) {
+	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
 	}
 	@Override

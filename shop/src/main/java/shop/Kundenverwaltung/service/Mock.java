@@ -22,10 +22,9 @@ public final class Mock {
 			return null;
 		}
 		
-		final Kunde kunde = new Kunde();
+		final Kunde kunde =  new Kunde(); //id % 2 == 1 ?
 		kunde.setId(id);
-		//TODO Kundendaten aus Datenbank holen
-		
+		kunde.setVorname("Vorname" + id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setEmail("" + id + "@hska.de");
 		
@@ -42,6 +41,7 @@ public final class Mock {
 //			hobbies.add(HobbyType.LESEN);
 //			hobbies.add(HobbyType.REISEN);
 //			privatkunde.setHobbies(hobbies);
+//		}
 		
 		return kunde;
 	}
@@ -82,6 +82,20 @@ public final class Mock {
 //		return bestellungen;
 //	}
 
+//	public static Bestellung findBestellungById(Long id) {
+//		if (id > MAX_ID) {
+//			return null;
+//		}
+//
+//		final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
+//
+//		final Bestellung bestellung = new Bestellung();
+//		bestellung.setId(id);
+//		bestellung.setAusgeliefert(false);
+//		bestellung.setKunde(kunde);
+//		
+//		return bestellung;
+//	}
 
 	public static Kunde createKunde(Kunde kunde) {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
