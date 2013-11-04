@@ -1,5 +1,6 @@
 package shop.Artikelverwaltung.domain;
 
+
 public class Unterklasse {
 	
 	public Unterklasse(Long klassenId, String name, String beschreibung) {

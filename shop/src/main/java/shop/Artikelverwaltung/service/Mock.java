@@ -109,7 +109,7 @@ public final class Mock {
 		artikel.setArtikelnummer(Long.valueOf(name.length()));
 		final Double einzelpreis = artikel.getEinzelpreis();
 		artikel.setEinzelpreis(einzelpreis);
-		artikel.setBestellungen(null);
+		artikel.setBestand(artikel.getBestand());
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;
