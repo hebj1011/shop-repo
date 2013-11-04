@@ -1,53 +1,108 @@
 package shop.Kundenverwaltung.domain;
 
+import java.io.Serializable;
+import java.net.URI;
 import java.util.List;
 
-public class Kunde {
-	private String nachname;
-	private String vorname;
-	private Adresse adresse;
-	private List<Bestellung> bestellung;
-	
-	public Kunde(String nachname, String vorname, Adresse adresse,
-			List<Bestellung> bestellung) {
-		super();
-		this.nachname = nachname;
-		this.vorname = vorname;
-		this.adresse = adresse;
-		this.bestellung = bestellung;
-	}
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+
+import shop.Bestellverwaltung.domain.Bestellung;
+
+/**
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
+ */
+@XmlRootElement
+
+public class Kunde implements Serializable {
+	private static final long serialVersionUID = 7401524595142572933L;
+	
+	private Long id;
+	private String vorname;
+	private String nachname;
+	private String email;
+	private Adresse adresse;
+	
+	@XmlTransient
+	private List<Bestellung> bestellungen;
+	
+	private URI bestellungenUri;
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNachname() {
 		return nachname;
 	}
-
 	public void setNachname(String nachname) {
 		this.nachname = nachname;
 	}
-
-	public String getVorname() {
-		return vorname;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
 	public Adresse getAdresse() {
 		return adresse;
 	}
-
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-	public List<Bestellung> getBestellung() {
-		return bestellung;
+	public List<Bestellung> getBestellungen() {
+		return bestellungen;
+	}
+	public void setBestellungen(List<Bestellung> bestellungen) {
+		this.bestellungen = bestellungen;
 	}
 
-	public void setBestellung(List<Bestellung> bestellung) {
-		this.bestellung = bestellung;
+	public URI getBestellungenUri() {
+		return bestellungenUri;
+	}
+	public void setBestellungenUri(URI bestellungenUri) {
+		this.bestellungenUri = bestellungenUri;
 	}
 	
+	public String getVorname() {
+		return vorname;
+	}
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Kunde other = (Kunde) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		}
+		else if (!email.equals(other.email))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Kunde [id=" + id + ",Vorname="+ vorname + ", Nachname=" + nachname + ", email=" + email
+			   + ", BestellungenUri=" + bestellungenUri + "]";
+	}
 }
