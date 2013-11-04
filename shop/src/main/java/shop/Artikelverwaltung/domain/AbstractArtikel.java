@@ -22,7 +22,8 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 @JsonSubTypes({
 	@Type(value = Ersatzteil.class, name = AbstractArtikel.ERSATZTEIL),
 	@Type(value = Fahrrad.class, name = AbstractArtikel.FAHRRAD),
-	@Type(value = Sicherheitszubehoer.class, name = AbstractArtikel.SICHERHEITSZUBEHOER) })
+	@Type(value = Sicherheitszubehoer.class, name = AbstractArtikel.SICHERHEITSZUBEHOER) 
+	})
 
 public abstract class AbstractArtikel implements Serializable {
 	
