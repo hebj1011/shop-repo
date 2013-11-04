@@ -1,18 +1,7 @@
 package shop.Rechnungsverwaltung.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-
-//import shop.bestellverwaltung.domain.Bestellung;
-import shop.Artikelverwaltung.domain.AbstractArtikel;
-import shop.Artikelverwaltung.domain.Ersatzteil;
-import shop.Artikelverwaltung.domain.Fahrrad;
-//import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
-import shop.Artikelverwaltung.domain.Unterklasse;
-import shop.Artikelverwaltung.domain.Farbe;
+import shop.Kundenverwaltung.domain.Adresse;
 import shop.Rechnungsverwaltung.domain.Rechnung;
 
 
@@ -29,7 +18,7 @@ public final class Mock {
 			return null;
 		}
 		
-		Rechnung rechnung = null;
+		Rechnung rechnung = new Rechnung(Long.parseLong("26"));
 		/*
 		 * TODO Datenbankabfrage einbauen 
 		 */

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
+import shop.Kundenverwaltung.domain.Adresse;
 
 
 public class Rechnung {
@@ -18,37 +19,68 @@ public class Rechnung {
 	}
 
 	private List<AbstractArtikel> artikel;
-	private String adresseRechnung;
-	private String adresseLieferung;
+	private Adresse adresseRechnung;
+	private Adresse adresseLieferung;
 	private Enum<Zahlungsmittel> Zahlungsmittel;
 	private Date datumRechnung;
 	private Date datumZahlung;
 	private double versandkosten;
 	private Boolean bezahlt; 
 
+	public Rechnung(
+			Long id,
+			List<AbstractArtikel> artikel,
+			Adresse adresseRechnung,
+			Adresse adresseLieferung,
+			Enum<shop.Rechnungsverwaltung.domain.Zahlungsmittel> zahlungsmittel,
+			Date datumRechnung, Date datumZahlung, double versandkosten,
+			Boolean bezahlt) {
+		super();
+		this.id = id;
+		this.artikel = artikel;
+		this.adresseRechnung = adresseRechnung;
+		this.adresseLieferung = adresseLieferung;
+		Zahlungsmittel = zahlungsmittel;
+		this.datumRechnung = datumRechnung;
+		this.datumZahlung = datumZahlung;
+		this.versandkosten = versandkosten;
+		this.bezahlt = bezahlt;
+	}
+	
+
+	public Rechnung(Long id) {
+		/*
+		 * TODO Muss später entfernt werden; Nur zu Testzwecken
+		 */
+		super();
+		this.id = id;
+		this.adresseRechnung = adresseRechnung;
+	}
+
 	public Boolean getBezahlt() {
 		return bezahlt;
+	}
+
+	public Adresse getAdresseRechnung() {
+		return adresseRechnung;
+	}
+
+	public void setAdresseRechnung(Adresse adresseRechnung) {
+		this.adresseRechnung = adresseRechnung;
+	}
+
+	public Adresse getAdresseLieferung() {
+		return adresseLieferung;
+	}
+
+	public void setAdresseLieferung(Adresse adresseLieferung) {
+		this.adresseLieferung = adresseLieferung;
 	}
 
 	public void setBezahlt(Boolean bezahlt) {
 		this.bezahlt = bezahlt;
 	}
-
-	public String getAdresseRechnung() {
-		return adresseRechnung;
-	}
-
-	public void setAdresseRechnung(String adresseRechnung) {
-		this.adresseRechnung = adresseRechnung;
-	}
-
-	public String getAdresseLieferung() {
-		return adresseLieferung;
-	}
-
-	public void setAdresseLieferung(String adresseLieferung) {
-		this.adresseLieferung = adresseLieferung;
-	}
+	
 
 	public Enum<Zahlungsmittel> getZahlungsmittel() {
 		return Zahlungsmittel;
@@ -82,19 +114,6 @@ public class Rechnung {
 		this.versandkosten = versandkosten;
 	}
 
-	public Rechnung(List<AbstractArtikel> artikel, String adresseRechnung,
-			String adresseLieferung, Enum<Zahlungsmittel> zahlungsmittel, Date datumRechnung,
-			Date datumZahlung, double versandkosten) {
-		super();
-		this.artikel = artikel;
-		this.adresseRechnung = adresseRechnung;
-		this.adresseLieferung = adresseLieferung;
-		Zahlungsmittel = zahlungsmittel;
-		this.datumRechnung = datumRechnung;
-		this.datumZahlung = datumZahlung;
-		this.versandkosten = versandkosten;
-	}
-
 	public List<AbstractArtikel> getArtikel() {
 		return artikel;
 	}
@@ -119,8 +138,8 @@ public class Rechnung {
 	/**
 	 * @param kundeUri
 	 */
-	public void setKundeUri(URI kundeUri) {
-		// TODO @ALL:Wieso KundeUri-setzen?!
+	public void setRechnungUri(URI kundeUri) {
+		// TODO @ALL:Wieso RechnungUri-setzen?! Wird die nicht gegeben?!
 		
 	}
 

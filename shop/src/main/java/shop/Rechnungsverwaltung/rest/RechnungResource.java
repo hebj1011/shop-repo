@@ -18,9 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import shop.Rechnungsverwaltung.service.Mock;
-import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Bestellverwaltung.rest.BestellungResource;
-import shop.Kundenverwaltung.domain.Kunde;
 import shop.Rechnungsverwaltung.domain.Rechnung;
 import shop.util.rest.NotFoundException;
 import shop.util.rest.UriHelper;
@@ -62,12 +60,14 @@ public class RechnungResource {
 		return response;
 	}
 	
+
+	
 	public void setStructuralLinks(Rechnung rechng, UriInfo uriInfo) {
 		// URI fuer Kunde setzen
 		final Rechnung rechnung = rechng.getRechnung();
 		if (rechnung != null) {
-			final URI kundeUri = rechnungResource.getUriRechnung(rechng.getRechnung(), uriInfo);
-			rechng.setKundeUri(kundeUri);
+			final URI rechnungUri = rechnungResource.getUriRechnung(rechng.getRechnung(), uriInfo);
+			rechng.setRechnungUri(rechnungUri);
 		}
 	}
 	
@@ -81,5 +81,7 @@ public class RechnungResource {
 	public URI getUriRechnung(Rechnung rechnung, UriInfo uriInfo) {
 		return uriHelper.getUri(BestellungResource.class, "findBestellungById", rechnung.getId(), uriInfo);
 	}
+	
+
 	
 }
