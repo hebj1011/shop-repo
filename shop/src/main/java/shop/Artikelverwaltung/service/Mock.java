@@ -107,8 +107,8 @@ public final class Mock {
 		// Ein neuer Artikel gehört auch zu keinen Bestellungen
 		final String name = artikel.getName();
 		artikel.setArtikelnummer(Long.valueOf(name.length()));
-		final Double Einzelpreis = artikel.getEinzelpreis();
-		artikel.setEinzelpreis(Einzelpreis);
+		final Double einzelpreis = artikel.getEinzelpreis();
+		artikel.setEinzelpreis(einzelpreis);
 		artikel.setBestellungen(null);
 		
 		System.out.println("Neuer Artikel: " + artikel);
