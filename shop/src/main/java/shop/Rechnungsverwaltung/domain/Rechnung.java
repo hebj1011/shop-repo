@@ -1,5 +1,6 @@
 package shop.Rechnungsverwaltung.domain;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,15 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
 
 
 public class Rechnung {
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	private List<AbstractArtikel> artikel;
 	private String adresseRechnung;
 	private String adresseLieferung;
@@ -101,6 +111,18 @@ public class Rechnung {
 		}
 		return betrag;
 	}
-	
+
+	public Rechnung getRechnung() {
+		return this;
+	}
+
+	/**
+	 * @param kundeUri
+	 */
+	public void setKundeUri(URI kundeUri) {
+		// TODO @ALL:Wieso KundeUri-setzen?!
+		
+	}
+
 	
 }
