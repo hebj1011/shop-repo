@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//import shop.bestellverwaltung.domain.Bestellung;
+import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
@@ -22,7 +22,7 @@ import shop.Artikelverwaltung.domain.Farbe;
 public final class Mock {
 	private static final int MAX_ARTIKELNUMMER = 99;
 	private static final int MAX_ARTIKEL = 8;
-	//private static final int MAX_BESTELLUNGEN = 4;
+	private static final int MAX_BESTELLUNGEN = 4;
 
 	public static AbstractArtikel findArtikelByID(Long artikelnummer) {
 		if (artikelnummer > MAX_ARTIKELNUMMER) {
@@ -108,6 +108,7 @@ public final class Mock {
 		final String name = artikel.getName();
 		artikel.setArtikelnummer(Long.valueOf(name.length()));
 		final Double Einzelpreis = artikel.getEinzelpreis();
+		artikel.setEinzelpreis(Einzelpreis);
 		artikel.setBestellungen(null);
 		
 		System.out.println("Neuer Artikel: " + artikel);

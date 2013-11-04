@@ -1,6 +1,5 @@
 package shop.Artikelverwaltung.domain;
 
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -13,7 +12,6 @@ public class Ersatzteil extends AbstractArtikel {
 	private static final long serialVersionUID = 6258156986876418100L;
 	
 	private Unterklasse unterklasse;
-	private List<Fahrrad> zugehörigkeit;
 	private String datenblatt;
 	
 	public Unterklasse getUnterklasse() {
@@ -21,12 +19,6 @@ public class Ersatzteil extends AbstractArtikel {
 	}
 	public void setUnterklasse(Unterklasse unterklasse) {
 		this.unterklasse = unterklasse;
-	}
-	public List<Fahrrad> getZugehörigkeit() {
-		return zugehörigkeit;
-	}
-	public void setZugehörigkeit(List<Fahrrad> zugehörigkeit) {
-		this.zugehörigkeit = zugehörigkeit;
 	}
 	public String getDatenblatt() {
 		return datenblatt;
@@ -38,7 +30,7 @@ public class Ersatzteil extends AbstractArtikel {
 	@Override
 	public String toString() {
 		return "Ersatzteil [" + super.toString() + ", Unterklasse=" + unterklasse.toString() 
-				+ ", Zugehörigkeit= " + zugehörigkeit.toString() + ", Datenblatt:" + datenblatt + "]";
+				+  ", Datenblatt:" + datenblatt + "]";
 	}
 
 }
