@@ -12,6 +12,8 @@ import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonSubTypes.Type;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 
+import shop.Bestellverwaltung.domain.Bestellung;
+
 /**
  * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
  */
@@ -38,11 +40,8 @@ public abstract class AbstractArtikel implements Serializable {
 	private Double einzelpreis;
 	private Integer bestand;
 	
-	/* TODO
-	 * hier Bestellungen draus machen wenn angelegt
-	 */
 	@XmlTransient
-	private List<String> bestellungen;
+	private List<Bestellung> bestellungen;
 	
 	private URI bestellungenUri;
 		
@@ -70,13 +69,10 @@ public abstract class AbstractArtikel implements Serializable {
 	public void setBestand(Integer bestand) {
 		this.bestand = bestand;
 	}
-	/* TODO
-	 * hier auch List<Bestellungen> wenn angelegt
-	 */
-	public List<String> getBestellungen() {
+	public List<Bestellung> getBestellungen() {
 		return bestellungen;
 	}
-	public void setBestellungen(List<String> bestellungen) {
+	public void setBestellungen(List<Bestellung> bestellungen) {
 		this.bestellungen = bestellungen;
 	}
 	public URI getBestellungenUri() {
