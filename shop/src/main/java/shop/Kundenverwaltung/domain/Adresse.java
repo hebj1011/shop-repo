@@ -2,13 +2,13 @@ package shop.Kundenverwaltung.domain;
 
 public class Adresse {
 	private String land;
-	private int postleitzahl;
+	private String postleitzahl;
 	private String wohnort;
 	private String strasse;
-	private int hausnummer;
+	private String hausnummer;
 	
-	public Adresse(String land, int postleitzahl, String wohnort,
-			String strasse, int hausnummer) {
+	public Adresse(String land, String postleitzahl, String wohnort,
+			String strasse, String hausnummer) {
 		super();
 		this.land = land;
 		this.postleitzahl = postleitzahl;
@@ -25,11 +25,11 @@ public class Adresse {
 		this.land = land;
 	}
 
-	public int getPostleitzahl() {
+	public String getPostleitzahl() {
 		return this.postleitzahl;
 	}
 
-	public void setPostleitzahl(int postleitzahl) {
+	public void setPostleitzahl(String postleitzahl) {
 		this.postleitzahl = postleitzahl;
 	}
 
@@ -49,11 +49,11 @@ public class Adresse {
 		this.strasse = strasse;
 	}
 
-	public int getHausnummer() {
+	public String getHausnummer() {
 		return this.hausnummer;
 	}
 
-	public void setHausnummer(int hausnummer) {
+	public void setHausnummer(String hausnummer) {
 		this.hausnummer = hausnummer;
 	}
 	
