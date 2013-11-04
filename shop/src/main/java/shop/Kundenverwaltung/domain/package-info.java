@@ -1,11 +1,11 @@
 @XmlAccessorType(FIELD)
 
-package shop.Artikelverwaltung.domain;
+package shop.Kundenverwaltung.domain;
 
 import static javax.xml.bind.annotation.XmlAccessType.FIELD;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
- * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
