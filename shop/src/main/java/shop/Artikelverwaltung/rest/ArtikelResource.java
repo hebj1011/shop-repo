@@ -117,7 +117,7 @@ public class ArtikelResource {
 
 	
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
-		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getArtikelnummer(), uriInfo);
+		return uriHelper.getUri(ArtikelResource.class, "findArtikelByID", artikel.getArtikelnummer(), uriInfo);
 	}
 	
 	
