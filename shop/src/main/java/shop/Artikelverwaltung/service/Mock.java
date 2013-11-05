@@ -1,11 +1,14 @@
 package shop.Artikelverwaltung.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
+import shop.Artikelverwaltung.domain.Farbe;
 import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
 import shop.Artikelverwaltung.domain.Unterklasse;
 
@@ -46,12 +49,19 @@ public final class Mock {
 		
 		if (artikel.getClass().equals(Ersatzteil.class)) {
 			final Ersatzteil ersatzteil = (Ersatzteil) artikel;
+			ersatzteil.setDatenblatt("Testdatenblatt");
 		}
 		else if (artikel.getClass().equals(Fahrrad.class)) {
 			final Fahrrad fahrrad = (Fahrrad) artikel;
+			final Set<Farbe> farbe = new HashSet<>();
+			farbe.add(Farbe.SCHWARZ);
+			farbe.add(Farbe.ROT);
+			fahrrad.setFarbe(farbe);
 		}
 		else if (artikel.getClass().equals(Sicherheitszubehoer.class)) {
 			final Sicherheitszubehoer sicherheit = (Sicherheitszubehoer) artikel;
+			sicherheit.setTuev(true);
+			sicherheit.setGroesse("Gross");
 		}
 		
 		return artikel;
