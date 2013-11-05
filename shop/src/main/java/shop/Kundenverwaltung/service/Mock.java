@@ -13,14 +13,14 @@ import shop.Kundenverwaltung.domain.Adresse;
  * Emulation des Anwendungskerns
  */
 public final class Mock {
-	private static final int MAX_ID = 99;
+	//private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
 	//private static final int MAX_BESTELLUNGEN = 4;
 
 	public static Kunde findKundeById(Long id) {
-		if (id > MAX_ID) {
-			return null;
-		}
+//		if (id > MAX_ID) {
+//			return null;
+//		}
 		
 		final Kunde kunde = new Kunde(); //id % 2 == 1 ?
 		kunde.setId(id);
