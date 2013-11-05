@@ -17,7 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
+//import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -34,8 +34,6 @@ import javax.ws.rs.core.UriInfo;
 
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
-import shop.Bestellverwaltung.domain.Bestellung;
-import shop.Bestellverwaltung.rest.BestellungResource;
 import shop.Artikelverwaltung.service.Mock;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
@@ -57,10 +55,6 @@ public class ArtikelResource {
 	@Context
 	private UriInfo uriInfo;
 	
-
-	
-	@Inject
-	private BestellungResource bestellungResource;
 	
 	@Inject
 	private UriHelper uriHelper;
@@ -97,7 +91,7 @@ public class ArtikelResource {
 	}
 	
 	private URI getUriBestellungen(AbstractArtikel artikel, UriInfo uriInfo) {
-		return uriHelper.getUri(ArtikelResource.class, "findBestellungenByKundeId", artikel.getArtikelnummer(), uriInfo);
+		return uriHelper.getUri(ArtikelResource.class, "findBestellungenByArtikelId", artikel.getArtikelnummer(), uriInfo);
 	}		
 	
 	public Link[] getTransitionalLinks(AbstractArtikel artikel, UriInfo uriInfo) {
@@ -122,7 +116,7 @@ public class ArtikelResource {
 
 	
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
-		return uriHelper.getUri(ArtikelResource.class, "findKundeById", artikel.getArtikelnummer(), uriInfo);
+		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getArtikelnummer(), uriInfo);
 	}
 	
 	
@@ -165,47 +159,6 @@ public class ArtikelResource {
                               .build();
 		
 		return new Link[] { first, last };
-	}
-
-	@GET
-	@Path("{id:[1-9][0-9]*}/bestellungen")
-	public Response findBestellungenByArtikelnummer(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		final AbstractArtikel artikel = Mock.findArtikelByID(artikelnummer);
-		final List<Bestellung> bestellungen = Mock.findBestellungenByArtikelnummer(artikel);
-		if (bestellungen.isEmpty()) {
-			throw new NotFoundException("Zur Artikelnummer " + artikelnummer + " wurden keine Bestellungen gefunden");
-		}
-		
-		// URIs innerhalb der gefundenen Bestellungen anpassen
-		for (Bestellung bestellung : bestellungen) {
-			bestellungResource.setStructuralLinks(bestellung, uriInfo);
-		}
-		
-		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen){})
-                       .links(getTransitionalLinksBestellungen(bestellungen, artikel, uriInfo))
-                       .build();
-	}
-	
-	private Link[] getTransitionalLinksBestellungen(List<Bestellung> bestellungen, AbstractArtikel artikel, UriInfo uriInfo) {
-		if (bestellungen == null || bestellungen.isEmpty()) {
-			return new Link[0];
-		}
-		
-		final Link self = Link.fromUri(getUriBestellungen(artikel, uriInfo))
-                              .rel(SELF_LINK)
-                              .build();
-		
-		final Link first = Link.fromUri(bestellungResource.getUriBestellung(bestellungen.get(0), uriInfo))
-	                           .rel(FIRST_LINK)
-	                           .build();
-		final int lastPos = bestellungen.size() - 1;
-		
-		final Link last = Link.fromUri(bestellungResource.getUriBestellung(bestellungen.get(lastPos), uriInfo))
-                              .rel(LAST_LINK)
-                              .build();
-		
-		return new Link[] { self, first, last };
 	}
 
 	@POST
