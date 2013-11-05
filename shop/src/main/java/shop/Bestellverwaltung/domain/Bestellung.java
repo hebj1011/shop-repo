@@ -1,5 +1,6 @@
 package shop.Bestellverwaltung.domain;
 
+import java.net.URI;
 import java.util.Date;
 
 import shop.Kundenverwaltung.domain.Kunde;
@@ -15,6 +16,11 @@ public class Bestellung {
 	private Date bestelldatum ;
 	private double gesamtpreis ;
 	private boolean versendet ;
+	private URI KundeUri ;
+	
+	public Bestellung() {
+		super();
+	}
 	
 	public Bestellung(Long id, Kunde kunde, Date bestelldatum,
 			double gesamtpreis, boolean versendet) {
@@ -25,6 +31,7 @@ public class Bestellung {
 		this.gesamtpreis = gesamtpreis;
 		this.versendet = versendet;
 	}
+	
 
 	public Long getId() {
 		return id;
@@ -112,6 +119,15 @@ public class Bestellung {
 			return false;
 		return true;
 	}
-	
+
+	public URI getKundeUri() {
+		return KundeUri;
+	}
+
+	public void setKundeUri(URI kundeUri) {
+		KundeUri = kundeUri;
+	}
+
+
 
 }
