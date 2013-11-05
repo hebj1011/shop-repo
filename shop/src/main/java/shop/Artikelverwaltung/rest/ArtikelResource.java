@@ -35,7 +35,6 @@ import javax.ws.rs.core.UriInfo;
 
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
-import shop.Artikelverwaltung.domain.Unterklasse;
 import shop.Artikelverwaltung.service.Mock;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
@@ -121,10 +120,6 @@ public class ArtikelResource {
 		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getArtikelnummer(), uriInfo);
 	}
 	
-	public URI getUriUnterklasse(Unterklasse unterklasse, UriInfo uriInfo) {
-		return uriHelper.getUri(Unterklasse.class, "findUnterklasseById", unterklasse.getKlassenId(), uriInfo);
-	}
-	
 	
 	@GET
 	public Response findArtikelByName(@QueryParam(ARTIKEL_NAME_QUERY_PARAM) String name) {
@@ -176,14 +171,6 @@ public class ArtikelResource {
 			           .build();
 	}
 	
-	@POST
-	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-	@Produces
-	public Response createUnterklasse(Unterklasse unterklasse) {
-		unterklasse = Mock.createUnterklasse(unterklasse);
-		return Response.created(getUriUnterklasse(unterklasse, uriInfo))
-			           .build();
-	}
 	
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })

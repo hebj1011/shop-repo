@@ -35,7 +35,6 @@ public abstract class AbstractArtikel implements Serializable {
 	private String name;
 	private Double einzelpreis;
 	private Integer bestand;
-	private Unterklasse unterklasse;
 	
 	private URI bestellungenUri;
 		
@@ -69,12 +68,7 @@ public abstract class AbstractArtikel implements Serializable {
 	public void setBestellungenUri(URI bestellungenUri) {
 		this.bestellungenUri = bestellungenUri;
 	}
-	public Unterklasse getUnterklasse() {
-		return unterklasse;
-	}
-	public void setUnterklasse(Unterklasse unterklasse) {
-		this.unterklasse = unterklasse;
-	}
+
 	
 	@Override
 	public int hashCode() {
@@ -104,7 +98,7 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "AbstractArtikel [Artikelnummer=" + artikelnummer + ", name=" + name + ", bestellungenUri=" + bestellungenUri + ",Unterklasse: " + unterklasse.toString() + "]";
+		return "AbstractArtikel [Artikelnummer=" + artikelnummer + ", name=" + name + ", bestellungenUri=" + bestellungenUri + "]";
 	}
 
 }
