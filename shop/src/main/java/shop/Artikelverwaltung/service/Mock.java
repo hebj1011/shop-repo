@@ -70,6 +70,17 @@ public final class Mock {
 		return alleArtikel;
 	}
 	
+	public static Unterklasse createUnterklasse(Unterklasse unterklasse) {
+		final Long klassenId = unterklasse.getKlassenId();
+		final String name = unterklasse.getName();
+		final String beschreibung = unterklasse.getBeschreibung();
+		unterklasse.setKlassenId(klassenId);
+		unterklasse.setName(name);
+		unterklasse.setBeschreibung(beschreibung);
+		
+		return unterklasse;
+	}
+	
 
 	public static AbstractArtikel createArtikel(AbstractArtikel artikel) {
 		// Neue IDs fuer Artikel und zugehoerigem Preis + Bestand
@@ -79,6 +90,14 @@ public final class Mock {
 		final Double einzelpreis = artikel.getEinzelpreis();
 		artikel.setEinzelpreis(einzelpreis);
 		artikel.setBestand(artikel.getBestand());
+		
+		else if (artikel.getClass().equals(Fahrrad.class)) {
+			final Fahrrad fahrrad = (Fahrrad) artikel;
+			final Unterklasse unterklasse = new Unterklasse((long)5,"Damenräder","Hier finden sie alle Damenräder");
+			final Set<Farbe> farbe = new HashSet<>();
+			farbe.add(Farbe.SCHWARZ);
+			fahrrad.setFarbe(farbe);
+		}
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;

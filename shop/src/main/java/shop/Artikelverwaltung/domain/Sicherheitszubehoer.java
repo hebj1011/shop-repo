@@ -9,8 +9,7 @@ public class Sicherheitszubehoer extends AbstractArtikel {
 	
 	private Boolean tuev;
 	private String groesse;
-	private Unterklasse sUnterklasse;
-	
+
 	public Boolean getTuev() {
 		return tuev;
 	}
@@ -23,16 +22,10 @@ public class Sicherheitszubehoer extends AbstractArtikel {
 	public void setGroesse(String groesse) {
 		this.groesse = groesse;
 	}
-	public Unterklasse getsUnterklasse() {
-		return sUnterklasse;
-	}
-	public void setsUnterklasse(Unterklasse sUnterklasse) {
-		this.sUnterklasse = sUnterklasse;
-	}
 	
 	@Override
 	public String toString() {
-		return "Sicherheitszubehoer [" + super.toString() + ", Tuev:" + tuev + ", Groesse=" + groesse.toString() + ", Unterklasse=" + sUnterklasse.toString() + "]";
+		return "Sicherheitszubehoer [" + super.toString() + ", Tuev:" + tuev + ", Groesse=" + groesse.toString() + "]";
 	}
 
 }

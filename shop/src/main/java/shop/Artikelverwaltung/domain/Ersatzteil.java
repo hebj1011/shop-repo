@@ -11,15 +11,8 @@ public class Ersatzteil extends AbstractArtikel {
 	
 	private static final long serialVersionUID = 6258156986876418100L;
 	
-	private Unterklasse unterklasse;
 	private String datenblatt;
 	
-	public Unterklasse getUnterklasse() {
-		return unterklasse;
-	}
-	public void setUnterklasse(Unterklasse unterklasse) {
-		this.unterklasse = unterklasse;
-	}
 	public String getDatenblatt() {
 		return datenblatt;
 	}
@@ -29,8 +22,7 @@ public class Ersatzteil extends AbstractArtikel {
 	
 	@Override
 	public String toString() {
-		return "Ersatzteil [" + super.toString() + ", Unterklasse=" + unterklasse.toString() 
-				+  ", Datenblatt:" + datenblatt + "]";
+		return "Ersatzteil [" + super.toString() + ", Datenblatt:" + datenblatt + "]";
 	}
 
 }
