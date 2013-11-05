@@ -93,9 +93,13 @@ public final class Mock {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
 		// Ein neuer Kunde hat auch keine Bestellungen
 		//final String nachname = kunde.getNachname();
-		kunde.setId(Long.valueOf(kunde.hashCode()));
+		Long id = Long.valueOf(kunde.hashCode());
+		if (id<0) {
+			id=id*(-1);
+		}
+		kunde.setId(id);
 		final Adresse adresse = kunde.getAdresse();
-		adresse.setId((Long.valueOf(kunde.hashCode())) + 1);
+		adresse.setId(id + 1);
 		adresse.setKunde(kunde);
 		kunde.setBestellungen(null);
 		
