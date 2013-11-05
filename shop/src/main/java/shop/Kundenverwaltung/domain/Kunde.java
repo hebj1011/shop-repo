@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.Email;
 import shop.Bestellverwaltung.domain.Bestellung;
 
 /**
- * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 
 public class Kunde  {
