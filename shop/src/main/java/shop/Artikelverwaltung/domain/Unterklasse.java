@@ -1,14 +1,16 @@
 package shop.Artikelverwaltung.domain;
 
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlTransient;
+
 
 public class Unterklasse {
 	
-	public Unterklasse(Long klassenId, String name, String beschreibung) {
-		super();
-		this.klassenId = klassenId;
-		this.name = name;
-		this.beschreibung = beschreibung;
-	}
+	private static final long serialVersionUID = -3029272617931844501L;
+	
+	@XmlTransient
+	private AbstractArtikel artikel;
 	
 	private Long klassenId;
 	private String name;
@@ -31,6 +33,40 @@ public class Unterklasse {
 	}
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((klassenId == null) ? 0 : klassenId.hashCode());
+		result = prime * result + ((beschreibung == null) ? 0 : beschreibung.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Unterklasse other = (Unterklasse) obj;
+		if (klassenId == null) {
+			if (other.klassenId != null)
+				return false;
+		}
+		else if (!klassenId.equals(other.klassenId))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		}
+		else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 	
 	@Override
