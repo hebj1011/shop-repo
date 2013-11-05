@@ -77,7 +77,6 @@ public class ArtikelResource {
 					throw new NotFoundException("Kein Artikel mit der ID " + artikelnummer + " gefunden.");
 				}
 				
-				setStructuralLinks(artikel, uriInfo);
 				
 				return Response.ok(artikel)
 		                       .links(getTransitionalLinks(artikel, uriInfo))
@@ -85,15 +84,8 @@ public class ArtikelResource {
 	}
 	
 	
-	public void setStructuralLinks(AbstractArtikel artikel, UriInfo uriInfo) {
-		// URI fuer Bestellungen setzen
-		final URI uri = getUriBestellungen(artikel, uriInfo);
-		artikel.setBestellungenUri(uri);
-	}
+
 	
-	private URI getUriBestellungen(AbstractArtikel artikel, UriInfo uriInfo) {
-		return uriHelper.getUri(ArtikelResource.class, "findBestellungenByArtikelId", artikel.getArtikelnummer(), uriInfo);
-	}		
 	
 	public Link[] getTransitionalLinks(AbstractArtikel artikel, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriArtikel(artikel, uriInfo))
@@ -137,9 +129,6 @@ public class ArtikelResource {
 			}
 		}
 		
-		for (AbstractArtikel a : artikel) {
-			setStructuralLinks(a, uriInfo);
-		}
 		
 		return Response.ok(new GenericEntity<List<? extends AbstractArtikel>>(artikel){})
                        .links(getTransitionalLinksArtikel(artikel, uriInfo))
