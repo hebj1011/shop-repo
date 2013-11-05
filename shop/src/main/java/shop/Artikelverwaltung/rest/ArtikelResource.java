@@ -100,7 +100,7 @@ public class ArtikelResource {
                                 .rel(UPDATE_LINK)
                                 .build();
 
-		final Link remove = Link.fromUri(uriHelper.getUri(ArtikelResource.class, "deleteKunde", artikel.getArtikelnummer(), uriInfo))
+		final Link remove = Link.fromUri(uriHelper.getUri(ArtikelResource.class, "deleteArtikel", artikel.getArtikelnummer(), uriInfo))
                                 .rel(REMOVE_LINK)
                                 .build();
 		
