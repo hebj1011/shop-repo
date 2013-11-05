@@ -8,7 +8,7 @@ import java.util.Set;
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
-//import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
+import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
 
 
 /**
@@ -25,11 +25,18 @@ public final class Mock {
 			return null;
 		}
 		
-		final AbstractArtikel artikel = artikelnummer % 2 == 1 ? new Ersatzteil() : new Fahrrad();
+		AbstractArtikel artikel = null;
+		if(artikelnummer < 1000)
+			artikel = new Fahrrad();
+		else if(artikelnummer > 1000 && artikelnummer < 5000)
+			artikel = new Ersatzteil();
+		else
+			artikel = new Sicherheitszubehoer();
+		
 		artikel.setArtikelnummer(artikelnummer);
-		artikel.setName("Artikel:" + artikelnummer);
-		artikel.setEinzelpreis(99.99);
-		artikel.setBestand(10);
+		artikel.setName(artikel.getName());
+		artikel.setEinzelpreis(artikel.getEinzelpreis());
+		artikel.setBestand(artikel.getBestand());
 		
 		if (artikel.getClass().equals(Ersatzteil.class)) {
 			final Ersatzteil ersatzteil = (Ersatzteil) artikel;
