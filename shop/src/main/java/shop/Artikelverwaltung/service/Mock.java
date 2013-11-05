@@ -94,9 +94,9 @@ public final class Mock {
 		// Ein neuer Artikel gehört auch zu keinen Bestellungen
 		final String name = artikel.getName();
 		artikel.setArtikelnummer(Long.valueOf(name.length()));
-		final Double einzelpreis = artikel.getEinzelpreis();
-		artikel.setEinzelpreis(einzelpreis);
-		artikel.setBestand(artikel.getBestand());
+		final Unterklasse unterklasse = artikel.getUnterklasse();
+		unterklasse.setKlassenId((Long.valueOf(name.length())) + 1);
+		unterklasse.setArtikel(artikel);
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;
