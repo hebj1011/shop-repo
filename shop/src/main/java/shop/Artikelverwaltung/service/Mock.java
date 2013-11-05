@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
@@ -22,7 +21,6 @@ import shop.Artikelverwaltung.domain.Farbe;
 public final class Mock {
 	private static final int MAX_ARTIKELNUMMER = 99;
 	private static final int MAX_ARTIKEL = 8;
-	private static final int MAX_BESTELLUNGEN = 4;
 
 	public static AbstractArtikel findArtikelByID(Long artikelnummer) {
 		if (artikelnummer > MAX_ARTIKELNUMMER) {
@@ -72,36 +70,7 @@ public final class Mock {
 		return alleArtikel;
 	}
 	
-/* TODO auskommentieren wenn bestellungen angelegt sind
-	public static List<Bestellung> findBestellungenByArtikelnummer(AbstractArtikel artikel) {
-		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
-		final int anzahl = artikel.getArtikelnummer().intValue() % MAX_BESTELLUNGEN + 1;  // 1, 2, 3 oder 4 Bestellungen
-		final List<Bestellung> bestellungen = new ArrayList<>(anzahl);
-		for (int i = 1; i <= anzahl; i++) {
-			final Bestellung bestellung = findBestellungByArtikelnummer(Long.valueOf(i));
-			bestellung.setArtikel(artikel);
-			bestellungen.add(bestellung);			
-		}
-		artikel.setBestellungen(bestellungen);
-		
-		return bestellungen;
-	}
 
-	public static Bestellung findBestellungByArtikelnummer(Long artikelnummer) {
-		if (artikelnummer > MAX_ARTIKELNUMMER) {
-			return null;
-		}
-
-		final AbstractArtikel artikel = findArtikelByID(artikelnummer + 1);  // andere ID fuer den Kunden
-
-		final Bestellung bestellung = new Bestellung();
-		bestellung.setId(id);
-		bestellung.setAusgeliefert(false);
-		bestellung.setArtikel(artikel);
-		
-		return bestellung;
-	}
-*/
 	public static AbstractArtikel createArtikel(AbstractArtikel artikel) {
 		// Neue IDs fuer Artikel und zugehoerigem Preis + Bestand
 		// Ein neuer Artikel gehört auch zu keinen Bestellungen

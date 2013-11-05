@@ -17,7 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-//import javax.ws.rs.DefaultValue;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -34,8 +34,8 @@ import javax.ws.rs.core.UriInfo;
 
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
-//import shop.bestellverwaltung.domain.Bestellung;
-//import shop.bestellverwaltung.rest.BestellungResource;
+import shop.Bestellverwaltung.domain.Bestellung;
+import shop.Bestellverwaltung.rest.BestellungResource;
 import shop.Artikelverwaltung.service.Mock;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
@@ -57,12 +57,10 @@ public class ArtikelResource {
 	@Context
 	private UriInfo uriInfo;
 	
-	/* TODO
-	 * hier auskommentieren wenn angelegt
-	 */
+
 	
-	//@Inject
-	//private BestellungResource bestellungResource;
+	@Inject
+	private BestellungResource bestellungResource;
 	
 	@Inject
 	private UriHelper uriHelper;
@@ -168,7 +166,7 @@ public class ArtikelResource {
 		
 		return new Link[] { first, last };
 	}
-/* TODO bestellung anlegen	
+
 	@GET
 	@Path("{id:[1-9][0-9]*}/bestellungen")
 	public Response findBestellungenByArtikelnummer(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
@@ -209,7 +207,7 @@ public class ArtikelResource {
 		
 		return new Link[] { self, first, last };
 	}
-*/
+
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
