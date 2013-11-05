@@ -40,9 +40,6 @@ public abstract class AbstractArtikel implements Serializable {
 	private Double einzelpreis;
 	private Integer bestand;
 	
-	@XmlTransient
-	private List<Bestellung> bestellungen;
-	
 	private URI bestellungenUri;
 		
 	public Long getArtikelnummer() {
@@ -68,12 +65,6 @@ public abstract class AbstractArtikel implements Serializable {
 	}
 	public void setBestand(Integer bestand) {
 		this.bestand = bestand;
-	}
-	public List<Bestellung> getBestellungen() {
-		return bestellungen;
-	}
-	public void setBestellungen(List<Bestellung> bestellungen) {
-		this.bestellungen = bestellungen;
 	}
 	public URI getBestellungenUri() {
 		return bestellungenUri;
