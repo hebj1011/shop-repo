@@ -1,9 +1,7 @@
 package shop.Artikelverwaltung.service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
@@ -43,6 +41,9 @@ public final class Mock {
 		}
 		else if (artikel.getClass().equals(Fahrrad.class)) {
 			final Fahrrad fahrrad = (Fahrrad) artikel;
+		}
+		else if (artikel.getClass().equals(Sicherheitszubehoer.class)) {
+			final Sicherheitszubehoer sicherheit = (Sicherheitszubehoer) artikel;
 		}
 		
 		return artikel;
