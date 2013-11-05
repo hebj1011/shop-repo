@@ -35,6 +35,13 @@ public class Unterklasse {
 		this.beschreibung = beschreibung;
 	}
 	
+	public AbstractArtikel getArtikel() {
+		return artikel;
+	}
+	public void setArtikel(AbstractArtikel artikel) {
+		this.artikel = artikel;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

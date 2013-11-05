@@ -7,6 +7,7 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
 import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
+import shop.Artikelverwaltung.domain.Unterklasse;
 
 
 /**
@@ -15,7 +16,7 @@ import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
 
 
 public final class Mock {
-	private static final int MAX_ARTIKELNUMMER = 99;
+	private static final int MAX_ARTIKELNUMMER = 10000;
 	private static final int MAX_ARTIKEL = 8;
 
 	public static AbstractArtikel findArtikelByID(Long artikelnummer) {
@@ -32,9 +33,16 @@ public final class Mock {
 			artikel = new Sicherheitszubehoer();
 		
 		artikel.setArtikelnummer(artikelnummer);
-		artikel.setName(artikel.getName());
-		artikel.setEinzelpreis(artikel.getEinzelpreis());
-		artikel.setBestand(artikel.getBestand());
+		artikel.setName("Artikel" + artikelnummer);
+		artikel.setEinzelpreis(0.00);
+		artikel.setBestand(0);
+		
+		final Unterklasse unterklasse = new Unterklasse();
+		unterklasse.setKlassenId((long)12345);        // andere ID fuer die Adresse
+		unterklasse.setName("Testunterklasse");
+		unterklasse.setBeschreibung("Testbeschreibung");
+		unterklasse.setArtikel(artikel);
+		artikel.setUnterklasse(unterklasse);
 		
 		if (artikel.getClass().equals(Ersatzteil.class)) {
 			final Ersatzteil ersatzteil = (Ersatzteil) artikel;
