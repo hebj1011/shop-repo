@@ -90,14 +90,7 @@ public final class Mock {
 		final Double einzelpreis = artikel.getEinzelpreis();
 		artikel.setEinzelpreis(einzelpreis);
 		artikel.setBestand(artikel.getBestand());
-		
-		else if (artikel.getClass().equals(Fahrrad.class)) {
-			final Fahrrad fahrrad = (Fahrrad) artikel;
-			final Unterklasse unterklasse = new Unterklasse((long)5,"Damenräder","Hier finden sie alle Damenräder");
-			final Set<Farbe> farbe = new HashSet<>();
-			farbe.add(Farbe.SCHWARZ);
-			fahrrad.setFarbe(farbe);
-		}
+		artikel.setUnterklasse(artikel.getUnterklasse());
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;
