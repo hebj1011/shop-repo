@@ -41,7 +41,7 @@ public final class Mock {
 		artikel.setBestand(0);
 		
 		final Unterklasse unterklasse = new Unterklasse();
-		unterklasse.setKlassenId((long)12345);        // andere ID fuer die Adresse
+		unterklasse.setKlassenId((long)12345);        
 		unterklasse.setName("Testunterklasse");
 		unterklasse.setBeschreibung("Testbeschreibung");
 		unterklasse.setArtikel(artikel);
