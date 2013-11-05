@@ -90,7 +90,8 @@ public final class Mock {
 		final Double einzelpreis = artikel.getEinzelpreis();
 		artikel.setEinzelpreis(einzelpreis);
 		artikel.setBestand(artikel.getBestand());
-		artikel.setUnterklasse(artikel.getUnterklasse());
+		Unterklasse unterklasse = createUnterklasse(artikel.getUnterklasse());
+		artikel.setUnterklasse(unterklasse);
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;
