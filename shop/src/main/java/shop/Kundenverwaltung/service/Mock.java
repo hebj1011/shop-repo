@@ -22,7 +22,7 @@ public final class Mock {
 			return null;
 		}
 		
-		final Kunde kunde =  new Kunde(); //id % 2 == 1 ?
+		final Kunde kunde = new Kunde(); //id % 2 == 1 ?
 		kunde.setId(id);
 		kunde.setVorname("Vorname" + id);
 		kunde.setNachname("Nachname" + id);
@@ -34,14 +34,6 @@ public final class Mock {
 		adresse.setOrt("Testort");
 		adresse.setKunde(kunde);
 		kunde.setAdresse(adresse);
-		
-//		if (kunde.getClass().equals(Privatkunde.class)) {
-//			final Privatkunde privatkunde = (Privatkunde) kunde;
-//			final Set<HobbyType> hobbies = new HashSet<>();
-//			hobbies.add(HobbyType.LESEN);
-//			hobbies.add(HobbyType.REISEN);
-//			privatkunde.setHobbies(hobbies);
-//		}
 		
 		return kunde;
 	}
@@ -100,10 +92,10 @@ public final class Mock {
 	public static Kunde createKunde(Kunde kunde) {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
 		// Ein neuer Kunde hat auch keine Bestellungen
-		final String nachname = kunde.getNachname();
-		kunde.setId(Long.valueOf(nachname.length()));
+		//final String nachname = kunde.getNachname();
+		kunde.setId(Long.valueOf(kunde.hashCode()));
 		final Adresse adresse = kunde.getAdresse();
-		adresse.setId((Long.valueOf(nachname.length())) + 1);
+		adresse.setId((Long.valueOf(kunde.hashCode())) + 1);
 		adresse.setKunde(kunde);
 		kunde.setBestellungen(null);
 		
