@@ -1,13 +1,14 @@
 package shop.Rechnungsverwaltung.domain;
 
-import java.net.URI;
+//import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Kundenverwaltung.domain.Adresse;
+import javax.xml.bind.annotation.XmlRootElement;
 
-
+@XmlRootElement
 public class Rechnung {
 	private Long id;
 	public Long getId() {
@@ -25,37 +26,8 @@ public class Rechnung {
 	private Date datumRechnung;
 	private Date datumZahlung;
 	private double versandkosten;
-	private Boolean bezahlt; 
-
-	public Rechnung(
-			Long id,
-			List<AbstractArtikel> artikel,
-			Adresse adresseRechnung,
-			Adresse adresseLieferung,
-			Enum<shop.Rechnungsverwaltung.domain.Zahlungsmittel> zahlungsmittel,
-			Date datumRechnung, Date datumZahlung, double versandkosten,
-			Boolean bezahlt) {
-		super();
-		this.id = id;
-		this.artikel = artikel;
-		this.adresseRechnung = adresseRechnung;
-		this.adresseLieferung = adresseLieferung;
-		Zahlungsmittel = zahlungsmittel;
-		this.datumRechnung = datumRechnung;
-		this.datumZahlung = datumZahlung;
-		this.versandkosten = versandkosten;
-		this.bezahlt = bezahlt;
-	}
-	
-
-	public Rechnung(Long id) {
-		/*
-		 * TODO Muss später entfernt werden; Nur zu Testzwecken
-		 */
-		super();
-		this.id = id;
-		this.adresseRechnung = adresseRechnung;
-	}
+	private Boolean bezahlt;
+	private double gesamtpreis;
 
 	public Boolean getBezahlt() {
 		return bezahlt;
@@ -122,25 +94,12 @@ public class Rechnung {
 		this.artikel = artikel;
 	}
 
-	public double betrag() {
-		double betrag = 0;
-		for (int i = 0; i < this.artikel.size(); i++) {
-			AbstractArtikel art = this.artikel.get(i);
-			betrag += art.getEinzelpreis();
-		}
-		return betrag;
+	public double getGesamtpreis() {
+		return gesamtpreis;
 	}
 
-	public Rechnung getRechnung() {
-		return this;
-	}
-
-	/**
-	 * @param kundeUri
-	 */
-	public void setRechnungUri(URI kundeUri) {
-		// TODO @ALL:Wieso RechnungUri-setzen?! Wird die nicht gegeben?!
-		
+	public void setGesamtpreis(double gesamtpreis) {
+		this.gesamtpreis = gesamtpreis;
 	}
 
 	
