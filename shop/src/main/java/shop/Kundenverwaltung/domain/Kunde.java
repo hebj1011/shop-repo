@@ -111,7 +111,7 @@ public class Kunde  {
 	
 	@Override
 	public String toString() {
-		return "AbstractKunde [id=" + id + ", Vorname=" + vorname + ", nachname=" + nachname + ", email=" + email
+		return "Kunde [id=" + id + ", Vorname=" + vorname + ", nachname=" + nachname + ", email=" + email
 			   + ", bestellungenUri=" + bestellungenUri + "]";
 	}
 }
