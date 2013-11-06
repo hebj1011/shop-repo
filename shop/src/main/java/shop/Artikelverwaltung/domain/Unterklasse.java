@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlTransient;
 
 
-public class Unterklasse {
+public class Unterklasse implements Serializable {
 	
 	private static final long serialVersionUID = -3029272617931844501L;
 	
