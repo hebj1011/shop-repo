@@ -86,13 +86,13 @@ public class KundeResource {
 	
 	public void setStructuralLinks(Kunde kunde, UriInfo uriInfo) {
 		// URI fuer Bestellungen setzen
-		final URI uri = getUriBestellungen(kunde, uriInfo);
-		kunde.setBestellungenUri(uri);
+//		final URI uri = getUriBestellungen(kunde, uriInfo);
+//		kunde.setBestellungenUri(uri);
 	}
 	
-	private URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
-		return uriHelper.getUri(KundeResource.class, "findBestellungenByKundeId", kunde.getId(), uriInfo);
-	}		
+//	private URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
+//		return uriHelper.getUri(KundeResource.class, "findBestellungenByKundeId", kunde.getId(), uriInfo);
+//	}		
 	
 	public Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
