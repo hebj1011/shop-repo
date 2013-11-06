@@ -2,10 +2,14 @@ package shop.Bestellverwaltung.service;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 //import java.util.HashSet;
 import java.util.List;
 //import java.util.Set;
 
+
+
+import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.domain.Adresse;
@@ -89,6 +93,11 @@ public final class Mock {
 		
 		return bestellung;
 	}
+	
+	public Collection<AbstractArtikel> findArtikelByID(List<Long> artikelIds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 //	public static Kunde createKunde(Kunde kunde) {
 //		// Neue IDs fuer Kunde und zugehoerige Adresse
@@ -106,5 +115,10 @@ public final class Mock {
 
 
 	private Mock() { /**/ }
+
+	public Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
