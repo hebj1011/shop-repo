@@ -2,6 +2,7 @@ package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -75,6 +76,14 @@ public class Bestellung {
 
 	public void setKundeUri(URI kundeUri) {
 		KundeUri = kundeUri;
+	}
+	
+	public List<Bestellposition> getBestellpositionen() {
+		if (bestellpositionen == null) {
+			return null;
+		}
+		
+		return Collections.unmodifiableList(bestellpositionen);
 	}
 	
 	public void setBestellpositionen(List<Bestellposition> bestellpositionen) {
