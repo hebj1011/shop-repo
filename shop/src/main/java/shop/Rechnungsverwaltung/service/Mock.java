@@ -22,9 +22,7 @@ public final class Mock {
 		rechnung.setId(rechnungsnummer);
 		rechnung.setGesamtpreis(156616.6);
 		rechnung.setVersandkosten(156.2);
-		/*
-		 * TODO Datenbankabfrage einbauen 
-		 */
+	
 		return rechnung;
 	}
 

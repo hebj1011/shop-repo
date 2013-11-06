@@ -22,62 +22,21 @@ public class Rechnung {
 	}
 
 	private List<AbstractArtikel> artikel;
-	private Adresse adresseRechnung;
-	private Adresse adresseLieferung;
-	private Enum<Zahlungsmittel> Zahlungsmittel;
-	private Date datumRechnung;
-	private Date datumZahlung;
+	//private Adresse adresseRechnung;
+	//private Adresse adresseLieferung;
+	//private Enum<Zahlungsmittel> Zahlungsmittel;
+	//private Date datumRechnung;
+	//private Date datumZahlung;
 	private double versandkosten;
 	private Boolean bezahlt;
 	private double gesamtpreis;
-
-	public Boolean getBezahlt() {
-		return bezahlt;
-	}
-
-	public Adresse getAdresseRechnung() {
-		return adresseRechnung;
-	}
-
-	public void setAdresseRechnung(Adresse adresseRechnung) {
-		this.adresseRechnung = adresseRechnung;
-	}
-
-	public Adresse getAdresseLieferung() {
-		return adresseLieferung;
-	}
-
-	public void setAdresseLieferung(Adresse adresseLieferung) {
-		this.adresseLieferung = adresseLieferung;
-	}
-
-	public void setBezahlt(Boolean bezahlt) {
-		this.bezahlt = bezahlt;
-	}
 	
-
-	public Enum<Zahlungsmittel> getZahlungsmittel() {
-		return Zahlungsmittel;
+	public List<AbstractArtikel> getArtikel() {
+		return artikel;
 	}
 
-	public void setZahlungsmittel(Enum<Zahlungsmittel> zahlungsmittel) {
-		Zahlungsmittel = zahlungsmittel;
-	}
-
-	public Date getDatumRechnung() {
-		return datumRechnung;
-	}
-
-	public void setDatumRechnung(Date datumRechnung) {
-		this.datumRechnung = datumRechnung;
-	}
-
-	public Date getDatumZahlung() {
-		return datumZahlung;
-	}
-
-	public void setDatumZahlung(Date datumZahlung) {
-		this.datumZahlung = datumZahlung;
+	public void setArtikel(List<AbstractArtikel> artikel) {
+		this.artikel = artikel;
 	}
 
 	public double getVersandkosten() {
@@ -88,12 +47,12 @@ public class Rechnung {
 		this.versandkosten = versandkosten;
 	}
 
-	public List<AbstractArtikel> getArtikel() {
-		return artikel;
+	public Boolean getBezahlt() {
+		return bezahlt;
 	}
 
-	public void setArtikel(List<AbstractArtikel> artikel) {
-		this.artikel = artikel;
+	public void setBezahlt(Boolean bezahlt) {
+		this.bezahlt = bezahlt;
 	}
 
 	public double getGesamtpreis() {
@@ -104,10 +63,7 @@ public class Rechnung {
 		this.gesamtpreis = gesamtpreis;
 	}
 
-	public void setRechnungUri(URI rechnungUri) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }
