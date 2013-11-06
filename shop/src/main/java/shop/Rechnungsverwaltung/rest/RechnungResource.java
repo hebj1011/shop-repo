@@ -38,8 +38,8 @@ public class RechnungResource {
 	@Inject
 	private UriHelper uriHelper;
 	
-	@Inject
-	private RechnungResource rechnungResource;
+//	@Inject
+//	private RechnungResource rechnungResource;
 	
 	@GET
 	@Path("{id:[1-9][0-9]*}")
@@ -50,7 +50,7 @@ public class RechnungResource {
 			throw new NotFoundException("Keine Rechnung mit der ID " + id + " gefunden.");
 		}
 		
-		setStructuralLinks(rechnung, uriInfo);
+//		setStructuralLinks(rechnung, uriInfo);
 		
 		// Link-Header setzen
 		final Response response = Response.ok(rechnung)
@@ -62,14 +62,14 @@ public class RechnungResource {
 	
 
 	
-	public void setStructuralLinks(Rechnung rechng, UriInfo uriInfo) {
-		// URI fuer Kunde setzen
-		final Rechnung rechnung = rechng.getRechnung();
-		if (rechnung != null) {
-			final URI rechnungUri = rechnungResource.getUriRechnung(rechng.getRechnung(), uriInfo);
-			rechng.setRechnungUri(rechnungUri);
-		}
-	}
+//	public void setStructuralLinks(Rechnung rechng, UriInfo uriInfo) {
+//		// URI fuer Kunde setzen
+//		final Rechnung rechnung = rechng.getRechnung();
+//		if (rechnung != null) {
+//			final URI rechnungUri = rechnungResource.getUriRechnung(rechng.getRechnung(), uriInfo);
+//			rechng.setRechnungUri(rechnungUri);
+//		}
+//	}
 	
 	private Link[] getTransitionalLinks(Rechnung rechnung, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriRechnung(rechnung, uriInfo))
