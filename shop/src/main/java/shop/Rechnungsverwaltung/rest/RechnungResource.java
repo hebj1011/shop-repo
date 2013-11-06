@@ -1,5 +1,13 @@
 package shop.Rechnungsverwaltung.rest;
 
+
+//import static shop.util.Constants.ADD_LINK;
+//import static shop.util.Constants.FIRST_LINK;
+//import static shop.util.Constants.LAST_LINK;
+//import static shop.util.Constants.REMOVE_LINK;
+import static shop.util.Constants.SELF_LINK;
+//import static shop.util.Constants.UPDATE_LINK;
+
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
@@ -30,7 +38,7 @@ import shop.util.rest.UriHelper;
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
 public class RechnungResource {
-	private static final String SELF_LINK = null;
+	//private static final String SELF_LINK = null;
 
 	@Context
 	private UriInfo uriInfo;
