@@ -12,6 +12,10 @@ public class Bestellposition {
 	private URI artikelUri ;
 	private short anzahl ;
 	
+	public Bestellposition() {
+		super();
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -73,9 +77,5 @@ public class Bestellposition {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 
 }
