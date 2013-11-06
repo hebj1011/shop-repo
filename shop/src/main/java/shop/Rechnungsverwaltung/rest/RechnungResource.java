@@ -18,9 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import shop.Rechnungsverwaltung.service.Mock;
-import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Bestellverwaltung.rest.BestellungResource;
-import shop.Kundenverwaltung.domain.Kunde;
 import shop.Rechnungsverwaltung.domain.Rechnung;
 import shop.util.rest.NotFoundException;
 import shop.util.rest.UriHelper;
