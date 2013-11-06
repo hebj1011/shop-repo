@@ -43,7 +43,7 @@ public class RechnungResource {
 	
 	@GET
 	@Path("{id:[1-9][0-9]*}")
-	public Response findRechnungById(@PathParam("id") Long id) {
+	public Response findRechnungByID(@PathParam("id") Long id) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		final Rechnung rechnung = Mock.findRechnungByID(id);
 		if (rechnung == null) {
