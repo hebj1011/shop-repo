@@ -29,18 +29,12 @@ public final class Mock {
 		
 		final Adresse adresse = new Adresse();
 		adresse.setId(id + 1);        // andere ID fuer die Adresse
-		adresse.setPlz("12345");
-		adresse.setOrt("Testort");
+		adresse.setPlz("76596");
+		adresse.setOrt("Forbach");
+		adresse.setStrasse("Hansstraße");
+		adresse.setHausnummer("77");
 		adresse.setKunde(kunde);
 		kunde.setAdresse(adresse);
-		
-		/* if (kunde.getClass().equals(Privatkunde.class)) {
-			final Privatkunde privatkunde = (Privatkunde) kunde;
-			final Set<HobbyType> hobbies = new HashSet<>();
-			hobbies.add(HobbyType.LESEN);
-			hobbies.add(HobbyType.REISEN);
-			privatkunde.setHobbies(hobbies);
-		} */
 		
 		return kunde;
 	}

@@ -1,7 +1,11 @@
 package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import shop.Kundenverwaltung.domain.Kunde;
 
@@ -9,29 +13,21 @@ import shop.Kundenverwaltung.domain.Kunde;
  * @author Julian Kohlhaas
  * 
  */
+
+@XmlRootElement
 public class Bestellung {
 	
 	private Long id ;
-	private shop.Kundenverwaltung.domain.Kunde kunde ;
+	private Kunde kunde ;
 	private Date bestelldatum ;
 	private double gesamtpreis ;
 	private boolean versendet ;
 	private URI KundeUri ;
+	private List<Bestellposition> bestellpositionen ;
 	
 	public Bestellung() {
 		super();
-	}
-	
-	public Bestellung(Long id, Kunde kunde, Date bestelldatum,
-			double gesamtpreis, boolean versendet) {
-		super();
-		this.id = id;
-		this.kunde = kunde;
-		this.bestelldatum = bestelldatum;
-		this.gesamtpreis = gesamtpreis;
-		this.versendet = versendet;
-	}
-	
+	}	
 
 	public Long getId() {
 		return id;
@@ -71,6 +67,35 @@ public class Bestellung {
 
 	public void setVersendet(boolean versendet) {
 		this.versendet = versendet;
+	}
+	
+	public URI getKundeUri() {
+		return KundeUri;
+	}
+
+	public void setKundeUri(URI kundeUri) {
+		KundeUri = kundeUri;
+	}
+	
+	public void setBestellpositionen(List<Bestellposition> bestellpositionen) {
+		if (this.bestellpositionen == null) {
+			this.bestellpositionen = bestellpositionen;
+			return;
+		}
+		
+		// Wiederverwendung der vorhandenen Collection
+		this.bestellpositionen.clear();
+		if (bestellpositionen != null) {
+			this.bestellpositionen.addAll(bestellpositionen);
+		}
+	}
+	
+	public Bestellung addBestellposition(Bestellposition bestellposition) {
+		if (bestellpositionen == null) {
+			bestellpositionen = new ArrayList<>();
+		}
+		bestellpositionen.add(bestellposition);
+		return this;
 	}
 
 	@Override
@@ -119,15 +144,5 @@ public class Bestellung {
 			return false;
 		return true;
 	}
-
-	public URI getKundeUri() {
-		return KundeUri;
-	}
-
-	public void setKundeUri(URI kundeUri) {
-		KundeUri = kundeUri;
-	}
-
-
 
 }
