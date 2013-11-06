@@ -216,6 +216,7 @@ public class KundeResource {
 	
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+	//@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	@Produces
 	public void updateKunde(Kunde kunde) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
