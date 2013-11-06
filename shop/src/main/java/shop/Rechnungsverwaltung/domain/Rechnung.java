@@ -1,11 +1,13 @@
 package shop.Rechnungsverwaltung.domain;
 
 //import java.net.URI;
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Kundenverwaltung.domain.Adresse;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -100,6 +102,11 @@ public class Rechnung {
 
 	public void setGesamtpreis(double gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
+	}
+
+	public void setRechnungUri(URI rechnungUri) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

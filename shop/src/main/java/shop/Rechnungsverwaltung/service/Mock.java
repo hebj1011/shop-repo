@@ -1,7 +1,7 @@
 package shop.Rechnungsverwaltung.service;
 
 
-import shop.Kundenverwaltung.domain.Adresse;
+//import shop.Kundenverwaltung.domain.Adresse;
 import shop.Rechnungsverwaltung.domain.Rechnung;
 
 
@@ -11,14 +11,17 @@ import shop.Rechnungsverwaltung.domain.Rechnung;
 
 
 public final class Mock {
-	private static final int MAX_RECHNUNGSNUMMER = 99;
+	private static final int MAX_RECHNUNGSNUMMER = 999999;
 	
 	public static Rechnung findRechnungByID(Long rechnungsnummer) {
 		if (rechnungsnummer > MAX_RECHNUNGSNUMMER) {
 			return null;
 		}
 		
-		Rechnung rechnung = new Rechnung(Long.parseLong("26"));
+		Rechnung rechnung = new Rechnung();
+		rechnung.setId(rechnungsnummer);
+		rechnung.setGesamtpreis(156616.6);
+		rechnung.setVersandkosten(156.2);
 		/*
 		 * TODO Datenbankabfrage einbauen 
 		 */
