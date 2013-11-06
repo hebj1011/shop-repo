@@ -18,15 +18,25 @@ public final class Mock {
 			return null;
 		}
 		
-		Rechnung rechnung = new Rechnung();
+		final Rechnung rechnung = new Rechnung();
 		rechnung.setId(rechnungsnummer);
-		rechnung.setGesamtpreis(156616.6);
-		rechnung.setVersandkosten(156.2);
+		
+		/*
+		 * TODO ADD DB ABFRAGE
+		 * ignoriere vorerst checkStyle-Fehler in Z. 28 & 29
+		 */
+		double gesPreis = 156616.6;
+		double versKosten = 4.90;
+		/*
+		 * Ende 
+		 */
+		rechnung.setGesamtpreis(gesPreis);
+		rechnung.setVersandkosten(versKosten);
 	
 		return rechnung;
 	}
 
 
 
-	private Mock() {}
+	private Mock() { }
 }

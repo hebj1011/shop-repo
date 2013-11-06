@@ -83,7 +83,7 @@ public class RechnungResource {
 		final Link self = Link.fromUri(getUriRechnung(rechnung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
-		return new Link[] { self };
+		return new Link[] {self};
 	}
 	
 	public URI getUriRechnung(Rechnung rechnung, UriInfo uriInfo) {

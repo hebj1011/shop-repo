@@ -1,7 +1,5 @@
 package shop.Rechnungsverwaltung.domain;
 
-//import java.net.URI;
-import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
@@ -22,11 +20,11 @@ public class Rechnung {
 	}
 
 	private List<AbstractArtikel> artikel;
-	//private Adresse adresseRechnung;
-	//private Adresse adresseLieferung;
-	//private Enum<Zahlungsmittel> Zahlungsmittel;
-	//private Date datumRechnung;
-	//private Date datumZahlung;
+	private Adresse adresseRechnung;
+	private Adresse adresseLieferung;
+	private Enum<Zahlungsmittel> Zahlungsmittel;
+	private Date datumRechnung;
+	private Date datumZahlung;
 	private double versandkosten;
 	private Boolean bezahlt;
 	private double gesamtpreis;
@@ -63,7 +61,44 @@ public class Rechnung {
 		this.gesamtpreis = gesamtpreis;
 	}
 
-	
+	public Adresse getAdresseRechnung() {
+		return adresseRechnung;
+	}
 
+	public void setAdresseRechnung(Adresse adresseRechnung) {
+		this.adresseRechnung = adresseRechnung;
+	}
+
+	public Adresse getAdresseLieferung() {
+		return adresseLieferung;
+	}
+
+	public void setAdresseLieferung(Adresse adresseLieferung) {
+		this.adresseLieferung = adresseLieferung;
+	}
+
+	public Enum<Zahlungsmittel> getZahlungsmittel() {
+		return Zahlungsmittel;
+	}
+
+	public void setZahlungsmittel(Enum<Zahlungsmittel> zahlungsmittel) {
+		Zahlungsmittel = zahlungsmittel;
+	}
+
+	public Date getDatumRechnung() {
+		return datumRechnung;
+	}
+
+	public void setDatumRechnung(Date datumRechnung) {
+		this.datumRechnung = datumRechnung;
+	}
+
+	public Date getDatumZahlung() {
+		return datumZahlung;
+	}
+
+	public void setDatumZahlung(Date datumZahlung) {
+		this.datumZahlung = datumZahlung;
+	}
 	
 }
