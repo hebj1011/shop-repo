@@ -35,7 +35,7 @@ public final class Mock {
 		adresse.setId(id + 1);        // andere ID fuer die Adresse
 		adresse.setPlz("76596");
 		adresse.setOrt("Forbach");
-		adresse.setStrasse("Hansstraße");
+		adresse.setStrasse("Hansstrasse");
 		adresse.setHausnummer("77");
 		adresse.setKunde(kunde);
 		kunde.setAdresse(adresse);
