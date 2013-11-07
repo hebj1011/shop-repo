@@ -154,4 +154,10 @@ public class Bestellung {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Bestellung [id=" + id + ", kunde=" + kunde + ", bestelldatum="
+				+ bestelldatum + "]";
+	}
+
 }

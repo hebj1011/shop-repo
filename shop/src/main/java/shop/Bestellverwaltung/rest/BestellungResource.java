@@ -44,7 +44,7 @@ public class BestellungResource {
 	//private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 //	private static final String NOT_FOUND_ID = "bestellung.notFound.id";
 	private static final String NOT_FOUND_KUNDE_ID = "kunde.notFound.id";
-	private static final String NOT_FOUND_ID_ARTIKEL = "artikel.notFound.id";
+//	private static final String NOT_FOUND_ID_ARTIKEL = "artikel.notFound.id";
 	
 	@Context
 	private UriInfo uriInfo;
@@ -121,70 +121,6 @@ public class BestellungResource {
 		}
 		
 		// IDs der (persistenten) Artikel ermitteln
-		final Collection<Bestellposition> bestellpositionen = bestellung.getBestellpositionen();
-		final List<Long> artikelIds = new ArrayList<>(bestellpositionen.size());
-		for (Bestellposition bp : bestellpositionen) {
-			final URI artikelUri = bp.getArtikelUri();
-			if (artikelUri == null) {
-				continue;
-			}
-			final String artikelUriStr = artikelUri.toString();
-			startPos = artikelUriStr.lastIndexOf('/') + 1;
-			final String artikelIdStr = artikelUriStr.substring(startPos);
-			Long artikelId = null;
-			try {
-				artikelId = Long.valueOf(artikelIdStr);
-			}
-			catch (NumberFormatException e) {
-				// Ungueltige Artikel-ID: wird nicht beruecksichtigt
-				continue;
-			}
-			artikelIds.add(artikelId);
-		}
-		
-		if (artikelIds.isEmpty()) {
-			// keine einzige Artikel-ID als gueltige Zahl
-			String artikelId = null;
-			for (Bestellposition bp : bestellpositionen) {
-				final URI artikelUri = bp.getArtikelUri();
-				if (artikelUri == null) {
-					continue;
-				}
-				final String artikelUriStr = artikelUri.toString();
-				startPos = artikelUriStr.lastIndexOf('/') + 1;
-				artikelId = artikelUriStr.substring(startPos);
-				break;
-			}
-			throw new NotFoundException(NOT_FOUND_ID_ARTIKEL + artikelId);
-		}
-
-		final Collection<AbstractArtikel> gefundeneArtikel = bs.findArtikelByID(artikelIds);
-		if (gefundeneArtikel.isEmpty()) {
-			throw new NotFoundException(NOT_FOUND_ID_ARTIKEL + artikelIds.get(0));
-		}
-		
-		// Bestellpositionen haben URLs fuer persistente Artikel.
-		// Diese persistenten Artikel wurden in einem DB-Zugriff ermittelt (s.o.)
-		// Fuer jede Bestellposition wird der Artikel passend zur Artikel-URL bzw. Artikel-ID gesetzt.
-		// Bestellpositionen mit nicht-gefundene Artikel werden eliminiert.
-		int i = 0;
-		final List<Bestellposition> neueBestellpositionen = new ArrayList<>(bestellpositionen.size());
-		for (Bestellposition bp : bestellpositionen) {
-			// Artikel-ID der aktuellen Bestellposition (s.o.):
-			// artikelIds haben gleiche Reihenfolge wie bestellpositionen
-			final long artikelId = artikelIds.get(i++);
-			
-			// Wurde der Artikel beim DB-Zugriff gefunden?
-			for (AbstractArtikel artikel : gefundeneArtikel) {
-				if (artikel.getArtikelnummer().longValue() == artikelId) {
-					// Der Artikel wurde gefunden
-					bp.setArtikel(artikel);
-					neueBestellpositionen.add(bp);
-					break;					
-				}
-			}
-		}
-		bestellung.setBestellpositionen(neueBestellpositionen);
 		
 		bestellung = bs.createBestellung(bestellung, kundeId);
 

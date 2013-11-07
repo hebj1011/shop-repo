@@ -94,7 +94,7 @@ public final class Mock {
 		return bestellung;
 	}
 	
-	public Collection<AbstractArtikel> findArtikelByID(List<Long> artikelIds) {
+	public static Collection<AbstractArtikel> findArtikelByID(List<Long> artikelIds) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -116,9 +116,13 @@ public final class Mock {
 
 	private Mock() { /**/ }
 
-	public Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
+	public static Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
 		// TODO Auto-generated method stub
-		return null;
+		final Long id = bestellung.getId();
+		bestellung.setId(id);
+		
+		System.out.println("Neue Bestellung:  " + bestellung) ;
+		return bestellung;		
 	}
 
 }
