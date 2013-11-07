@@ -1,17 +1,19 @@
 package shop.Kundenverwaltung.domain;
 
-import java.io.Serializable;
-
+//import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
-public class Adresse implements Serializable {
-	private static final long serialVersionUID = -3029272617931844501L;
+public class Adresse {
+//	@NotNull
 	private Long id;
+//	@NotNull
 	private String plz;
+//	@NotNull
 	private String ort;
+//	@NotNull
 	private String strasse;
 	private String hausnummer;
 	
