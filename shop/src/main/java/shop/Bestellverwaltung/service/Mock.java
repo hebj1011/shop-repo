@@ -113,9 +113,6 @@ public final class Mock {
 //		return kunde;
 //	}
 
-
-	private Mock() { /**/ }
-
 	public static Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
 		// TODO Auto-generated method stub
 		final Long id = bestellung.getId();
@@ -124,5 +121,13 @@ public final class Mock {
 		System.out.println("Neue Bestellung:  " + bestellung) ;
 		return bestellung;		
 	}
+
+	public static Bestellung createBestellung(Bestellung bestellung) {
+		
+		System.out.println("Neue Bestellung:  " + bestellung) ;
+		return bestellung ;
+	}
+
+	private Mock() { /**/ }
 
 }

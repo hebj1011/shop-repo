@@ -108,21 +108,21 @@ public class BestellungResource {
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createBestellung(@Valid Bestellung bestellung) {
-		// TODO eingeloggter Kunde wird durch die URI im Attribut "kundeUri" emuliert
-		final String kundeUriStr = bestellung.getKundeUri().toString();
-		int startPos = kundeUriStr.lastIndexOf('/') + 1;
-		final String kundeIdStr = kundeUriStr.substring(startPos);
-		Long kundeId = null;
-		try {
-			kundeId = Long.valueOf(kundeIdStr);
-		}
-		catch (NumberFormatException e) {
-			throw new NotFoundException(NOT_FOUND_KUNDE_ID + kundeIdStr);
-		}
+//		// TODO eingeloggter Kunde wird durch die URI im Attribut "kundeUri" emuliert
+//		final String kundeUriStr = bestellung.getKundeUri().toString();
+//		int startPos = kundeUriStr.lastIndexOf('/') + 1;
+//		final String kundeIdStr = kundeUriStr.substring(startPos);
+//		Long kundeId = null;
+//		try {
+//			kundeId = Long.valueOf(kundeIdStr);
+//		}
+//		catch (NumberFormatException e) {
+//			throw new NotFoundException(NOT_FOUND_KUNDE_ID + kundeIdStr);
+//		}
+//		
+//		// IDs der (persistenten) Artikel ermitteln
 		
-		// IDs der (persistenten) Artikel ermitteln
-		
-		bestellung = bs.createBestellung(bestellung, kundeId);
+		bestellung = Mock.createBestellung(bestellung);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();
