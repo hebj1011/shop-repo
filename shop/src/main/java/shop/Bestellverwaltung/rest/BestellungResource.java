@@ -7,9 +7,9 @@ import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 //import java.lang.invoke.MethodHandles;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Collection;
+//import java.util.List;
 //import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -25,9 +25,9 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import shop.Artikelverwaltung.domain.AbstractArtikel;
+//import shop.Artikelverwaltung.domain.AbstractArtikel;
 //import shop.Artikelverwaltung.rest.ArtikelResource;
-import shop.Bestellverwaltung.domain.Bestellposition;
+//import shop.Bestellverwaltung.domain.Bestellposition;
 import shop.Bestellverwaltung.domain.Bestellung ;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
@@ -43,7 +43,7 @@ public class BestellungResource {
 	
 	//private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 //	private static final String NOT_FOUND_ID = "bestellung.notFound.id";
-	private static final String NOT_FOUND_KUNDE_ID = "kunde.notFound.id";
+//	private static final String NOT_FOUND_KUNDE_ID = "kunde.notFound.id";
 //	private static final String NOT_FOUND_ID_ARTIKEL = "artikel.notFound.id";
 	
 	@Context
@@ -52,9 +52,7 @@ public class BestellungResource {
 	@Inject
 	private UriHelper uriHelper;
 	
-	@Inject
-	private Mock bs;
-	
+
 //	@Inject
 //	private shop.Artikelverwaltung.service.Mock as;
 	
@@ -67,7 +65,6 @@ public class BestellungResource {
 	@GET
 	@Path("{id:[1-9][0-9]*}")
 	public Response findBestellungById(@PathParam("id") Long id) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		final Bestellung bestellung = Mock.findBestellungById(id);
 		if (bestellung == null) {
 			throw new NotFoundException("Keine Bestellung mit der ID " + id + " gefunden.");
@@ -108,19 +105,6 @@ public class BestellungResource {
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createBestellung(@Valid Bestellung bestellung) {
-//		// TODO eingeloggter Kunde wird durch die URI im Attribut "kundeUri" emuliert
-//		final String kundeUriStr = bestellung.getKundeUri().toString();
-//		int startPos = kundeUriStr.lastIndexOf('/') + 1;
-//		final String kundeIdStr = kundeUriStr.substring(startPos);
-//		Long kundeId = null;
-//		try {
-//			kundeId = Long.valueOf(kundeIdStr);
-//		}
-//		catch (NumberFormatException e) {
-//			throw new NotFoundException(NOT_FOUND_KUNDE_ID + kundeIdStr);
-//		}
-//		
-//		// IDs der (persistenten) Artikel ermitteln
 		
 		bestellung = Mock.createBestellung(bestellung);
 
