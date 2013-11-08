@@ -28,9 +28,13 @@ public final class Mock {
 		}
 		
 		AbstractArtikel artikel = null;
-		if(artikelnummer < 1000)
+		final Integer art1 = 1000;
+		final Integer art2 = 5000;
+		final Long klassenIdNr = (long) 123456579;
+		
+		if(artikelnummer < art1)
 			artikel = new Fahrrad();
-		else if(artikelnummer > 1000 && artikelnummer < 5000)
+		else if(artikelnummer > art1 && artikelnummer < art2)
 			artikel = new Ersatzteil();
 		else
 			artikel = new Sicherheitszubehoer();
@@ -41,7 +45,7 @@ public final class Mock {
 		artikel.setBestand(0);
 		
 		final Unterklasse unterklasse = new Unterklasse();
-		unterklasse.setKlassenId((long)12345);        
+		unterklasse.setKlassenId(klassenIdNr);        
 		unterklasse.setName("Testunterklasse");
 		unterklasse.setBeschreibung("Testbeschreibung");
 		unterklasse.setArtikel(artikel);
@@ -110,5 +114,5 @@ public final class Mock {
 		System.out.println("Artikel mit ID=" + artikelnummer + " geloescht");
 	}
 
-	private Mock() {}
+	private Mock() { }
 }

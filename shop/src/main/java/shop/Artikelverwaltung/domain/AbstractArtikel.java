@@ -93,7 +93,7 @@ public abstract class AbstractArtikel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstractArtikel other = (AbstractArtikel) obj;
+		final AbstractArtikel other = (AbstractArtikel) obj;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -105,7 +105,9 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "AbstractArtikel [Artikelnummer=" + artikelnummer + ", name=" + name + ", Unterklasse:" + unterklasse.toString() + ", bestellungenUri=" + bestellungenUri + "]";
+		return "AbstractArtikel [Artikelnummer=" + artikelnummer 
+				+ 	", name=" + name + ", Unterklasse:" + unterklasse.toString() 
+				+ ", bestellungenUri=" + bestellungenUri + "]";
 	}
 
 }

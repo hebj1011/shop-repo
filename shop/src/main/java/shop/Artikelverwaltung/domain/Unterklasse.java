@@ -60,7 +60,7 @@ public class Unterklasse implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Unterklasse other = (Unterklasse) obj;
+		final Unterklasse other = (Unterklasse) obj;
 		if (klassenId == null) {
 			if (other.klassenId != null)
 				return false;
