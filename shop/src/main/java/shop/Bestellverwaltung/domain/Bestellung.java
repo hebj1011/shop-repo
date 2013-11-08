@@ -18,13 +18,13 @@ import shop.Kundenverwaltung.domain.Kunde;
 @XmlRootElement
 public class Bestellung {
 	
-	private Long id ;
-	private Kunde kunde ;
-	private Date bestelldatum ;
-	private double gesamtpreis ;
-	private boolean versendet ;
-	private URI KundeUri ;
-	private List<Bestellposition> bestellpositionen ;
+	private Long id;
+	private Kunde kunde;
+	private Date bestelldatum;
+	private double gesamtpreis;
+	private boolean versendet;
+	private URI KundeUri;
+	private List<Bestellposition> bestellpositionen;
 	
 	public Bestellung() {
 		super();
@@ -134,7 +134,8 @@ public class Bestellung {
 		if (bestelldatum == null) {
 			if (other.bestelldatum != null)
 				return false;
-		} else if (!bestelldatum.equals(other.bestelldatum))
+		} 
+			else if (!bestelldatum.equals(other.bestelldatum))
 			return false;
 		if (Double.doubleToLongBits(gesamtpreis) != Double
 				.doubleToLongBits(other.gesamtpreis))
@@ -142,12 +143,14 @@ public class Bestellung {
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+			else if (!id.equals(other.id))
 			return false;
 		if (kunde == null) {
 			if (other.kunde != null)
 				return false;
-		} else if (!kunde.equals(other.kunde))
+		} 
+			else if (!kunde.equals(other.kunde))
 			return false;
 		if (versendet != other.versendet)
 			return false;
