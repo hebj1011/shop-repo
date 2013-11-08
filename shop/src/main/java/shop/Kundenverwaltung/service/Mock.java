@@ -96,8 +96,8 @@ public final class Mock {
 		// Ein neuer Kunde hat auch keine Bestellungen
 		//final String nachname = kunde.getNachname();
 		Long id = Long.valueOf(kunde.hashCode());
-		if (id<0) {
-			id=id*(-1);
+		if (id < 0) {
+			id = id * (-1);
 		}
 		kunde.setId(id);
 		final Adresse adresse = kunde.getAdresse();
