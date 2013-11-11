@@ -73,9 +73,9 @@ public class KundeResource {
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		final Kunde kunde = Mock.findKundeById(id);
-		if (kunde == null) {
-			throw new NotFoundException("Kein Kunde mit der ID " + id + " gefunden.");
-		}
+//		if (kunde == null) {
+//			throw new NotFoundException("Kein Kunde mit der ID " + id + " gefunden.");
+//		}
 		
 		setStructuralLinks(kunde, uriInfo);
 		
