@@ -64,8 +64,8 @@ public class Adresse {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((ort == null) ? 0 : ort.hashCode());
 		result = prime * result + ((plz == null) ? 0 : plz.hashCode());
-		result = prime * result +((strasse == null) ? 0 : strasse.hashCode());
-		result = prime * result +((hausnummer == null) ? 0 : hausnummer.hashCode());
+		result = prime * result + ((strasse == null) ? 0 : strasse.hashCode());
+		result = prime * result + ((hausnummer == null) ? 0 : hausnummer.hashCode());
 		return result;
 	}
 	@Override
@@ -76,7 +76,7 @@ public class Adresse {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Adresse other = (Adresse) obj;
+		final Adresse other = (Adresse) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -112,6 +112,8 @@ public class Adresse {
 	
 	@Override
 	public String toString() {
-		return "Adresse [Id=" + id + ", Plz=" + plz + ", Ort=" + ort + ", Strasse=" + strasse + "Hausnummer=" + hausnummer + "]";
+		String tmp = "Adresse [Id=" + id + ", Plz=" + plz + ", Ort=" + ort + "]";
+		tmp += ", Strasse=" + strasse + "Hausnummer=" + hausnummer + "]";
+		return tmp;
 	}
 }
