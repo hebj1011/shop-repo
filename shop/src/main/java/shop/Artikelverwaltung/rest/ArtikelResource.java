@@ -100,11 +100,12 @@ public class ArtikelResource {
                                 .rel(UPDATE_LINK)
                                 .build();
 
-		final Link remove = Link.fromUri(uriHelper.getUri(ArtikelResource.class, "deleteArtikel", artikel.getArtikelnummer(), uriInfo))
+		final Link remove = Link.fromUri(uriHelper.getUri
+						(ArtikelResource.class, "deleteArtikel", artikel.getArtikelnummer(), uriInfo))
                                 .rel(REMOVE_LINK)
                                 .build();
 		
-		return new Link[] { self, add, update, remove } ;
+		return new Link[] {self, add, update, remove };
 	}
 
 	
@@ -130,7 +131,7 @@ public class ArtikelResource {
 		}
 		
 		
-		return Response.ok(new GenericEntity<List<? extends AbstractArtikel>>(artikel) { } )
+		return Response.ok(new GenericEntity<List<? extends AbstractArtikel>>(artikel) { })
                        .links(getTransitionalLinksArtikel(artikel, uriInfo))
                        .build();
 	}
@@ -148,7 +149,7 @@ public class ArtikelResource {
                               .rel(LAST_LINK)
                               .build();
 		
-		return new Link[] { first, last } ;
+		return new Link[] {first, last };
 	}
 
 	@POST

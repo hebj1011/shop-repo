@@ -32,9 +32,9 @@ public final class Mock {
 		final Integer art2 = 5000;
 		final Long klassenIdNr = (long) 123456579;
 		
-		if(artikelnummer < art1)
+		if (artikelnummer < art1)
 			artikel = new Fahrrad();
-		else if(artikelnummer > art1 && artikelnummer < art2)
+		else if (artikelnummer > art1 && artikelnummer < art2)
 			artikel = new Ersatzteil();
 		else
 			artikel = new Sicherheitszubehoer();
