@@ -23,7 +23,7 @@ public class Bestellung {
 	private Date bestelldatum;
 	private double gesamtpreis;
 	private boolean versendet;
-	private URI KundeUri;
+	private URI kundeUri;
 	private List<Bestellposition> bestellpositionen;
 	
 	public Bestellung() {
@@ -71,11 +71,11 @@ public class Bestellung {
 	}
 	
 	public URI getKundeUri() {
-		return KundeUri;
+		return kundeUri;
 	}
 
 	public void setKundeUri(URI kundeUri) {
-		KundeUri = kundeUri;
+		this.kundeUri = kundeUri;
 	}
 	
 	public List<Bestellposition> getBestellpositionen() {
@@ -159,8 +159,8 @@ public class Bestellung {
 
 	@Override
 	public String toString() {
-		return "Bestellung [id=" + id + ", kunde=" + kunde + ", bestelldatum="
-				+ bestelldatum + "]";
+		return "Bestellung [id=" + id + ", kunde=" + kunde + "kundeUri=" + kundeUri +
+				", bestelldatum=" + bestelldatum + "]";
 	}
 
 }
