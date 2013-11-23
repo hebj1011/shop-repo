@@ -94,7 +94,8 @@ public class BestellungResource {
 		final Link self = Link.fromUri(getUriBestellung(bestellung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
-		return new Link[] { self 
+		return new Link[] {
+				self 
 		};
 	}
 	
