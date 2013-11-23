@@ -28,7 +28,7 @@ import javax.ws.rs.core.UriInfo;
 //import shop.Artikelverwaltung.domain.AbstractArtikel;
 //import shop.Artikelverwaltung.rest.ArtikelResource;
 //import shop.Bestellverwaltung.domain.Bestellposition;
-import shop.Bestellverwaltung.domain.Bestellung ;
+import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
 import shop.Bestellverwaltung.service.Mock;
@@ -94,7 +94,8 @@ public class BestellungResource {
 		final Link self = Link.fromUri(getUriBestellung(bestellung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
-		return new Link[] { self };
+		return new Link[] { self 
+		};
 	}
 	
 	public URI getUriBestellung(Bestellung bestellung, UriInfo uriInfo) {

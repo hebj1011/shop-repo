@@ -7,10 +7,10 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
 
 public class Bestellposition {
 	
-	private long id ;
-	private AbstractArtikel artikel ;
-	private URI artikelUri ;
-	private short anzahl ;
+	private long id;
+	private AbstractArtikel artikel;
+	private URI artikelUri;
+	private short anzahl;
 	
 	public Bestellposition() {
 		super();
@@ -60,18 +60,20 @@ public class Bestellposition {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Bestellposition other = (Bestellposition) obj;
+		final Bestellposition other = (Bestellposition) obj;
 		if (anzahl != other.anzahl)
 			return false;
 		if (artikel == null) {
 			if (other.artikel != null)
 				return false;
-		} else if (!artikel.equals(other.artikel))
+		} 
+		else if (!artikel.equals(other.artikel))
 			return false;
 		if (artikelUri == null) {
 			if (other.artikelUri != null)
 				return false;
-		} else if (!artikelUri.equals(other.artikelUri))
+		} 
+		else if (!artikelUri.equals(other.artikelUri))
 			return false;
 		if (id != other.id)
 			return false;

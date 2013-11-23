@@ -105,14 +105,14 @@ public final class Mock {
 		final Long id = bestellung.getId();
 		bestellung.setId(id);
 		
-		System.out.println("Neue Bestellung:  " + bestellung) ;
+		System.out.println("Neue Bestellung:  " + bestellung);
 		return bestellung;		
 	}
 
 	public static Bestellung createBestellung(Bestellung bestellung) {
 		
-		System.out.println("Neue Bestellung:  " + bestellung) ;
-		return bestellung ;
+		System.out.println("Neue Bestellung:  " + bestellung);
+		return bestellung;
 	}
 
 	private Mock() { /**/ }
