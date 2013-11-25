@@ -49,7 +49,7 @@ import javax.ws.rs.core.UriInfo;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.service.ArtikelService;
-import shop.Artikelverwaltung.service.Mock;
+//import shop.Artikelverwaltung.service.Mock;
 import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
@@ -113,29 +113,29 @@ public class ArtikelResource {
 		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
 	}
 
-	@POST
-	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-	@Produces
-	public Response createArtikel(AbstractArtikel artikel) {
-		artikel = Mock.createArtikel(artikel);
-		return Response.created(getUriArtikel(artikel, uriInfo))
-			           .build();
-	}
+//	@POST
+//	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+//	@Produces
+//	public Response createArtikel(AbstractArtikel artikel) {
+//		artikel = ArtikelService.createArtikel(artikel);
+//		return Response.created(getUriArtikel(artikel, uriInfo))
+//			           .build();
+//	}
 	
 	
-	@PUT
-	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-	@Produces
-	public void updateArtikel(AbstractArtikel artikel) {
-		Mock.updateArtikel(artikel);
-	}
-	
-	@DELETE
-	@Path("{id:[1-9][0-9]*}")
-	@Produces
-	public void deleteArtikel(@PathParam("id") Long id) {
-		Mock.deleteArtikel(id);
-	}
+//	@PUT
+//	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+//	@Produces
+//	public void updateArtikel(AbstractArtikel artikel) {
+//		ArtikelService.updateArtikel(artikel);
+//	}
+//	
+//	@DELETE
+//	@Path("{id:[1-9][0-9]*}")
+//	@Produces
+//	public void deleteArtikel(@PathParam("id") Long id) {
+//		ArtikelService.deleteArtikel(id);
+//	}
 	
 }
 
