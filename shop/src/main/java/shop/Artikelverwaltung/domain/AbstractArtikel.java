@@ -1,22 +1,12 @@
 package shop.Artikelverwaltung.domain;
 
 import static shop.util.Constants.KEINE_ID;
-import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REMOVE;
-import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
-import java.net.URI;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
