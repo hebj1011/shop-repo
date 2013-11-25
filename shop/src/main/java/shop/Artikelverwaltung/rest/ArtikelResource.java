@@ -11,10 +11,14 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 //import javax.ws.rs.DefaultValue;
@@ -34,8 +38,15 @@ import javax.ws.rs.core.UriInfo;
 
 
 
+
+
+
+
+
 import shop.Artikelverwaltung.domain.AbstractArtikel;
+import shop.Artikelverwaltung.service.ArtikelService;
 import shop.Artikelverwaltung.service.Mock;
+import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
 
@@ -46,9 +57,13 @@ import shop.util.rest.NotFoundException;
 
 @Path("/artikel")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.75" })
-
 @Consumes
+@Transactional
+@Log
 public class ArtikelResource {
+	
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
 	
 	public static final String ARTIKEL_ID_PATH_PARAM = "artikelId";
 	public static final String ARTIKEL_NAME_QUERY_PARAM = "name";
@@ -56,6 +71,8 @@ public class ArtikelResource {
 	@Context
 	private UriInfo uriInfo;
 	
+	@Inject
+	private ArtikelService as;
 	
 	@Inject
 	private UriHelper uriHelper;
