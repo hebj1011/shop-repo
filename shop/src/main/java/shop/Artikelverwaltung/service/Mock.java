@@ -10,7 +10,6 @@ import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
 import shop.Artikelverwaltung.domain.Farbe;
 import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
-import shop.Artikelverwaltung.domain.Unterklasse;
 
 
 /**
@@ -30,7 +29,6 @@ public final class Mock {
 		AbstractArtikel artikel = null;
 		final Integer art1 = 1000;
 		final Integer art2 = 5000;
-		final Long klassenIdNr = (long) 123456579;
 		
 		if (artikelnummer < art1)
 			artikel = new Fahrrad();
@@ -41,15 +39,7 @@ public final class Mock {
 		
 		artikel.setArtikelnummer(artikelnummer);
 		artikel.setName("Artikel" + artikelnummer);
-		artikel.setEinzelpreis(0.00);
 		artikel.setBestand(0);
-		
-		final Unterklasse unterklasse = new Unterklasse();
-		unterklasse.setKlassenId(klassenIdNr);        
-		unterklasse.setName("Testunterklasse");
-		unterklasse.setBeschreibung("Testbeschreibung");
-		unterklasse.setArtikel(artikel);
-		artikel.setUnterklasse(unterklasse);
 		
 		if (artikel.getClass().equals(Ersatzteil.class)) {
 			final Ersatzteil ersatzteil = (Ersatzteil) artikel;
@@ -98,9 +88,6 @@ public final class Mock {
 		// Ein neuer Artikel gehört auch zu keinen Bestellungen
 		final String name = artikel.getName();
 		artikel.setArtikelnummer(Long.valueOf(name.length()));
-		final Unterklasse unterklasse = artikel.getUnterklasse();
-		unterklasse.setKlassenId((Long.valueOf(name.length())) + 1);
-		unterklasse.setArtikel(artikel);
 		
 		System.out.println("Neuer Artikel: " + artikel);
 		return artikel;
