@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -34,6 +36,8 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
+
 
 
 
@@ -65,9 +69,6 @@ public class ArtikelResource {
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
 	
-	public static final String ARTIKEL_ID_PATH_PARAM = "artikelId";
-	public static final String ARTIKEL_NAME_QUERY_PARAM = "name";
-	
 	@Context
 	private UriInfo uriInfo;
 	
@@ -77,96 +78,39 @@ public class ArtikelResource {
 	@Inject
 	private UriHelper uriHelper;
 	
-	@GET
-	@Produces({ TEXT_PLAIN, APPLICATION_JSON })
-	@Path("version")
-	public String getVersion() {
-		return "1.0";
+	@PostConstruct
+	private void postConstruct() {
+		LOGGER.debugf("CDI-faehiges Bean %s wurde erzeugt", this);
 	}
 	
-	
-	@GET
-	@Path("{" + ARTIKEL_ID_PATH_PARAM + ":[1-9][0-9]*}")
-	public Response findArtikelByID(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-				final AbstractArtikel artikel = Mock.findArtikelByID(artikelnummer);
-				if (artikel == null) {
-					throw new NotFoundException("Kein Artikel mit der ID " + artikelnummer + " gefunden.");
-				}
-				
-				
-				return Response.ok(artikel)
-		                       .links(getTransitionalLinks(artikel, uriInfo))
-		                       .build();
+	@PreDestroy
+	private void preDestroy() {
+		LOGGER.debugf("CDI-faehiges Bean %s wird geloescht", this);
 	}
-	
-	
-
-	
-	
-	public Link[] getTransitionalLinks(AbstractArtikel artikel, UriInfo uriInfo) {
-		final Link self = Link.fromUri(getUriArtikel(artikel, uriInfo))
-	                          .rel(SELF_LINK)
-	                          .build();
-		
-		final Link add = Link.fromUri(uriHelper.getUri(ArtikelResource.class, uriInfo))
-                             .rel(ADD_LINK)
-                             .build();
-
-		final Link update = Link.fromUri(uriHelper.getUri(ArtikelResource.class, uriInfo))
-                                .rel(UPDATE_LINK)
-                                .build();
-
-		final Link remove = Link.fromUri(uriHelper.getUri
-						(ArtikelResource.class, "deleteArtikel", artikel.getArtikelnummer(), uriInfo))
-                                .rel(REMOVE_LINK)
-                                .build();
-		
-		return new Link[] {self, add, update, remove };
-	}
-
-	
-	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
-		return uriHelper.getUri(ArtikelResource.class, "findArtikelByID", artikel.getArtikelnummer(), uriInfo);
-	}
-	
 	
 	@GET
-	public Response findArtikelByName(@QueryParam(ARTIKEL_NAME_QUERY_PARAM) String name) {
-		List<? extends AbstractArtikel> artikel = null;
-		if (name != null) {
-			artikel = Mock.findArtikelByName(name);
-			if (artikel.isEmpty()) {
-				throw new NotFoundException("Kein Artikel mit Name " + name + " gefunden.");
-			}
-		}
-		else {
-			artikel = Mock.findAllArtikel();
-			if (artikel.isEmpty()) {
-				throw new NotFoundException("Keine Artikel vorhanden.");
-			}
-		}
-		
-		
-		return Response.ok(new GenericEntity<List<? extends AbstractArtikel>>(artikel) { })
-                       .links(getTransitionalLinksArtikel(artikel, uriInfo))
+	@Path("{id:[1-9][0-9]*}")
+	public Response findArtikelById(@PathParam("id") Long id) {
+		final AbstractArtikel artikel = as.findArtikelById(id);
+//		if (artikel == null) {
+//			throw new NotFoundException(NOT_FOUND_ID, id);
+//		}
+
+		return Response.ok(artikel)
+                       .links(getTransitionalLinks(artikel, uriInfo))
                        .build();
 	}
 	
-	private Link[] getTransitionalLinksArtikel(List<? extends AbstractArtikel> artikel, UriInfo uriInfo) {
-		if (artikel == null || artikel.isEmpty()) {
-			return null;
-		}
-		
-		final Link first = Link.fromUri(getUriArtikel(artikel.get(0), uriInfo))
-	                           .rel(FIRST_LINK)
-	                           .build();
-		final int lastPos = artikel.size() - 1;
-		final Link last = Link.fromUri(getUriArtikel(artikel.get(lastPos), uriInfo))
-                              .rel(LAST_LINK)
+	private Link[] getTransitionalLinks(AbstractArtikel artikel, UriInfo uriInfo) {
+		final Link self = Link.fromUri(getUriArtikel(artikel, uriInfo))
+                              .rel(SELF_LINK)
                               .build();
-		
-		return new Link[] {first, last };
+
+		return new Link[] { self };
+	}
+	
+	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
+		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
 	}
 
 	@POST
@@ -189,8 +133,8 @@ public class ArtikelResource {
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
-	public void deleteArtikel(@PathParam(ARTIKEL_ID_PATH_PARAM) Long artikelnummer) {
-		Mock.deleteArtikel(artikelnummer);
+	public void deleteArtikel(@PathParam("id") Long id) {
+		Mock.deleteArtikel(id);
 	}
 	
 }

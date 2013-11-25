@@ -10,37 +10,38 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-//import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Index;
-//import javax.persistence.Inheritance;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.NamedAttributeNode;
-//import javax.persistence.NamedEntityGraph;
-//import javax.persistence.NamedEntityGraphs;
-//import javax.persistence.NamedQueries;
-//import javax.persistence.NamedQuery;
-//import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
-//import javax.persistence.OrderColumn;
-//import javax.persistence.PostLoad;
+import javax.persistence.NamedQueries;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-//import javax.persistence.Transient;
-//import javax.validation.Valid;
-//import javax.validation.constraints.DecimalMax;
+import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Past;
-//import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-//import javax.validation.groups.Default;
+import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
@@ -59,25 +60,25 @@ import org.jboss.logging.Logger;
 @Entity
 @Table(indexes = @Index(columnList = "bezeichnung"))
 //TODO Auskommentieren wenn angelegt
-/*@NamedQueries({
-	@NamedQuery(name  = Artikel.FIND_VERFUEGBARE_ARTIKEL,
+@NamedQueries({
+	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
             	query = "SELECT      a"
             	        + " FROM     Artikel a"
 						+ " WHERE    a.ausgesondert = FALSE"
                         + " ORDER BY a.id ASC"),
-	@NamedQuery(name  = Artikel.FIND_ARTIKEL_BY_BEZ,
+	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_BY_NAME,
             	query = "SELECT      a"
                         + " FROM     Artikel a"
-						+ " WHERE    a.bezeichnung LIKE :" + Artikel.PARAM_BEZEICHNUNG
+						+ " WHERE    a.name LIKE :" + AbstractArtikel.PARAM_NAME
 						+ "          AND a.ausgesondert = FALSE"
 			 	        + " ORDER BY a.id ASC"),
-   	@NamedQuery(name  = Artikel.FIND_ARTIKEL_MAX_PREIS,
+   	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
             	query = "SELECT      a"
                         + " FROM     Artikel a"
-						+ " WHERE    a.preis < :" + Artikel.PARAM_PREIS
+						+ " WHERE    a.preis < :" + AbstractArtikel.PARAM_PREIS
 			 	        + " ORDER BY a.id ASC")
 })
-*/
+
 
 @XmlRootElement
 @XmlSeeAlso({ Ersatzteil.class, Fahrrad.class, Sicherheitszubehoer.class })
@@ -99,18 +100,18 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	private static final int NAME_LENGTH_MAX = 32;
 	
-	//private static final String PREFIX = "Artikel.";
-	//public static final String FIND_VERFUEGBARE_ARTIKEL = PREFIX + "findVerfuegbareArtikel";
-	//public static final String FIND_ARTIKEL_BY_BEZ = PREFIX + "findArtikelByBez";
-	//public static final String FIND_ARTIKEL_MAX_PREIS = PREFIX + "findArtikelByMaxPreis";
+	private static final String PREFIX = "AbstractArtikel.";
+	public static final String FIND_VERFUEGBARE_ARTIKEL = PREFIX + "findVerfuegbareArtikel";
+	public static final String FIND_ARTIKEL_BY_NAME = PREFIX + "findArtikelByName";
+	public static final String FIND_ARTIKEL_MAX_PREIS = PREFIX + "findArtikelByMaxPreis";
 
-	public static final String PARAM_BEZEICHNUNG = "bezeichnung";
+	public static final String PARAM_NAME = "name";
 	public static final String PARAM_PREIS = "preis";
 		
 	@Id
 	@GeneratedValue
 	@Column(nullable = false, updatable = false)
-	private Long artikelnummer = KEINE_ID;
+	private Long id = KEINE_ID;
 	
 	@Column(length = NAME_LENGTH_MAX, nullable = false)
 	@NotNull(message = "{artikel.name.notNull}")
@@ -123,6 +124,8 @@ public abstract class AbstractArtikel implements Serializable {
 	@Min(0)
 	@Max(100000)
 	private Integer bestand;
+	
+	private boolean ausgesondert;
 	
 	@Basic(optional = false)
 	@Temporal(TIMESTAMP)
@@ -142,7 +145,7 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	@PostPersist
 	protected void postPersist() {
-		LOGGER.debugf("Neuer Artikel mit Artikelnummer=%d", artikelnummer);
+		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
 	}
 	
 	@PreUpdate
@@ -156,11 +159,11 @@ public abstract class AbstractArtikel implements Serializable {
 		bestand = a.bestand;
 	}
 		
-	public Long getArtikelnummer() {
-		return artikelnummer;
+	public Long getId() {
+		return id;
 	}
-	public void setArtikelnummer(Long artikelnummer) {
-		this.artikelnummer = artikelnummer;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -181,6 +184,13 @@ public abstract class AbstractArtikel implements Serializable {
 		this.bestand = bestand;
 	}
 	
+	public boolean isAusgesondert() {
+		return ausgesondert;
+	}
+
+	public void setAusgesondert(boolean ausgesondert) {
+		this.ausgesondert = ausgesondert;
+	}
 	public Date getErzeugt() {
 		return erzeugt == null ? null : (Date) erzeugt.clone();
 	}
@@ -237,8 +247,9 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Artikel [artikelnummer=" + artikelnummer + ", name=" + name
-		       + ", einzelpreis=" + einzelpreis + ", erzeugt=" + erzeugt
+		return "Artikel [ID=" + id + ", name=" + name
+		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert
+		       + ", erzeugt=" + erzeugt
 			   + ", aktualisiert=" + aktualisiert + "]";
 	}
 
