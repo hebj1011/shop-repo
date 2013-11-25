@@ -9,9 +9,8 @@ import java.util.Set;
 
 @XmlRootElement
 public class Fahrrad extends AbstractArtikel {
-	
-	private static final long serialVersionUID = -3177911520687689458L;
-	
+
+	private static final long serialVersionUID = 7087800972131210358L;
 	private Set<Farbe> farbe;
 	
 	public Set<Farbe> getFarbe() {

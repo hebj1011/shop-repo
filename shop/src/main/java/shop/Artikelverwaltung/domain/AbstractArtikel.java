@@ -25,7 +25,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 public abstract class AbstractArtikel implements Serializable {
 	
-	private static final long serialVersionUID = 7401524595142572933L;
+	private static final long serialVersionUID = -4773398465078397947L;
 	
 	public static final String ERSATZTEIL = "E";
 	public static final String FAHRRAD = "F";

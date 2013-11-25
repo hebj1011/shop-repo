@@ -8,9 +8,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Ersatzteil extends AbstractArtikel {
-	
-	private static final long serialVersionUID = 6258156986876418100L;
-	
+
+	private static final long serialVersionUID = -9125274988659035043L;
 	private String datenblatt;
 	
 	public String getDatenblatt() {

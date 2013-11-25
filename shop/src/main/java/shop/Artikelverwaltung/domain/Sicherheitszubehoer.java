@@ -4,9 +4,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Sicherheitszubehoer extends AbstractArtikel {
-	
-	private static final long serialVersionUID = 254184158546556162L;
-	
+
+	private static final long serialVersionUID = -4684331848134556129L;
 	private Boolean tuev;
 	private String groesse;
 
