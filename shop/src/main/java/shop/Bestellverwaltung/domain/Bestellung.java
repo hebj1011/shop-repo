@@ -5,25 +5,35 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.io.Serializable;
+
+
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import shop.Kundenverwaltung.domain.Kunde;
 
 /**
- * @author Julian Kohlhaas
- * 
+ * @author <a href="mailto:koju1020@HS-Karlsruhe.de">Julian Kohlhaas</a>  
  */
 
 @XmlRootElement
-public class Bestellung {
+public class Bestellung implements Serializable  {
+		
+	private static final long serialVersionUID = 4279475449855483352L;
 	
 	private Long id;
+	
+	@XmlTransient
 	private Kunde kunde;
+	
 	private Date bestelldatum;
 	private double gesamtpreis;
+	
 	private boolean versendet;
 	private URI kundeUri;
+	
 	private List<Bestellposition> bestellpositionen;
 	
 	public Bestellung() {

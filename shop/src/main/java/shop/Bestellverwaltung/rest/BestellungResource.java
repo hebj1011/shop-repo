@@ -5,6 +5,8 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+
+
 //import java.lang.invoke.MethodHandles;
 import java.net.URI;
 //import java.util.ArrayList;
@@ -12,6 +14,9 @@ import java.net.URI;
 //import java.util.List;
 //import java.util.logging.Logger;
 
+
+
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -25,6 +30,8 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+
+
 //import shop.Artikelverwaltung.domain.AbstractArtikel;
 //import shop.Artikelverwaltung.rest.ArtikelResource;
 //import shop.Bestellverwaltung.domain.Bestellposition;
@@ -32,12 +39,20 @@ import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
 import shop.Bestellverwaltung.service.Mock;
+import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
+
+
+/**
+ * @author <a href="mailto:koju1020@HS-Karlsruhe.de">Julian Kohlhaas</a>  
+ */
 
 @Path("/bestellungen")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
+@RequestScoped
+@Log
 
 public class BestellungResource {
 	
