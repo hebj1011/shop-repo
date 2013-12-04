@@ -2,13 +2,13 @@ package shop.Kundenverwaltung.domain;
 
 import java.net.URI;
 import java.util.List;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Pattern;
-//import javax.validation.constraints.Size;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
-//import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Email;
 
 import shop.Bestellverwaltung.domain.Bestellung;
 
@@ -17,17 +17,17 @@ import shop.Bestellverwaltung.domain.Bestellung;
  */
 @XmlRootElement
 public class Kunde  {
-	//@NotNull
+	@NotNull
 	private Long id;
-	//@NotNull
-	//@Size(min =2,max=32)
-	//@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+(-[A-ZÄÖÜ][a-zäöüß]+)?")
+	@NotNull
+	@Size(min =2,max=32)
+	@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+(-[A-ZÄÖÜ][a-zäöüß]+)?")
 	private String vorname;
-	//@NotNull
-	//@Size(min =2,max=32)
-	//@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+(-[A-ZÄÖÜ][a-zäöüß]+)?")
+	@NotNull
+	@Size(min =2,max=32)
+	@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+(-[A-ZÄÖÜ][a-zäöüß]+)?")
 	private String nachname;
-	//@Email
+	@Email
 	private String email;
 	private Adresse adresse;
 	

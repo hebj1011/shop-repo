@@ -1,19 +1,19 @@
 package shop.Kundenverwaltung.domain;
 
-//import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 public class Adresse {
-//	@NotNull
+	@NotNull
 	private Long id;
-//	@NotNull
+	@NotNull
 	private String plz;
-//	@NotNull
+	@NotNull
 	private String ort;
-//	@NotNull
+	@NotNull
 	private String strasse;
 	private String hausnummer;
 	
