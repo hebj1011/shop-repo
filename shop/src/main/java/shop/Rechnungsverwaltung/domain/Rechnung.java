@@ -6,11 +6,45 @@ import java.util.List;
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Kundenverwaltung.domain.Adresse;
 
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Rechnung {
+	@Min(0)
+	@Max(9)
 	private Long id;
+
+	@Valid
+	private List<AbstractArtikel> artikel;
+	
+	@Valid
+	private Adresse adresseRechnung;
+
+	@Valid
+	private Adresse adresseLieferung;
+
+	@NotNull
+	@Valid
+	private Enum<Zahlungsmittel> Zahlungsmittel;
+
+	@Past
+	@NotNull
+	private Date datumRechnung;
+
+	@NotNull
+	private Date datumZahlung;
+
+	@DecimalMin("0.00")
+	@NotNull
+	private double versandkosten;
+
+	private Boolean bezahlt;
+
+	@DecimalMin("0.00")
+	private double gesamtpreis;
+
 	public Long getId() {
 		return id;
 	}
@@ -19,16 +53,6 @@ public class Rechnung {
 		this.id = id;
 	}
 
-	private List<AbstractArtikel> artikel;
-	private Adresse adresseRechnung;
-	private Adresse adresseLieferung;
-	private Enum<Zahlungsmittel> Zahlungsmittel;
-	private Date datumRechnung;
-	private Date datumZahlung;
-	private double versandkosten;
-	private Boolean bezahlt;
-	private double gesamtpreis;
-	
 	public List<AbstractArtikel> getArtikel() {
 		return artikel;
 	}
@@ -100,5 +124,5 @@ public class Rechnung {
 	public void setDatumZahlung(Date datumZahlung) {
 		this.datumZahlung = datumZahlung;
 	}
-	
+
 }
