@@ -6,11 +6,72 @@ import java.util.List;
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Kundenverwaltung.domain.Adresse;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonSubTypes.Type;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.ScriptAssert;
+import org.jboss.logging.Logger;
+
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
+/**
+ * @author Simon Holzmayer
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @XmlRootElement
+
+@Entity
+@Table(name = "kunde", indexes = @Index(columnList = "nachname"))
+@Inheritance
+//@DiscriminatorColumn(name = "art", length = 1)
+@NamedQueries({
+	@NamedQuery(name = Rechnung.FIND_RECHNUNGEN,
+			query="SELECT k"
+					+ " FROM Rechnung r")
+})
 public class Rechnung {
+	
+	private static final String PREFIX = "Rechnung.";
+	public static final String FIND_RECHNUNGEN = PREFIX + "findRechnungen";
+	
+	
 	private Long id;
+
 	public Long getId() {
 		return id;
 	}
@@ -28,7 +89,7 @@ public class Rechnung {
 	private double versandkosten;
 	private Boolean bezahlt;
 	private double gesamtpreis;
-	
+
 	public List<AbstractArtikel> getArtikel() {
 		return artikel;
 	}
@@ -100,5 +161,5 @@ public class Rechnung {
 	public void setDatumZahlung(Date datumZahlung) {
 		this.datumZahlung = datumZahlung;
 	}
-	
+
 }
