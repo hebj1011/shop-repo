@@ -55,6 +55,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @XmlRootElement
 
+
 @Entity
 @Table(name = "rechnung") //, indexes = @Index(columnList = "nachname")
 @Inheritance
