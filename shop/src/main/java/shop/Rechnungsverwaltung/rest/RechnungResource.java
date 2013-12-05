@@ -1,6 +1,5 @@
 package shop.Rechnungsverwaltung.rest;
 
-
 //import static shop.util.Constants.ADD_LINK;
 //import static shop.util.Constants.FIRST_LINK;
 //import static shop.util.Constants.LAST_LINK;
