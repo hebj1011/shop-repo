@@ -56,19 +56,30 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 @XmlRootElement
 
 @Entity
-@Table(name = "kunde", indexes = @Index(columnList = "nachname"))
+@Table(name = "rechnung") //, indexes = @Index(columnList = "nachname")
 @Inheritance
 //@DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({
 	@NamedQuery(name = Rechnung.FIND_RECHNUNGEN,
 			query="SELECT k"
-					+ " FROM Rechnung r")
+					+ " FROM Rechnung r"),
+	@NamedQuery(name = Rechnung.FIND_RECHNUNGEN_ORDER_BY_ID,
+			query="SELECT k "
+					+ " FROM Rechnung r"
+					+ " ORDER BY r.id")
+})
+@NamedEntityGraphs({ //TODO Was ist das?!
+	@NamedEntityGraph (name = Rechnung.GRAPH_RECHNUNGEN,
+					   attributeNodes = @NamedAttributeNode("bestellungen"))
 })
 public class Rechnung {
 	
 	private static final String PREFIX = "Rechnung.";
 	public static final String FIND_RECHNUNGEN = PREFIX + "findRechnungen";
+	public static final String FIND_RECHNUNGEN_ORDER_BY_ID = PREFIX + "findRechnungenOrderById";
 	
+	
+	public static final String GRAPH_RECHNUNGEN = PREFIX + "bestellungen";
 	
 	private Long id;
 
