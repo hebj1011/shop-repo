@@ -77,21 +77,21 @@ public class KundeResource {
 	public String getVersion() {
 		return "1.0";
 	}
-	
-	@GET
-	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
-	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
-		final Kunde kunde = ks.findKundeById(id);
-		if (kunde == null) {
-			throw new NotFoundException(NOT_FOUND_ID, id);
-		}
-		
-		setStructuralLinks(kunde, uriInfo);
-
-		return Response.ok(kunde)
-			           .links(getTransitionalLinks(kunde, uriInfo))
-			           .build();
-	}
+	//TODO NotFoundException Fehler beheben
+//	@GET
+//	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
+//	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
+//		final Kunde kunde = ks.findKundeById(id);
+//		if (kunde == null) {
+//			throw new NotFoundException(NOT_FOUND_ID, id);
+//		}
+//		
+//		setStructuralLinks(kunde, uriInfo);
+//
+//		return Response.ok(kunde)
+//			           .links(getTransitionalLinks(kunde, uriInfo))
+//			           .build();
+//	}
 	
 	public void setStructuralLinks(Kunde kunde, UriInfo uriInfo) {
 		// URI fuer Bestellungen setzen
@@ -102,30 +102,30 @@ public class KundeResource {
 	private URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
 		return uriHelper.getUri(KundeResource.class, "findBestellungenByKundeId", kunde.getId(), uriInfo);
 	}
-	
-	private Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
-		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
-	                          .rel(SELF_LINK)
-	                          .build();
-
-		final Link list = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-		                      .rel(LIST_LINK)
-		                      .build();
-
-		final Link add = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-		                     .rel(ADD_LINK)
-		                     .build();
-		
-		final Link update = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-			                    .rel(UPDATE_LINK)
-			                    .build();
-		
-		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
-		                        .rel(REMOVE_LINK)
-		                        .build();
-		
-		return new Link[] { self, list, add, update, remove };
-	}
+	// TODO Fehler beheben
+//	private Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
+//		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
+//	                          .rel(SELF_LINK)
+//	                          .build();
+//
+//		final Link list = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+//		                      .rel(LIST_LINK)
+//		                      .build();
+//
+//		final Link add = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+//		                     .rel(ADD_LINK)
+//		                     .build();
+//		
+//		final Link update = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+//			                    .rel(UPDATE_LINK)
+//			                    .build();
+//		
+//		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
+//		                        .rel(REMOVE_LINK)
+//		                        .build();
+//
+//		return new Link[] { self, list, add, update, remove };
+//	}
 
 	
 	public URI getUriKunde(Kunde kunde, UriInfo uriInfo) {
@@ -142,9 +142,10 @@ public class KundeResource {
 		List<? extends Kunde> kunden = null;
 		if (nachname != null) {
 			kunden = ks.findKundenByNachname(nachname);
-			if (kunden.isEmpty()) {
-				throw new NotFoundException(NOT_FOUND_NACHNAME, nachname);
-			}
+			//TODO Fehler beheben
+//			if (kunden.isEmpty()) {
+//				throw new NotFoundException(NOT_FOUND_NACHNAME, nachname);
+//			}
 		}
 		else if (plz != null) {
 			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
@@ -186,9 +187,10 @@ public class KundeResource {
 	@Path("{id:[1-9][0-9]*}/bestellungen")
 	public Response findBestellungenByKundeId(@PathParam("id") Long kundeId) {
 		final Kunde kunde = ks.findKundeById(kundeId);
-		if (kunde == null) {
-			throw new NotFoundException(NOT_FOUND_ID, kundeId);
-		}
+		//TODO Fehler beheben
+//		if (kunde == null) {
+//			throw new NotFoundException(NOT_FOUND_ID, kundeId);
+//		}
 		
 		final List<Bestellung> bestellungen = bs.findBestellungenByKunde(kunde);
 		// URIs innerhalb der gefundenen Bestellungen anpassen
@@ -237,13 +239,13 @@ public class KundeResource {
 		return Response.created(getUriKunde(kunde, uriInfo))
 			           .build();
 	}
-	
-	@PUT
-	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-	@Produces
-	public void updateKunde(@Valid Kunde kunde) {
-		ks.updateKunde(kunde);
-	}
+	// TODO Fehler beheben
+//	@PUT
+//	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+//	@Produces
+//	public void updateKunde(@Valid Kunde kunde) {
+//		ks.updateKunde(kunde);
+//	}
 	
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")

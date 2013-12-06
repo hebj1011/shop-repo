@@ -67,25 +67,26 @@ public class KundeService implements Serializable {
 //
 	return kunde;
 	}
-
-	public <T extends Kunde> T updateKunde(T kunde) {
-		if (kunde == null) {
-			return null;
-		}
-
-		// Pruefung, ob die Email-Adresse schon existiert
-		final Kunde vorhandenerKunde = Mock.findKundeByEmail(kunde.getEmail());
-
-		// Gibt es die Email-Adresse bei einem anderen, bereits vorhandenen Kunden?
-		if (vorhandenerKunde.getId().longValue() != kunde.getId().longValue()) {
-			throw new EmailExistsException(kunde.getEmail());
-		}
-		
-		// TODO Datenbanzugriffsschicht statt Mock
-		Mock.updateKunde(kunde);
-		
-		return kunde;
-	}
+//TODO Fehler beheben
+//	public <T extends Kunde> T updateKunde(T kunde) {
+//		if (kunde == null) {
+//			return null;
+//		}
+//
+//		// Pruefung, ob die Email-Adresse schon existiert
+//		//TODO Fehler beheben
+//		final Kunde vorhandenerKunde = Mock.findKundeByEmail(kunde.getEmail());
+//
+//		// Gibt es die Email-Adresse bei einem anderen, bereits vorhandenen Kunden?
+//		if (vorhandenerKunde.getId().longValue() != kunde.getId().longValue()) {
+//			throw new EmailExistsException(kunde.getEmail());
+//		}
+//		
+//		// TODO Datenbanzugriffsschicht statt Mock
+//		Mock.updateKunde(kunde);
+//		
+//		return kunde;
+//	}
 
 	public void deleteKunde(Long kundeId) {
 		final Kunde kunde = findKundeById(kundeId);
