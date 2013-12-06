@@ -114,6 +114,12 @@ public final class Mock {
 		System.out.println("Neue Bestellung:  " + bestellung);
 		return bestellung;
 	}
+	
+	public static Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
+		
+		System.out.println("Neue Bestellung:  " + bestellung);
+		return bestellung;
+	}
 
 	private Mock() { /**/ }
 
