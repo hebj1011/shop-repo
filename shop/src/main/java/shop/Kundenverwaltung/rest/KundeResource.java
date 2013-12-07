@@ -82,9 +82,9 @@ public class KundeResource {
 	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
 		final Kunde kunde = ks.findKundeById(id);
-		if (kunde == null) {
-			throw new NotFoundException(NOT_FOUND_ID, id);
-		}
+//		if (kunde == null) {
+//			throw new NotFoundException(NOT_FOUND_ID, id);
+//		}
 		
 		setStructuralLinks(kunde, uriInfo);
 
@@ -103,29 +103,29 @@ public class KundeResource {
 		return uriHelper.getUri(KundeResource.class, "findBestellungenByKundeId", kunde.getId(), uriInfo);
 	}
 	// TODO Fehler beheben
-//	private Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
-//		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
-//	                          .rel(SELF_LINK)
-//	                          .build();
-//
-//		final Link list = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-//		                      .rel(LIST_LINK)
-//		                      .build();
-//
-//		final Link add = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-//		                     .rel(ADD_LINK)
-//		                     .build();
-//		
-//		final Link update = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
-//			                    .rel(UPDATE_LINK)
-//			                    .build();
-//		
-//		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
-//		                        .rel(REMOVE_LINK)
-//		                        .build();
-//
-//		return new Link[] { self, list, add, update, remove };
-//	}
+	private Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
+		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
+	                          .rel(SELF_LINK)
+	                          .build();
+
+		final Link list = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+		                      .rel(LIST_LINK)
+		                      .build();
+
+		final Link add = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+		                     .rel(ADD_LINK)
+		                     .build();
+		
+		final Link update = Link.fromUri(uriHelper.getUri(KundeResource.class, uriInfo))
+			                    .rel(UPDATE_LINK)
+			                    .build();
+		
+		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
+		                        .rel(REMOVE_LINK)
+		                        .build();
+
+		return new Link[] { self, list, add, update, remove };
+	}
 
 	
 	public URI getUriKunde(Kunde kunde, UriInfo uriInfo) {
@@ -240,12 +240,12 @@ public class KundeResource {
 			           .build();
 	}
 	// TODO Fehler beheben
-//	@PUT
-//	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-//	@Produces
-//	public void updateKunde(@Valid Kunde kunde) {
-//		ks.updateKunde(kunde);
-//	}
+	@PUT
+	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+	@Produces
+	public void updateKunde(@Valid Kunde kunde) {
+		ks.updateKunde(kunde);
+	}
 	
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
