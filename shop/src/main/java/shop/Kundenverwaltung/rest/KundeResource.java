@@ -3,7 +3,7 @@ package shop.Kundenverwaltung.rest;
 import static shop.util.Constants.ADD_LINK;
 import static shop.util.Constants.FIRST_LINK;
 import static shop.util.Constants.LAST_LINK;
-//import static shop.util.Constants.LIST_LINK;
+import static shop.util.Constants.LIST_LINK;
 import static shop.util.Constants.REMOVE_LINK;
 import static shop.util.Constants.SELF_LINK;
 import static shop.util.Constants.UPDATE_LINK;
@@ -78,20 +78,20 @@ public class KundeResource {
 		return "1.0";
 	}
 	//TODO NotFoundException Fehler beheben
-//	@GET
-//	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
-//	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
-//		final Kunde kunde = ks.findKundeById(id);
-//		if (kunde == null) {
-//			throw new NotFoundException(NOT_FOUND_ID, id);
-//		}
-//		
-//		setStructuralLinks(kunde, uriInfo);
-//
-//		return Response.ok(kunde)
-//			           .links(getTransitionalLinks(kunde, uriInfo))
-//			           .build();
-//	}
+	@GET
+	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
+	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
+		final Kunde kunde = ks.findKundeById(id);
+		if (kunde == null) {
+			throw new NotFoundException(NOT_FOUND_ID, id);
+		}
+		
+		setStructuralLinks(kunde, uriInfo);
+
+		return Response.ok(kunde)
+			           .links(getTransitionalLinks(kunde, uriInfo))
+			           .build();
+	}
 	
 	public void setStructuralLinks(Kunde kunde, UriInfo uriInfo) {
 		// URI fuer Bestellungen setzen
