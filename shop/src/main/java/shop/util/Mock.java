@@ -168,12 +168,5 @@ public final class Mock {
 		return bestellung;
 	}
 
-	public static Artikel findArtikelById(Long id) {
-		final Artikel artikel = new Artikel();
-		artikel.setId(id);
-		artikel.setBezeichnung("Bezeichnung_" + id);
-		return artikel;
-	}
-
 	private Mock() { /**/ }
 }
