@@ -5,16 +5,8 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
-
-
-//import java.lang.invoke.MethodHandles;
 import java.net.URI;
-//import java.util.ArrayList;
-//import java.util.Collection;
-//import java.util.List;
-//import java.util.logging.Logger;
-
-
+import java.util.Locale;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -30,15 +22,11 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-
-
-//import shop.Artikelverwaltung.domain.AbstractArtikel;
-//import shop.Artikelverwaltung.rest.ArtikelResource;
-//import shop.Bestellverwaltung.domain.Bestellposition;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
-import shop.Bestellverwaltung.service.Mock;
+import shop.Bestellverwaltung.service.BestellungService;
+//import shop.Bestellverwaltung.service.Mock;
 import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
 import shop.util.rest.NotFoundException;
@@ -55,24 +43,15 @@ import shop.util.rest.NotFoundException;
 @Log
 
 public class BestellungResource {
-	
-	//private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-//	private static final String NOT_FOUND_ID = "bestellung.notFound.id";
-//	private static final String NOT_FOUND_KUNDE_ID = "kunde.notFound.id";
-//	private static final String NOT_FOUND_ID_ARTIKEL = "artikel.notFound.id";
-	
+		
 	@Context
 	private UriInfo uriInfo;
 	
 	@Inject
-	private UriHelper uriHelper;
+	private UriHelper uriHelper;	
 	
-
-//	@Inject
-//	private shop.Artikelverwaltung.service.Mock as;
-	
-//	@Inject
-//	private ArtikelResource artikelResource;
+	@Inject
+	BestellungService bs;
 	
 	@Inject
 	private KundeResource kundeResource;
@@ -80,7 +59,7 @@ public class BestellungResource {
 	@GET
 	@Path("{id:[1-9][0-9]*}")
 	public Response findBestellungById(@PathParam("id") Long id) {
-		final Bestellung bestellung = Mock.findBestellungById(id);
+		final Bestellung bestellung = bs.findBestellungById(id);
 		if (bestellung == null) {
 			throw new NotFoundException("Keine Bestellung mit der ID " + id + " gefunden.");
 		}
@@ -121,9 +100,9 @@ public class BestellungResource {
 	@POST
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public Response createBestellung(@Valid Bestellung bestellung) {
+	public Response createBestellung(@Valid Bestellung bestellung, Kunde kunde, Locale locale) {
 		
-		bestellung = Mock.createBestellung(bestellung);
+		bestellung = bs.createBestellung(bestellung, kunde, locale);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();

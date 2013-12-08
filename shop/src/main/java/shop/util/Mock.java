@@ -135,7 +135,7 @@ public final class Mock {
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setId(id);
-		bestellung.setAusgeliefert(false);
+		bestellung.setVersendet(false);
 		bestellung.setKunde(kunde);
 		
 		return bestellung;
@@ -165,6 +165,12 @@ public final class Mock {
 
 	public static Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
 		LOGGER.infof("Neue Bestellung: %s fuer Kunde: %s", bestellung, kunde);
+		return bestellung;
+	}
+	
+	public static Bestellung createBestellung(Bestellung bestellung) {
+		
+		LOGGER.infof("Neue Bestellung: %s " + bestellung);
 		return bestellung;
 	}
 
