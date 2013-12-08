@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 
@@ -19,7 +20,8 @@ import shop.Kundenverwaltung.domain.Kunde;
  */
 
 @Decorator
-public abstract class BestellungServiceMitGeschenkverpackung implements
+@Dependent
+public class BestellungServiceMitGeschenkverpackung implements
 		BestellungService {
 
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
