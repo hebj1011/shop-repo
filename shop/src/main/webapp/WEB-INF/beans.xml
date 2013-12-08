@@ -12,5 +12,9 @@
  <alternatives>
   <stereotype>shop.util.cdi.MockService</stereotype>
  </alternatives>
+ 
+ <decorators>
+     <class>shop.Bestellverwaltung.service.BestellungServiceMitGeschenkverpackung</class>
+ </decorators>
 
 </beans>
