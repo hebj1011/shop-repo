@@ -4,7 +4,9 @@ import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.Locale;
 
+import javax.decorator.Decorator;
 import javax.decorator.Delegate;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 
@@ -17,6 +19,8 @@ import shop.Kundenverwaltung.domain.Kunde;
  * @author <a href="mailto:koju1020@HS-Karlsruhe.de">Julian Kohlhaas</a>  
  */
 
+@Decorator
+@Dependent
 public abstract class BestellungServiceMitGeschenkverpackung implements
 		BestellungService {
 
