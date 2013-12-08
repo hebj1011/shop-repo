@@ -50,7 +50,7 @@ public class BestellungResource {
 	private UriHelper uriHelper;	
 	
 	@Inject
-	BestellungService bs;
+	private BestellungService bs;
 	
 	@Inject
 	private KundeResource kundeResource;

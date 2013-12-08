@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 
@@ -20,7 +19,6 @@ import shop.Kundenverwaltung.domain.Kunde;
  */
 
 @Decorator
-@Dependent
 public abstract class BestellungServiceMitGeschenkverpackung implements
 		BestellungService {
 

@@ -37,7 +37,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	}
 
 	@Override
-	@Size(min =1, message = "{bestellung.notFound.kunde}")
+	@Size(min = 1, message = "{bestellung.notFound.kunde}")
 	public List<Bestellung> findBestellungenByKunde(Kunde kunde) {
 
 		return Mock.findBestellungenByKunde(kunde);
