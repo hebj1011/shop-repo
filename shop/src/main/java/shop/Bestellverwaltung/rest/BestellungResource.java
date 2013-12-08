@@ -29,7 +29,6 @@ import shop.Bestellverwaltung.service.BestellungService;
 //import shop.Bestellverwaltung.service.Mock;
 import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
-import shop.util.rest.NotFoundException;
 
 
 /**
@@ -60,10 +59,7 @@ public class BestellungResource {
 	@Path("{id:[1-9][0-9]*}")
 	public Response findBestellungById(@PathParam("id") Long id) {
 		final Bestellung bestellung = bs.findBestellungById(id);
-		if (bestellung == null) {
-			throw new NotFoundException("Keine Bestellung mit der ID " + id + " gefunden.");
-		}
-		
+
 		setStructuralLinks(bestellung, uriInfo);
 		
 		// Link-Header setzen

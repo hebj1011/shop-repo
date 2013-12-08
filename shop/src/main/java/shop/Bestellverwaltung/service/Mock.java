@@ -1,22 +1,20 @@
 package shop.Bestellverwaltung.service;
 
-
+/*
 import java.util.ArrayList;
 import java.util.Collection;
 //import java.util.HashSet;
 import java.util.List;
 //import java.util.Set;
 
-
-
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.domain.Adresse;
-
+*/
 
 public final class Mock {
-	
+/*	
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
 	private static final int MAX_BESTELLUNGEN = 4;
@@ -120,7 +118,7 @@ public final class Mock {
 		System.out.println("Neue Bestellung:  " + bestellung);
 		return bestellung;
 	}
-
+*/
 	private Mock() { /**/ }
 
 }
