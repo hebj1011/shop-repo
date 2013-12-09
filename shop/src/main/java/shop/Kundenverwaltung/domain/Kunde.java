@@ -1,5 +1,6 @@
 package shop.Kundenverwaltung.domain;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
@@ -20,8 +21,9 @@ import shop.Bestellverwaltung.domain.Bestellung;
  * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 @XmlRootElement
-public class Kunde  {
-	private static final long serialVersionUID = 7401524595142572933L;
+public class Kunde implements Serializable  {
+	
+	private static final long serialVersionUID = 1887403048204895170L;
 	
 	private static final String NAME_PATTERN = "[A-Z\u00C4\u00D6\u00DC][a-z\u00E4\u00F6\u00FC\u00DF]+";
 	private static final String NACHNAME_PREFIX = "(o'|von|von der|von und zu|van)?";
