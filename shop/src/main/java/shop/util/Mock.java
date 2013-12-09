@@ -11,6 +11,9 @@ import java.util.Set;
 import org.jboss.logging.Logger;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
+import shop.Artikelverwaltung.domain.Ersatzteil;
+import shop.Artikelverwaltung.domain.Fahrrad;
+import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.domain.Adresse;
@@ -28,6 +31,10 @@ public final class Mock {
 	private static final int JAHR = 2001;
 	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
 	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
+	private final int fahval = 200;
+	private final int ersval = 300;
+	private final int sichval = 400;
+	private static final long serialVersionUID = -2919310633845009282L;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -172,6 +179,43 @@ public final class Mock {
 		
 		LOGGER.infof("Neue Bestellung: %s " + bestellung);
 		return bestellung;
+	}
+	
+	public AbstractArtikel findArtikelById(Long id) {
+		if (id == null) {
+			return null;
+		}
+		
+		final AbstractArtikel artikel;
+		if (fahval < id && id < ersval)
+			artikel = new Fahrrad();
+		else if (ersval < id && id < sichval)
+			artikel = new Ersatzteil();
+		else
+			artikel = new Sicherheitszubehoer();
+		
+		artikel.setId(id);
+		artikel.setName("Name: " + id);
+		
+		return artikel;	
+	}
+	
+	public static <T extends AbstractArtikel> T createArtikel(T artikel) {
+		// Neue IDs fuer Artikel
+		final String name = artikel.getName();
+		artikel.setId(Long.valueOf(name.length()));
+		artikel.setEinzelpreis(null);
+		
+		LOGGER.infof("Neuer Artikel: %s", artikel);
+		return artikel;
+	}
+
+	public static void updateArtikel(AbstractArtikel artikel) {
+		LOGGER.infof("Aktualisierter Artikel: %s", artikel);
+	}
+
+	public static void deleteArtikel(AbstractArtikel artikel) {
+		LOGGER.infof("Geloeschter Artikel: %s", artikel);
 	}
 
 	private Mock() { /**/ }
