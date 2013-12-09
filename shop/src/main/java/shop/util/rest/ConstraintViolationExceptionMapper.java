@@ -81,3 +81,4 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 		return violationReport;
 	}
 }
+
