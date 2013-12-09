@@ -4,9 +4,9 @@ import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+//import java.util.Set;
 
 import org.jboss.logging.Logger;
 
@@ -34,7 +34,6 @@ public final class Mock {
 	private final int fahval = 200;
 	private final int ersval = 300;
 	private final int sichval = 400;
-	private static final long serialVersionUID = -2919310633845009282L;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
