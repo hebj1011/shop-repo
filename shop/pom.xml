@@ -43,7 +43,7 @@
 -->
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.shop</groupId>
+	<groupId>shop</groupId>
 	<artifactId>shop</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
@@ -55,9 +55,9 @@
 	
 	<!-- scm = source code management = Versionsmanagement -->
 	<scm>
-		<connection>scm:git:https://github.com/juergenzimmermann/shop.git</connection>
-		<url>https://github.com/juergenzimmermann/shop.git</url>
-		<developerConnection>scm:git:https://github.com/juergenzimmermann/shop.git</developerConnection>
+		<connection>scm:git:https://github.com/hebj1011/shop-repo.git</connection>
+		<url>https://github.com/hebj1011/shop-repo.git</url>
+		<developerConnection>scm:git:https://github.com/hebj1011/shop-repo.git</developerConnection>
 	</scm>
 	
 	<licenses>
@@ -74,14 +74,14 @@
 	
 	<developers>
 		<developer>
-			<id>Juergen.Zimmermann</id>
-			<name>J&#252;rgen Zimmermann</name>
-			<email>Juergen.Zimmermann@HS-Karlsruhe.de</email>
+			<id>hebj1011</id>
+			<name>Bjoern Hetzel</name>
+			<email>hebj1011@HS-Karlsruhe.de</email>
 			<url>http://www.iwi.hs-karlsruhe.de</url>
 			<organization>Hochschule Karlsruhe</organization>
 			<organizationUrl>http://www.iwi.hs-karlsruhe.de</organizationUrl>
 			<roles>
-				<role>Dozent</role>
+				<role>Student</role>
 			</roles>
 			<timezone>+1</timezone>     <!-- relativ zu GMT -->
 			<properties>
