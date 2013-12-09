@@ -154,7 +154,7 @@ public class KundeResource {
 		} 
 		else if (plz != null) {
 			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
-			kunde = ks.findKundeByPlz(plz);
+			//kunde = ks.findKundeByPlz(plz);
 			throw new RuntimeException(
 					"Suche nach PLZ noch nicht implementiert");
 		} 
