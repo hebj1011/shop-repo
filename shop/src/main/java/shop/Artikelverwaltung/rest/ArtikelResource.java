@@ -99,7 +99,7 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createArtikel(@Valid AbstractArtikel artikel) {
-		artikel = ArtikelService.createArtikel(artikel);
+		artikel = as.createArtikel(artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo))
 			           .build();
 	}
@@ -109,14 +109,14 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateArtikel(@Valid AbstractArtikel artikel) {
-		ArtikelService.updateArtikel(artikel);
+		as.updateArtikel(artikel);
 	}
 	
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteArtikel(@PathParam("id") Long id) {
-		ArtikelService.deleteArtikel(id);
+		as.deleteArtikel(id);
 	}
 	
 }

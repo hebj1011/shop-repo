@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+import shop.util.Mock;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -23,7 +24,6 @@ import com.google.common.base.Strings;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.util.interceptor.Log;
-//import shop.Artikelverwaltung.service.Mock;
 
 /**
  * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
@@ -143,7 +143,7 @@ public class ArtikelService implements Serializable {
 			return artikel;
 		}
 		// TODO Datenbanzugriffsschicht statt Mock
-//		artikel = Mock.createArtikel(artikel);
+		artikel = Mock.createArtikel(artikel);
 
 		return artikel;
 	}
@@ -154,7 +154,7 @@ public class ArtikelService implements Serializable {
 		}
 
 		// TODO Datenbanzugriffsschicht statt Mock
-//		Mock.updateArtikel(artikel);
+		Mock.updateArtikel(artikel);
 		
 		return artikel;
 	}
@@ -166,6 +166,6 @@ public class ArtikelService implements Serializable {
 		}
 		
 		// TODO Datenbanzugriffsschicht statt Mock
-//		Mock.deleteArtikel(artikel);
+		Mock.deleteArtikel(artikel);
 	}
 }
