@@ -7,11 +7,11 @@ import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.hibernate.validator.constraints.NotEmpty;
+//import org.hibernate.validator.constraints.NotEmpty;
 
 import shop.Kundenverwaltung.domain.Kunde;
 
@@ -36,8 +36,8 @@ public class Bestellung implements Serializable  {
 	
 	private URI kundeUri;
 	
-	@NotEmpty(message = "{bestellung.bestellpositionen.notEmpty}")
-	@Valid
+//	@NotEmpty(message = "{bestellung.bestellpositionen.notEmpty}")
+//	@Valid
 	private List<Bestellposition> bestellpositionen;	
 
 	public Long getId() {
