@@ -147,7 +147,8 @@ public class LogInterceptor implements Serializable {
 			for (int i = 0; i < anzahl; i++) {
 				if (arr[i] == null) {
 					sbEnd.append("null");
-				} else {
+				} 
+				else {
 					sbEnd.append(arr[i]);
 				}
 				sbEnd.append(", ");
