@@ -267,8 +267,16 @@ public class LogInterceptor implements Serializable {
 			sbEnd.append(']');
 			return sbEnd.toString();
 		}
+		String str = tmpMethod(obj, obj.getClass().getComponentType());
+		if(str!=null) {
+			return str;
+		}
 
-		if ("char".equals(componentClass.getName())) {
+		return "<<UNKNOWN ARRAY>>";
+	}
+	
+	private static String tmpMethod(Object obj, Class<?> class1) {
+		if ("char".equals(class1.getName())) {
 			final char[] arr = (char[]) obj;
 			if (arr.length > MAX_ELEM) {
 				return COUNT + arr.length;
@@ -288,7 +296,7 @@ public class LogInterceptor implements Serializable {
 			return sbEnd.toString();
 		}
 
-		if ("boolean".equals(componentClass.getName())) {
+		if ("boolean".equals(class1.getName())) {
 			final boolean[] arr = (boolean[]) obj;
 			if (arr.length > MAX_ELEM) {
 				return COUNT + arr.length;
@@ -307,7 +315,6 @@ public class LogInterceptor implements Serializable {
 			sbEnd.append(']');
 			return sbEnd.toString();
 		}
-
-		return "<<UNKNOWN ARRAY>>";
+		return null;	
 	}
 }
