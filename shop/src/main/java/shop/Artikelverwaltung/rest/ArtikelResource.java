@@ -1,19 +1,19 @@
 package shop.Artikelverwaltung.rest;
 
-import static shop.util.Constants.ADD_LINK;
-import static shop.util.Constants.FIRST_LINK;
-import static shop.util.Constants.LAST_LINK;
-import static shop.util.Constants.REMOVE_LINK;
+//import static shop.util.Constants.ADD_LINK;
+//import static shop.util.Constants.FIRST_LINK;
+//import static shop.util.Constants.LAST_LINK;
+//import static shop.util.Constants.REMOVE_LINK;
 import static shop.util.Constants.SELF_LINK;
-import static shop.util.Constants.UPDATE_LINK;
+//import static shop.util.Constants.UPDATE_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
+//import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
-import java.util.List;
+//import java.util.List;
 
 import org.jboss.logging.Logger;
 
@@ -22,17 +22,17 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
+//import javax.ws.rs.DELETE;
 //import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
+//import javax.ws.rs.POST;
+//import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+//import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
+//import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -52,7 +52,7 @@ import shop.Artikelverwaltung.service.ArtikelService;
 //import shop.Artikelverwaltung.service.Mock;
 import shop.util.interceptor.Log;
 import shop.util.rest.UriHelper;
-import shop.util.rest.NotFoundException;
+//import shop.util.rest.NotFoundException;
 
 /**
  * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
@@ -67,7 +67,7 @@ import shop.util.rest.NotFoundException;
 public class ArtikelResource {
 	
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
+//	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
 	
 	@Context
 	private UriInfo uriInfo;
@@ -106,7 +106,7 @@ public class ArtikelResource {
                               .rel(SELF_LINK)
                               .build();
 
-		return new Link[] { self };
+		return new Link[] {self };
 	}
 	
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {

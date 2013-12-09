@@ -18,6 +18,10 @@ import shop.util.interceptor.Log;
 @Priority(APPLICATION + 100)
 @Log
 public class Mock extends ArtikelService {
+	
+	private final int fahval = 200;
+	private final int ersval = 300;
+	private final int sichval = 400;
 	private static final long serialVersionUID = -2919310633845009282L;
 
 	/**
@@ -30,15 +34,15 @@ public class Mock extends ArtikelService {
 		}
 		
 		final AbstractArtikel artikel;
-		if(200 < id && id < 300)
+		if (fahval < id && id < ersval)
 			artikel = new Fahrrad();
-		else if(300 < id && id < 400)
+		else if (ersval < id && id < sichval)
 			artikel = new Ersatzteil();
 		else
 			artikel = new Sicherheitszubehoer();
 		
 		artikel.setId(id);
-		artikel.setName("Name: "+ id);
+		artikel.setName("Name: " + id);
 		
 		return artikel;
 		
