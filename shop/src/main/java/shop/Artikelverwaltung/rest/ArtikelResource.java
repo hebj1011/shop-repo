@@ -114,7 +114,7 @@ public class ArtikelResource {
 								"deleteArtikel", artikel.getId(), uriInfo))
 				.rel(REMOVE_LINK).build();
 
-		return new Link[] { self, list, add, update, remove };
+		return new Link[] {self, list, add, update, remove };
 	}
 
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
