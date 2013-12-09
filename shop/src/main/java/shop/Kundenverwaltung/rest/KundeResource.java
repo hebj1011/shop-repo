@@ -133,7 +133,7 @@ public class KundeResource {
 
 	@GET
 	public Response findKunden(
-			@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM) 
+			@QueryParam(KUNDEN_VORNAME_QUERY_PARAM) 
 				@Pattern(regexp = Kunde.VORNAME_PATTERN, message = "{kunde.vorname.pattern}") String vorname,
 			@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM) 
 				@Pattern(regexp = Kunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}") String nachname,
