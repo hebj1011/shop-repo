@@ -124,6 +124,23 @@
 				-->
 			</properties>
 		</developer>
+		<developer>
+			<id>lade1011</id>
+			<name>Denis Langer</name>
+			<email>lade1011@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.iwi.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
 	</developers>
 	
 	<mailingLists>
