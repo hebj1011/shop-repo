@@ -52,4 +52,14 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		
 		return bestellung;
 	}
+	
+	@Override
+	public Bestellung createBestellung(Bestellung bestellung) {
+
+		bestellung = Mock.createBestellung(bestellung);
+		event.fire(bestellung);
+		
+		return bestellung;
+	}
+	
 }

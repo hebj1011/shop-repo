@@ -49,4 +49,10 @@ public class BestellungServiceMitGeschenkverpackung implements
 		return bs.createBestellung(bestellung, kunde, locale);
 	}
 
+	@Override
+	public Bestellung createBestellung(Bestellung bestellung) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

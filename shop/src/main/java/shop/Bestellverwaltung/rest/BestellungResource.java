@@ -7,7 +7,6 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 import java.net.URI;
-import java.util.Locale;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -41,7 +40,6 @@ import shop.util.rest.UriHelper;
 @Consumes
 @RequestScoped
 @Log
-
 public class BestellungResource {
 		
 
@@ -101,9 +99,9 @@ public class BestellungResource {
 	@POST
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public Response createBestellung(@Valid Bestellung bestellung, Kunde kunde, Locale locale) {
+	public Response createBestellung(@Valid Bestellung bestellung) {
 		
-		bestellung = bs.createBestellung(bestellung, kunde, locale);
+		bestellung = bs.createBestellung(bestellung);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();
