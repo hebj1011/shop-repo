@@ -267,8 +267,8 @@ public class LogInterceptor implements Serializable {
 			sbEnd.append(']');
 			return sbEnd.toString();
 		}
-		String str = tmpMethod(obj, obj.getClass().getComponentType());
-		if(str!=null) {
+		final String str = tmpMethod(obj, obj.getClass().getComponentType());
+		if (str != null) {
 			return str;
 		}
 
