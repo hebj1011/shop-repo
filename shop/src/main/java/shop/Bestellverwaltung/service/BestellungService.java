@@ -16,6 +16,6 @@ public interface BestellungService {
 	List<Bestellung> findBestellungenByKunde(Kunde kunde);
 	Bestellung createBestellung(Bestellung bestellung, Kunde kunde, Locale locale);
 	Bestellung createBestellung(Bestellung bestellung);
-	Bestellung createBestellung(Bestellung bestellung,Locale locale);
+	Bestellung createBestellung(Bestellung bestellung, Locale locale);
 
 }
