@@ -107,6 +107,23 @@
 				-->
 			</properties>
 		</developer>
+		<developer>
+			<id>koju1020</id>
+			<name>Julian Kohlhaas</name>
+			<email>koju1020@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.iwi.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
 	</developers>
 	
 	<mailingLists>
