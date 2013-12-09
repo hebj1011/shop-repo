@@ -3,25 +3,39 @@ package shop.Kundenverwaltung.domain;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 public class Adresse implements Serializable {
-	/**
-	 * 
-	 */
 	
 	private static final long serialVersionUID = 5409525327538622905L;
 	
+	private static final int ORT_LENGTH_MIN = 2;
+	private static final int ORT_LENGTH_MAX = 32;
+	private static final int STRASSE_LENGTH_MIN = 2;
+	private static final int STRASSE_LENGTH_MAX = 32;
+	private static final int HAUSNUMMER_LENGTH_MIN = 1;
+	
 	private Long id;
-	@NotNull
+	
+	@NotNull(message = "{adresse.plz.notNull}")
+	@Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
 	private String plz;
-	@NotNull
+	
+	@NotNull(message = "{adresse.ort.notNull}")
+	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")
 	private String ort;
-	@NotNull
+	
+	@NotNull(message = "{adresse.strasse.notNull}")
+	@Size(min = STRASSE_LENGTH_MIN, max = STRASSE_LENGTH_MAX, message = "{adresse.strasse.length}")
 	private String strasse;
+	
+	@NotNull(message = "{adresse.hausnummer.notNull}")
+	@Size(min = HAUSNUMMER_LENGTH_MIN, message = "{adresse.hausnummer.length}")
 	private String hausnummer;
 	
 	@XmlTransient
