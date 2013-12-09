@@ -143,7 +143,10 @@ public class KundeResource {
 				@Pattern(regexp = "\\d{5}", message = "{adresse.plz}") String plz) {
 		List<? extends Kunde> kunden = null;
 		Kunde kunde = null;
-		if (nachname != null) {
+		if (vorname != null) {
+			kunden = ks.findKundenByVorname(vorname);
+		}
+		else if (nachname != null) {
 			kunden = ks.findKundenByNachname(nachname);
 		} 
 		else if (email != null) {
@@ -151,6 +154,7 @@ public class KundeResource {
 		} 
 		else if (plz != null) {
 			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
+			kunde = ks.findKundeByPlz(plz);
 			throw new RuntimeException(
 					"Suche nach PLZ noch nicht implementiert");
 		} 

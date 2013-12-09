@@ -43,6 +43,7 @@ public final class Mock {
 		
 		final Kunde kunde = new Kunde(); //id % 2 == 1 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(id);
+		kunde.setVorname("Vorname");
 		kunde.setNachname("Nachname");
 		kunde.setEmail("" + id + "@hska.de");
 		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
@@ -97,7 +98,6 @@ public final class Mock {
 		}
 		return kunden;
 	}
-	
 	public static Kunde findKundeByEmail(String email) {
 		if (email.startsWith("x")) {
 			return null;
@@ -105,6 +105,7 @@ public final class Mock {
 		
 		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(Long.valueOf(email.length()));
+		kunde.setVorname("Vorname");
 		kunde.setNachname("Nachname");
 		kunde.setEmail(email);
 		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
@@ -128,7 +129,29 @@ public final class Mock {
 		
 		return kunde;
 	}
-	
+	public static Kunde findKundeByPlz(String plz) {
+		if (plz == null) {
+			return null;
+		}
+		
+		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+		kunde.setId(Long.valueOf(plz.length()));
+		kunde.setVorname("Vorname");
+		kunde.setNachname("Nachname");
+		kunde.setEmail("" + Long.valueOf(plz.length()) + "@hska.de");
+		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+		final Date seit = seitCal.getTime();
+		kunde.setSeit(seit);
+		
+		final Adresse adresse = new Adresse();
+		adresse.setId(kunde.getId() + 1);        // andere ID fuer die Adresse
+		adresse.setPlz(plz);
+		adresse.setOrt("Testort");
+		adresse.setKunde(kunde);
+		kunde.setAdresse(adresse);
+		
+		return kunde;
+	}
 	public static List<Bestellung> findBestellungenByKunde(Kunde kunde) {
 		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
 		final int anzahl = kunde.getId().intValue() % MAX_BESTELLUNGEN + 1;  // 1, 2, 3 oder 4 Bestellungen
