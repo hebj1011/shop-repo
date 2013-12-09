@@ -27,13 +27,14 @@ public final class Mock {
 
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
+	private static final int MAX_ARTIKEL = 500;
 	private static final int MAX_BESTELLUNGEN = 4;
 	private static final int JAHR = 2001;
 	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
 	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
-	private final int fahval = 200;
-	private final int ersval = 300;
-	private final int sichval = 400;
+	private static final int fahval = 200;
+	private static final int ersval = 300;
+	private static final int sichval = 400;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -180,7 +181,7 @@ public final class Mock {
 		return bestellung;
 	}
 	
-	public AbstractArtikel findArtikelById(Long id) {
+	public static AbstractArtikel findArtikelById(Long id) {
 		if (id == null) {
 			return null;
 		}
@@ -197,6 +198,16 @@ public final class Mock {
 		artikel.setName("Name: " + id);
 		
 		return artikel;	
+	}
+	
+	public static List<AbstractArtikel> findAllArtikel() {
+		final int anzahl = MAX_ARTIKEL;
+		final List<AbstractArtikel> artikels = new ArrayList<>(anzahl);
+		for (int i = 1; i <= anzahl; i++) {
+			final AbstractArtikel artikel = findArtikelById(Long.valueOf(i));
+			artikels.add(artikel);			
+		}
+		return artikels;
 	}
 	
 	public static <T extends AbstractArtikel> T createArtikel(T artikel) {
