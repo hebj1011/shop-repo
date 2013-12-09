@@ -1,10 +1,15 @@
 package shop.Artikelverwaltung.rest;
 
 
+import static shop.util.Constants.ADD_LINK;
+import static shop.util.Constants.LIST_LINK;
+import static shop.util.Constants.REMOVE_LINK;
 import static shop.util.Constants.SELF_LINK;
+import static shop.util.Constants.UPDATE_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
@@ -73,6 +78,13 @@ public class ArtikelResource {
 	}
 	
 	@GET
+	@Produces({ TEXT_PLAIN, APPLICATION_JSON })
+	@Path("version")
+	public String getVersion() {
+		return "1.0";
+	}
+	
+	@GET
 	@Path("{id:[1-9][0-9]*}")
 	public Response findArtikelById(@PathParam("id") Long id) {
 		final AbstractArtikel artikel = as.findArtikelById(id);
@@ -83,15 +95,32 @@ public class ArtikelResource {
 	
 	private Link[] getTransitionalLinks(AbstractArtikel artikel, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriArtikel(artikel, uriInfo))
-                              .rel(SELF_LINK)
-                              .build();
+	                          .rel(SELF_LINK)
+	                          .build();
 
-		return new Link[] {self };
+		final Link list = Link.fromUri(uriHelper.getUri(ArtikelResource.class, uriInfo))
+		                      .rel(LIST_LINK)
+		                      .build();
+
+		final Link add = Link.fromUri(uriHelper.getUri(ArtikelResource.class, uriInfo))
+		                     .rel(ADD_LINK)
+		                     .build();
+		
+		final Link update = Link.fromUri(uriHelper.getUri(ArtikelResource.class, uriInfo))
+			                    .rel(UPDATE_LINK)
+			                    .build();
+		
+		final Link remove = Link.fromUri(uriHelper.getUri(ArtikelResource.class, "deleteArtikel", artikel.getId(), uriInfo))
+		                        .rel(REMOVE_LINK)
+		                        .build();
+		
+		return new Link[] {self, list, add, update, remove };
 	}
 	
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
 		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
 	}
+	
 
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })

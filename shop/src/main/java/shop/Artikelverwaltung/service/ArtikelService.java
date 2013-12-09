@@ -140,7 +140,7 @@ public class ArtikelService implements Serializable {
 //				 .getResultList();
 //	}
 	
-	@NotNull(message = "{kunde.notFound.id}")
+	@NotNull(message = "{artikel.notFound.id}")
 	public AbstractArtikel findArtikelById(Long id) {
 		if (id == null) {
 			return null;
@@ -149,10 +149,10 @@ public class ArtikelService implements Serializable {
 		return Mock.findArtikelById(id);
 	}
 	
-	public List<AbstractArtikel> findAllArtikel() {
-		// TODO Datenbanzugriffsschicht statt Mock
-		return Mock.findAllArtikel();
-	}
+//	public List<AbstractArtikel> findAllArtikel() {
+//		// TODO Datenbanzugriffsschicht statt Mock
+//		return Mock.findAllArtikel();
+//	}
 	
 	
 	public <T extends AbstractArtikel> T createArtikel(T artikel) {
