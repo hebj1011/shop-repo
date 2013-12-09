@@ -22,6 +22,7 @@ import com.google.common.base.Strings;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.util.interceptor.Log;
+//import shop.Artikelverwaltung.service.Mock;
 
 /**
  * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
@@ -132,5 +133,36 @@ public class ArtikelService implements Serializable {
 		return em.createNamedQuery(AbstractArtikel.FIND_ARTIKEL_MAX_PREIS, AbstractArtikel.class)
 				 .setParameter(AbstractArtikel.PARAM_PREIS, preis)
 				 .getResultList();
+	}
+	
+	public <T extends AbstractArtikel> T createArtikel(T artikel) {
+		if (artikel == null) {
+			return artikel;
+		}
+		// TODO Datenbanzugriffsschicht statt Mock
+//		artikel = Mock.createArtikel(artikel);
+
+		return artikel;
+	}
+	
+	public <T extends AbstractArtikel> T updateArtikel(T artikel) {
+		if (artikel == null) {
+			return null;
+		}
+
+		// TODO Datenbanzugriffsschicht statt Mock
+//		Mock.updateArtikel(artikel);
+		
+		return artikel;
+	}
+
+	public void deleteArtikel(Long artikelId) {
+		AbstractArtikel artikel = findArtikelById(artikelId);  // Kein Aufruf als Business-Methode
+		if (artikel == null) {
+			return;
+		}
+		
+		// TODO Datenbanzugriffsschicht statt Mock
+//		Mock.deleteArtikel(artikel);
 	}
 }

@@ -44,8 +44,6 @@ public class Mock extends ArtikelService {
 		artikel.setId(id);
 		artikel.setName("Name: " + id);
 		
-		return artikel;
-		
-		
+		return artikel;	
 	}
 }
