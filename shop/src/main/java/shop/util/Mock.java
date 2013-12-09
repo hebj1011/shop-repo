@@ -93,7 +93,7 @@ public final class Mock {
 			return null;
 		}
 		
-		final Kunde kunde = new Kunde();//email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(Long.valueOf(email.length()));
 		kunde.setNachname("Nachname");
 		kunde.setEmail(email);
