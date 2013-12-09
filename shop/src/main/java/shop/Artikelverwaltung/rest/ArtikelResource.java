@@ -67,7 +67,7 @@ import shop.util.rest.UriHelper;
 public class ArtikelResource {
 	
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
+//	private static final String NOT_FOUND_ARTIKELNUMMER = "artikel.notFound.artikelnummer";
 	
 	@Context
 	private UriInfo uriInfo;
@@ -106,7 +106,7 @@ public class ArtikelResource {
                               .rel(SELF_LINK)
                               .build();
 
-		return new Link[] { self } ;
+		return new Link[] {self };
 	}
 	
 	public URI getUriArtikel(AbstractArtikel artikel, UriInfo uriInfo) {
