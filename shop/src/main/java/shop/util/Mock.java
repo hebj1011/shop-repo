@@ -148,7 +148,7 @@ public final class Mock {
 		return bestellung;
 	}
 
-	public static Kunde createKunde(Kunde kunde) {
+	public static <T extends Kunde> T createKunde(T kunde) {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
 		// Ein neuer Kunde hat auch keine Bestellungen
 		final String nachname = kunde.getNachname();
