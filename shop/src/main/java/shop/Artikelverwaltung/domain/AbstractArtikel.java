@@ -4,7 +4,7 @@ import static shop.util.Constants.KEINE_ID;
 //import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
-import java.lang.invoke.MethodHandles;
+//import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 //import java.util.Date;
 
@@ -50,7 +50,7 @@ import org.codehaus.jackson.annotate.JsonSubTypes.Type;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 //import org.hibernate.validator.constraints.Email;
 //import org.hibernate.validator.constraints.ScriptAssert;
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
@@ -91,7 +91,7 @@ import org.jboss.logging.Logger;
 public abstract class AbstractArtikel implements Serializable {
 	
 	private static final long serialVersionUID = -4773398465078397947L;
-	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+//	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	public static final String ERSATZTEIL = "E";
 	public static final String FAHRRAD = "F";
