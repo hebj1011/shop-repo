@@ -145,6 +145,6 @@ public class Kunde implements Serializable  {
 	@Override
 	public String toString() {
 		return "Kunde [id=" + id + ", Vorname=" + vorname + ", nachname=" + nachname + ", email=" + email
-			   + ", seit="+ seit +", bestellungenUri=" + bestellungenUri + "]";
+			   + ", seit=" + seit + ", bestellungenUri=" + bestellungenUri + "]";
 	}
 }

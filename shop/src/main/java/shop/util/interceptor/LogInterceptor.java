@@ -61,7 +61,8 @@ public class LogInterceptor implements Serializable {
 			for (int i = 0; i < anzahlParams; i++) {
 				if (params[i] == null) {
 					sb.append("null");
-				} else {
+				} 
+				else {
 					final String paramStr = toString(params[i]);
 					sb.append(paramStr);
 				}
@@ -93,7 +94,8 @@ public class LogInterceptor implements Serializable {
 		if (result == null) {
 			// Methode vom Typ void oder Rueckgabewert null
 			logger.debug(methodName + " ENDE");
-		} else {
+		} 
+		else {
 			final String resultStr = toString(result);
 			logger.debug(methodName + " ENDE: " + resultStr);
 		}
