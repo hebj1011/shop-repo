@@ -55,4 +55,10 @@ public class BestellungServiceMitGeschenkverpackung implements
 		return null;
 	}
 
+	@Override
+	public Bestellung createBestellung(Bestellung bestellung, Locale locale) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
