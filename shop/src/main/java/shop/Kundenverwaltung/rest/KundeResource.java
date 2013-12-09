@@ -51,6 +51,7 @@ import shop.util.rest.UriHelper;
 @Log
 public class KundeResource {
 	public static final String KUNDEN_ID_PATH_PARAM = "kundeId";
+	public static final String KUNDEN_VORNAME_QUERY_PARAM = "vorname";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
 	public static final String KUNDEN_EMAIL_QUERY_PARAM = "email";
 	public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
@@ -128,6 +129,9 @@ public class KundeResource {
 	
 	@GET
 	public Response findKunden(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
+							   @Pattern(regexp = Kunde.VORNAME_PATTERN, message = "{kunde.vorname.pattern}")
+							   String vorname,
+							   @QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
    	                           @Pattern(regexp = Kunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 							   String nachname,
 							   @QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
