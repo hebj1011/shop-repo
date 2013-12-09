@@ -35,7 +35,7 @@ import javax.ws.rs.core.UriInfo;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.service.ArtikelService;
-//import shop.util.interceptor.Log;
+import shop.util.interceptor.Log;
 //import shop.util.rest.NotFoundException;
 import shop.util.rest.UriHelper;
 
