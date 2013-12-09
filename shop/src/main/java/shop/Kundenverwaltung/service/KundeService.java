@@ -39,6 +39,12 @@ public class KundeService implements Serializable {
 		return Mock.findAllKunden();
 	}
 	
+	@Size(min = 1, message = "{kunde.notFound.vorname}")
+	public List<Kunde> findKundenByVorname(String vorname) {
+		// TODO Datenbanzugriffsschicht statt Mock
+		return Mock.findKundenByVorname(vorname);
+	}
+	
 	@Size(min = 1, message = "{kunde.notFound.nachname}")
 	public List<Kunde> findKundenByNachname(String nachname) {
 		// TODO Datenbanzugriffsschicht statt Mock

@@ -77,6 +77,16 @@ public final class Mock {
 		return kunden;
 	}
 
+	public static List<Kunde> findKundenByVorname(String vorname) {
+		final int anzahl = vorname.length();
+		final List<Kunde> kunden = new ArrayList<>(anzahl);
+		for (int i = 1; i <= anzahl; i++) {
+			final Kunde kunde = findKundeById(Long.valueOf(i));
+			kunde.setNachname(vorname);
+			kunden.add(kunde);			
+		}
+		return kunden;
+	}
 	public static List<Kunde> findKundenByNachname(String nachname) {
 		final int anzahl = nachname.length();
 		final List<Kunde> kunden = new ArrayList<>(anzahl);
