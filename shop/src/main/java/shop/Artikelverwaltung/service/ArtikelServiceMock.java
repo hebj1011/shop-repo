@@ -17,9 +17,9 @@ import shop.util.interceptor.Log;
 @Log
 public class ArtikelServiceMock extends ArtikelService {
 	private static final long serialVersionUID = -2919310633845009282L;
-	private final int fahval = 200;
-	private final int ersval = 300;
-	private final int sichval = 400;
+	private static final int fahval = 200;
+	private static final int ersval = 300;
+	private static final int sichval = 400;
 
 	/**
 	 * {inheritDoc}
