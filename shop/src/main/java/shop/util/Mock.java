@@ -54,6 +54,8 @@ public final class Mock {
 		adresse.setId(id + 1);        // andere ID fuer die Adresse
 		adresse.setPlz("12345");
 		adresse.setOrt("Testort");
+		adresse.setStrasse("Testweg");
+		adresse.setHausnummer("12");
 		adresse.setKunde(kunde);
 		kunde.setAdresse(adresse);
 		
