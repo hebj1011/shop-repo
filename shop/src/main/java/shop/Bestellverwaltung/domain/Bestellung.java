@@ -34,7 +34,7 @@ public class Bestellung implements Serializable  {
 	
 	private Date bestelldatum;
 	
-	@NotNull(message ="bisch eh voll der hännes")
+	@NotNull(message ="Eine Bestellung ist bei uns nicht umsonst!")
 	private double gesamtpreis;
 	
 	private boolean versendet;

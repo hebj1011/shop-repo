@@ -1,11 +1,16 @@
 package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 
-
-public class Bestellposition {
+@XmlRootElement
+public class Bestellposition implements Serializable {
+	
+	private static final long serialVersionUID = -7656682410415623796L;
 	
 	private long id;
 	private AbstractArtikel artikel;
