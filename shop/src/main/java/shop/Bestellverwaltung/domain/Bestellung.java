@@ -7,11 +7,14 @@ import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
+
+import javax.validation.constraints.NotNull;
 //import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 //import org.hibernate.validator.constraints.NotEmpty;
+
 
 import shop.Kundenverwaltung.domain.Kunde;
 
@@ -30,6 +33,8 @@ public class Bestellung implements Serializable  {
 	private Kunde kunde;
 	
 	private Date bestelldatum;
+	
+	@NotNull(message ="bisch eh voll der hännes")
 	private double gesamtpreis;
 	
 	private boolean versendet;

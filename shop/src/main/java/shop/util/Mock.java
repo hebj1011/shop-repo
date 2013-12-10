@@ -177,6 +177,7 @@ public final class Mock {
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setId(id);
+		bestellung.setGesamtpreis(50.4);
 		bestellung.setVersendet(false);
 		bestellung.setKunde(kunde);
 		
