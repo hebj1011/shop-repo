@@ -118,6 +118,7 @@ public abstract class AbstractArtikel implements Serializable {
 	private String name = "";
 	
 //	@Column(precision = 8, scale = 2)
+	@NotNull(message = "{artikel.einzelpreis.notNull}")
 	private BigDecimal einzelpreis;
 	
 	@Min(0)
