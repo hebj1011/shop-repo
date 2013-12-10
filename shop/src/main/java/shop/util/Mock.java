@@ -212,7 +212,7 @@ public final class Mock {
 	
 	public static Bestellung createBestellung(Bestellung bestellung) {
 		
-		LOGGER.infof("Neue Bestellung: %s " + bestellung);
+		LOGGER.infof("Neue Bestellung: %s ", bestellung);
 		return bestellung;
 	}
 	
