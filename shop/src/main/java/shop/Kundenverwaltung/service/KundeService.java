@@ -51,7 +51,7 @@ public class KundeService implements Serializable {
 		return Mock.findKundenByNachname(nachname);
 	}
 
-	public <T extends Kunde> T createKunde(T kunde) {
+	public Kunde createKunde(Kunde kunde) {
 		if (kunde == null) {
 			return kunde;
 		}
@@ -66,7 +66,7 @@ public class KundeService implements Serializable {
 		return kunde;
 	}
 	
-	public <T extends Kunde> T updateKunde(T kunde) {
+	public Kunde updateKunde(Kunde kunde) {
 		if (kunde == null) {
 			return null;
 		}
