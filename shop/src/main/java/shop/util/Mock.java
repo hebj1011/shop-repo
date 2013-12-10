@@ -32,9 +32,9 @@ public final class Mock {
 	private static final int JAHR = 2001;
 	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
 	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
-	private static final int Fahval = 200;
-	private static final int Ersval = 300;
-	private static final int Sichval = 400;
+	private static final int FAHVAL = 200;
+	private static final int ERSVAL = 300;
+	private static final int SICHVAL = 400;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -222,9 +222,9 @@ public final class Mock {
 		}
 		
 		final AbstractArtikel artikel;
-		if (Fahval < id && id < Ersval)
+		if (FAHVAL < id && id < ERSVAL)
 			artikel = new Fahrrad();
-		else if (Ersval < id && id < Sichval)
+		else if (ERSVAL < id && id < SICHVAL)
 			artikel = new Ersatzteil();
 		else
 			artikel = new Sicherheitszubehoer();
