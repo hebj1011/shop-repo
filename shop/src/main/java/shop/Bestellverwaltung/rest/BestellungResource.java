@@ -6,8 +6,10 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+//import java.lang.invoke.MethodHandles;
 import java.net.URI;
 //import java.util.Locale;
+
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,6 +24,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
+//import org.jboss.logging.Logger;
 
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
@@ -42,7 +46,7 @@ import shop.util.rest.UriHelper;
 @RequestScoped
 @Log
 public class BestellungResource {
-		
+	
 
 	@Context
 	private UriInfo uriInfo;
