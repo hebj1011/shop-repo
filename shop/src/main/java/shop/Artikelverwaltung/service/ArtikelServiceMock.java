@@ -17,9 +17,9 @@ import shop.util.interceptor.Log;
 @Log
 public class ArtikelServiceMock extends ArtikelService {
 	private static final long serialVersionUID = -2919310633845009282L;
-	private static final int fahval = 200;
-	private static final int ersval = 300;
-	private static final int sichval = 400;
+	private static final int FAHVAL = 200;
+	private static final int ERSVAL = 300;
+	private static final int SICHVAL = 400;
 
 	/**
 	 * {inheritDoc}
@@ -31,9 +31,9 @@ public class ArtikelServiceMock extends ArtikelService {
 		}
 		
 		final AbstractArtikel artikel;
-		if (fahval < id && id < ersval)
+		if (FAHVAL < id && id < ERSVAL)
 			artikel = new Fahrrad();
-		else if (ersval < id && id < sichval)
+		else if (ERSVAL < id && id < SICHVAL)
 			artikel = new Ersatzteil();
 		else
 			artikel = new Sicherheitszubehoer();
