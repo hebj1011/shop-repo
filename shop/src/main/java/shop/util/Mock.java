@@ -247,7 +247,7 @@ public final class Mock {
 		// Neue IDs fuer Artikel
 		final String name = artikel.getName();
 		artikel.setId(Long.valueOf(name.length()));
-		artikel.setEinzelpreis(null);
+		artikel.setEinzelpreis(artikel.getEinzelpreis());
 		
 		LOGGER.infof("Neuer Artikel: %s", artikel);
 		return artikel;
