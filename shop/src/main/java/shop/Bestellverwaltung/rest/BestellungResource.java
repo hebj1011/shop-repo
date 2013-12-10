@@ -30,7 +30,7 @@ import javax.ws.rs.core.UriInfo;
 //import org.jboss.logging.Logger;
 
 
-import shop.Artikelverwaltung.rest.ArtikelResource;
+//import shop.Artikelverwaltung.rest.ArtikelResource;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
