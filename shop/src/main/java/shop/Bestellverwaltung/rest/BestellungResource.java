@@ -6,9 +6,11 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+
 //import java.lang.invoke.MethodHandles;
 import java.net.URI;
 //import java.util.Locale;
+
 
 
 import javax.enterprise.context.RequestScoped;
@@ -27,6 +29,8 @@ import javax.ws.rs.core.UriInfo;
 
 //import org.jboss.logging.Logger;
 
+
+import shop.Artikelverwaltung.rest.ArtikelResource;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.rest.KundeResource;
@@ -89,11 +93,14 @@ public class BestellungResource {
 		final Link self = Link.fromUri(getUriBestellung(bestellung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
-		final Link add = Link.fromUri(uriHelper.getUri(BestellungResource.class, uriInfo))
+		final Link list = Link.fromUri(uriHelper.getUri(BestellungResource.class, uriInfo))
                 .rel(ADD_LINK)
                 .build();
+		final Link add = Link
+				.fromUri(uriHelper.getUri(BestellungResource.class, uriInfo))
+				.rel(ADD_LINK).build();
 		return new Link[] {
-				self, add
+				self, list, add
 		};
 	}
 	
