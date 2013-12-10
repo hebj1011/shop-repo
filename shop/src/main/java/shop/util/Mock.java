@@ -35,6 +35,7 @@ public final class Mock {
 	private static final int FAHVAL = 200;
 	private static final int ERSVAL = 300;
 	private static final int SICHVAL = 400;
+	private static final double GESAMT = 50.4;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -177,7 +178,7 @@ public final class Mock {
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setId(id);
-		bestellung.setGesamtpreis(50.4);
+		bestellung.setGesamtpreis(GESAMT);
 		bestellung.setVersendet(false);
 		bestellung.setKunde(kunde);
 		
