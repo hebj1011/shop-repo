@@ -1,4 +1,4 @@
-//package shop.Kundenverwaltung.service;
+package shop.Kundenverwaltung.service;
 //
 //import java.util.ArrayList;
 ////import java.util.HashSet;
@@ -12,7 +12,7 @@
 ///**
 // * Emulation des Anwendungskerns
 // */
-//public final class Mock {
+public final class Mock {
 //	//private static final int MAX_ID = 99;
 //	private static final int MAX_KUNDEN = 8;
 //	//private static final int MAX_BESTELLUNGEN = 4;
@@ -117,5 +117,5 @@
 //		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
 //	}
 //
-//	private Mock() { /**/ }
-//}
+	private Mock() { /**/ }
+}
