@@ -57,7 +57,7 @@ public class KundeService implements Serializable {
 		}
 
 		final Kunde tmp = findKundeByEmail(kunde.getEmail());  // Kein Aufruf als Business-Methode
-		if (tmp != null) {
+		if (tmp == null) {
 			throw new EmailExistsException(kunde.getEmail());
 		}
 		// TODO Datenbanzugriffsschicht statt Mock
