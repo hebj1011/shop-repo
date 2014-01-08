@@ -1,20 +1,46 @@
 package shop.Bestellverwaltung.domain;
 
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
+import static javax.persistence.FetchType.EAGER;
+
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.io.Serializable;
 
-
+import javax.persistence.Basic;
+import javax.persistence.Cacheable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OrderColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 //import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-//import org.hibernate.validator.constraints.NotEmpty;
-
+import org.hibernate.validator.constraints.NotEmpty;
+import org.jboss.logging.Logger;
 
 import shop.Kundenverwaltung.domain.Kunde;
 
@@ -23,12 +49,48 @@ import shop.Kundenverwaltung.domain.Kunde;
  */
 
 @XmlRootElement
+@Entity
+//TODO MySQL 5.7 kann einen Index nicht 2x anlegen
+@Table(indexes = {
+	@Index(columnList = "kunde_fk"),
+	@Index(columnList = "erzeugt")
+})
+@NamedQueries({
+	@NamedQuery(name  = Bestellung.FIND_BESTELLUNGEN_BY_KUNDE,
+             query = "SELECT b"
+			            + " FROM   Bestellung b"
+						+ " WHERE  b.kunde = :" + Bestellung.PARAM_KUNDE),
+	@NamedQuery(name  = Bestellung.FIND_KUNDE_BY_ID,
+			    query = "SELECT b.kunde"
+                     + " FROM   Bestellung b"
+			            + " WHERE  b.id = :" + Bestellung.PARAM_ID)
+})
+@NamedEntityGraphs({
+	@NamedEntityGraph(name = Bestellung.GRAPH_LIEFERUNGEN,
+					  attributeNodes = @NamedAttributeNode("lieferungen"))
+})
+@Cacheable
 public class Bestellung implements Serializable  {
 		
 	private static final long serialVersionUID = 4279475449855483352L;
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
+	private static final String PREFIX = "Bestellung.";
+	public static final String FIND_BESTELLUNGEN_BY_KUNDE = PREFIX + "findBestellungenByKunde";
+	public static final String FIND_KUNDE_BY_ID = PREFIX + "findBestellungKundeById";
+	
+	public static final String PARAM_KUNDE = "kunde";
+	public static final String PARAM_ID = "id";
+	
+	public static final String GRAPH_LIEFERUNGEN = PREFIX + "lieferungen";
+	
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
 	private Long id;
 	
+	@ManyToOne
+	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)
 	@XmlTransient
 	private Kunde kunde;
 	
@@ -39,12 +101,23 @@ public class Bestellung implements Serializable  {
 	
 	private boolean versendet;
 	
+	@Transient
 	private URI kundeUri;
 	
-//	@NotEmpty(message = "{bestellung.bestellpositionen.notEmpty}")
-//	@Valid
+	@OneToMany(fetch = EAGER, cascade = { PERSIST, REMOVE })
+	@JoinColumn(name = "bestellung_fk", nullable = false)
+	@OrderColumn(name = "idx", nullable = false)
+	@NotEmpty(message = "{bestellung.bestellpositionen.notEmpty}")
+	@Valid
 	private List<Bestellposition> bestellpositionen;	
 
+	@ManyToMany
+	@JoinTable(name = "bestellung_lieferung",
+			   joinColumns = @JoinColumn(name = "bestellung_fk"),
+			                 inverseJoinColumns = @JoinColumn(name = "lieferung_fk"))
+	@XmlTransient
+	private Set<Lieferung> lieferungen;
+	
 	public Long getId() {
 		return id;
 	}
