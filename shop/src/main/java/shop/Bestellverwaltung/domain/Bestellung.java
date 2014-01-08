@@ -9,9 +9,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.io.Serializable;
+//import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
@@ -35,6 +36,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlElement;
 //import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -43,6 +46,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.jboss.logging.Logger;
 
 import shop.Kundenverwaltung.domain.Kunde;
+import shop.util.persistence.AbstractAuditable;;
 
 /**
  * @author <a href="mailto:koju1020@HS-Karlsruhe.de">Julian Kohlhaas</a>  
@@ -70,7 +74,7 @@ import shop.Kundenverwaltung.domain.Kunde;
 					  attributeNodes = @NamedAttributeNode("lieferungen"))
 })
 @Cacheable
-public class Bestellung implements Serializable  {
+public class Bestellung extends AbstractAuditable  {
 		
 	private static final long serialVersionUID = 4279475449855483352L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
@@ -93,12 +97,12 @@ public class Bestellung implements Serializable  {
 	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)
 	@XmlTransient
 	private Kunde kunde;
-	
+	//TODO bestelldatum entfernen
 	private Date bestelldatum;
-	
+	//TODO gesamtpreis entfernen
 	@NotNull(message = "Eine Bestellung ist bei uns nicht umsonst!")
 	private double gesamtpreis;
-	
+	//TODO boolean versendet entfernen
 	private boolean versendet;
 	
 	@Transient
@@ -117,6 +121,29 @@ public class Bestellung implements Serializable  {
 			                 inverseJoinColumns = @JoinColumn(name = "lieferung_fk"))
 	@XmlTransient
 	private Set<Lieferung> lieferungen;
+	
+	@XmlElement
+	public Date getDatum() {
+		return getErzeugt();
+	}
+	
+	public void setDatum(Date datum) {
+		setErzeugt(datum);
+	}
+	
+	public Bestellung() {
+		super();
+	}
+	
+	public Bestellung(List<Bestellposition> bestellpositionen) {
+		super();
+		this.bestellpositionen = bestellpositionen;
+	}
+	
+	@PostPersist
+	private void postPersist() {
+		LOGGER.debugf("Neue Bestellung mit ID=%d", id);
+	}
 	
 	public Long getId() {
 		return id;
@@ -193,6 +220,39 @@ public class Bestellung implements Serializable  {
 		}
 		bestellpositionen.add(bestellposition);
 		return this;
+	}
+	
+	public Set<Lieferung> getLieferungen() {
+		return lieferungen == null ? null : Collections.unmodifiableSet(lieferungen);
+	}
+	
+	public void setLieferungen(Set<Lieferung> lieferungen) {
+		if (this.lieferungen == null) {
+			this.lieferungen = lieferungen;
+			return;
+		}
+		
+		// Wiederverwendung der vorhandenen Collection
+		this.lieferungen.clear();
+		if (lieferungen != null) {
+			this.lieferungen.addAll(lieferungen);
+		}
+	}
+	
+	public void addLieferung(Lieferung lieferung) {
+		if (lieferungen == null) {
+			lieferungen = new HashSet<>();
+		}
+		lieferungen.add(lieferung);
+	}
+	
+	@XmlTransient
+	public List<Lieferung> getLieferungenAsList() {
+		return lieferungen == null ? null : new ArrayList<>(lieferungen);
+	}
+
+	public void setLieferungenAsList(List<Lieferung> lieferungen) {
+		this.lieferungen = lieferungen == null ? null : new HashSet<>(lieferungen);
 	}
 
 	@Override
