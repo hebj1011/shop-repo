@@ -1,24 +1,95 @@
 package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
-import java.io.Serializable;
+//import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.lang.invoke.MethodHandles;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.jboss.logging.Logger;
+
+//import shop.artikelverwaltung.domain.Artikel;
+import shop.util.persistence.AbstractAuditable;
+
+//import javax.xml.bind.annotation.XmlRootElement;
 
 import shop.Artikelverwaltung.domain.AbstractArtikel;
 
-@XmlRootElement
-public class Bestellposition implements Serializable {
+/**
+ * @author <a href="mailto:koju1020@HS-Karlsruhe.de">Julian Kohlhaas</a>  
+ */
+
+@Entity
+//TODO MySQL 5.7 kann einen Index nicht 2x anlegen
+@Table(indexes =  {
+	@Index(columnList = "bestellung_fk"),
+	@Index(columnList = "artikel_fk")
+})
+@NamedQueries({
+ @NamedQuery(name  = Bestellposition.FIND_LADENHUETER,
+	            query = "SELECT a"
+	            	    + " FROM   Artikel a"
+	            	    + " WHERE  a NOT IN (SELECT bp.artikel FROM Bestellposition bp)")
+})
+public class Bestellposition extends AbstractAuditable {
 	
 	private static final long serialVersionUID = -7656682410415623796L;
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
+	private static final String PREFIX = "Bestellposition.";
+	public static final String FIND_LADENHUETER = PREFIX + "findLadenhueter";
+	private static final int ANZAHL_MIN = 1;
+	
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
 	private long id;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "artikel_fk", nullable = false)
+	@XmlTransient
 	private AbstractArtikel artikel;
+	
+	@Transient
 	private URI artikelUri;
+	
+	@Min(value = ANZAHL_MIN, message = "{bestellposition.anzahl.min}")
+	@Basic(optional = false)
 	private short anzahl;
 	
 	public Bestellposition() {
 		super();
+	}
+	
+	public Bestellposition(AbstractArtikel artikel) {
+		super();
+		this.artikel = artikel;
+		this.anzahl = 1;
+	}
+	
+	public Bestellposition(AbstractArtikel artikel, short anzahl) {
+		super();
+		this.artikel = artikel;
+		this.anzahl = anzahl;
+	}
+	
+	@PostPersist
+	private void postPersist() {
+		LOGGER.debugf("Neue Bestellposition mit ID=%d", id);
 	}
 	
 	public long getId() {
