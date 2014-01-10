@@ -34,7 +34,7 @@ import org.jboss.logging.Logger;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name  = Lieferung.FIND_LIEFERUNGEN_BY_LIEFERNR_FETCH_BESTELLUNGEN,
+	@NamedQuery(name  = Lieferung.FIND_LIEFERUNGEN_BY_LIEFERNR,
                 query = "SELECT l"
                 	    + " FROM Lieferung l "
 			            + " WHERE l.lieferNr LIKE :" + Lieferung.PARAM_LIEFERNR)
