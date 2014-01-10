@@ -95,8 +95,8 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@Inject
 	private transient EntityManager em;
 	
-	@Inject
-	private KundeService ks;
+//	@Inject
+//	private KundeService ks;
 	
 	@Inject
 	@NeueBestellung

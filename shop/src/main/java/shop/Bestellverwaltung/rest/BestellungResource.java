@@ -13,9 +13,9 @@ import java.net.URI;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+//import java.util.Set;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
