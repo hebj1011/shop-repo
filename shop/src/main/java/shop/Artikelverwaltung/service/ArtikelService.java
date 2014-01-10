@@ -3,21 +3,21 @@ package shop.Artikelverwaltung.service;
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 //import java.math.BigDecimal;
-//import java.util.Collections;
-//import java.util.List;
+import java.util.Collections;
+import java.util.List;
 
 import shop.util.Mock;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.Dependent;
-//import javax.inject.Inject;
-//import javax.persistence.EntityManager;
-//import javax.persistence.criteria.CriteriaBuilder;
-//import javax.persistence.criteria.CriteriaQuery;
-//import javax.persistence.criteria.Path;
-//import javax.persistence.criteria.Predicate;
-//import javax.persistence.criteria.Root;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.logging.Logger;
@@ -37,8 +37,8 @@ public class ArtikelService implements Serializable {
 	private static final long serialVersionUID = 3076865030092242363L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
-//	@Inject
-//	private transient EntityManager em;
+	@Inject
+	private transient EntityManager em;
 	
 	@PostConstruct
 	private void postConstruct() {
@@ -69,49 +69,49 @@ public class ArtikelService implements Serializable {
 //		return em.find(AbstractArtikel.class, id);
 //	}
 //	
-//	/**
-//	 * Suche die Artikel zu gegebenen IDs. 
-//	 * @param ids Liste der IDs
-//	 * @return Liste der gefundenen Artikel
-//	 */
-//	public List<AbstractArtikel> findArtikelByIds(List<Long> ids) {
-//		if (ids == null || ids.isEmpty()) {
-//			return Collections.emptyList();
-//		}
-//		
-//		/*
-//		 * SELECT a
-//		 * FROM   Artikel a
-//		 * WHERE  a.id = ? OR a.id = ? OR ...
-//		 */
-//		final CriteriaBuilder builder = em.getCriteriaBuilder();
-//		final CriteriaQuery<AbstractArtikel> criteriaQuery = builder.createQuery(AbstractArtikel.class);
-//		final Root<AbstractArtikel> a = criteriaQuery.from(AbstractArtikel.class);
-//
-//		final Path<Long> idPath = a.get("id");
-//		//final Path<String> idPath = a.get(Artikel_.id);   // Metamodel-Klassen funktionieren nicht mit Eclipse
-//		
-//		Predicate pred = null;
-//		if (ids.size() == 1) {
-//			// Genau 1 id: kein OR notwendig
-//			pred = builder.equal(idPath, ids.get(0));
-//		}
-//		else {
-//			// Mind. 2x id, durch OR verknuepft
-//			final Predicate[] equals = new Predicate[ids.size()];
-//			int i = 0;
-//			for (Long id : ids) {
-//				equals[i++] = builder.equal(idPath, id);
-//			}
-//			
-//			pred = builder.or(equals);
-//		}
-//		
-//		criteriaQuery.where(pred);
-//		
-//		return em.createQuery(criteriaQuery)
-//		         .getResultList();
-//	}
+	/**
+	 * Suche die Artikel zu gegebenen IDs. 
+	 * @param ids Liste der IDs
+	 * @return Liste der gefundenen Artikel
+	 */
+	public List<AbstractArtikel> findArtikelByIds(List<Long> ids) {
+		if (ids == null || ids.isEmpty()) {
+			return Collections.emptyList();
+		}
+		
+		/*
+		 * SELECT a
+		 * FROM   Artikel a
+		 * WHERE  a.id = ? OR a.id = ? OR ...
+		 */
+		final CriteriaBuilder builder = em.getCriteriaBuilder();
+		final CriteriaQuery<AbstractArtikel> criteriaQuery = builder.createQuery(AbstractArtikel.class);
+		final Root<AbstractArtikel> a = criteriaQuery.from(AbstractArtikel.class);
+
+		final Path<Long> idPath = a.get("id");
+		//final Path<String> idPath = a.get(Artikel_.id);   // Metamodel-Klassen funktionieren nicht mit Eclipse
+		
+		Predicate pred = null;
+		if (ids.size() == 1) {
+			// Genau 1 id: kein OR notwendig
+			pred = builder.equal(idPath, ids.get(0));
+		}
+		else {
+			// Mind. 2x id, durch OR verknuepft
+			final Predicate[] equals = new Predicate[ids.size()];
+			int i = 0;
+			for (Long id : ids) {
+				equals[i++] = builder.equal(idPath, id);
+			}
+			
+			pred = builder.or(equals);
+		}
+		
+		criteriaQuery.where(pred);
+		
+		return em.createQuery(criteriaQuery)
+		         .getResultList();
+	}
 //
 //	
 //	/**

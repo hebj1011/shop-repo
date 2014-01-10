@@ -53,8 +53,8 @@ public class Lieferung implements Serializable {
 	private static final int LIEFERNR_LENGTH = 12;
 	
 	private static final String PREFIX = "Lieferung.";
-	public static final String FIND_LIEFERUNGEN_BY_LIEFERNR_FETCH_BESTELLUNGEN =
-		                       PREFIX + "findLieferungenByLieferNrFetchBestellungen";
+	public static final String FIND_LIEFERUNGEN_BY_LIEFERNR =
+		                       PREFIX + "findLieferungenByLieferNr";
 	public static final String PARAM_LIEFERNR = "lieferNr";
 	
 	public static final String GRAPH_BESTELLUNGEN = PREFIX + "bestellungen";

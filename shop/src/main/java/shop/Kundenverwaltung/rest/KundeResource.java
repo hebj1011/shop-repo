@@ -96,12 +96,12 @@ public class KundeResource {
 		kunde.setBestellungenUri(uri);
 	}
 
-	private URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
+	public URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
 		return uriHelper.getUri(KundeResource.class,
 				"findBestellungenByKundeId", kunde.getId(), uriInfo);
 	}
 
-	private Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
+	public Link[] getTransitionalLinks(Kunde kunde, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriKunde(kunde, uriInfo))
 				.rel(SELF_LINK).build();
 

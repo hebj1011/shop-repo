@@ -15,6 +15,7 @@ public final class Constants {
 	
 	// JPA
 	public static final Long KEINE_ID = null;
+	public static final String LOADGRAPH = "javax.persistence.loadgraph";
 
 	private Constants() { }
 }
