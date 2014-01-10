@@ -32,7 +32,7 @@ import shop.Bestellverwaltung.domain.Bestellposition;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Bestellverwaltung.domain.Lieferung;
 import shop.Kundenverwaltung.domain.Kunde;
-import shop.Kundenverwaltung.service.KundeService;
+//import shop.Kundenverwaltung.service.KundeService;
 //import shop.util.Mock;
 //import shop.Bestellverwaltung.service.Mock;
 import shop.util.interceptor.Log;
