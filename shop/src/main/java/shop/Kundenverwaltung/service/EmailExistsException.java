@@ -1,8 +1,8 @@
 package shop.Kundenverwaltung.service;
 
-import javax.ejb.ApplicationException;
-
-@ApplicationException(rollback = true)
+/**
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
+ */
 public class EmailExistsException extends AbstractKundeServiceException {
 	private static final long serialVersionUID = 4867667611097919943L;
 	
