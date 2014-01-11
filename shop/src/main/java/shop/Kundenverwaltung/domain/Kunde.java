@@ -111,10 +111,10 @@ import shop.util.persistence.AbstractAuditable;
 			    query = "SELECT k"
 			            + " FROM  Kunde k"
 			    		+ " WHERE k.seit = :" + Kunde.PARAM_KUNDE_SEIT),
-	@NamedQuery(name = Kunde.FIND_PRIVATKUNDEN_FIRMENKUNDEN,
-			    query = "SELECT k"
-			            + " FROM  Kunde k"
-			    		+ " WHERE TYPE(k) IN (Privatkunde, Firmenkunde)")
+//	@NamedQuery(name = Kunde.FIND_PRIVATKUNDEN_FIRMENKUNDEN,
+//			    query = "SELECT k"
+//			            + " FROM  Kunde k"
+//			    		+ " WHERE TYPE(k) IN (Privatkunde, Firmenkunde)")
 })
 @NamedEntityGraphs({
 	@NamedEntityGraph(name = Kunde.GRAPH_BESTELLUNGEN,
