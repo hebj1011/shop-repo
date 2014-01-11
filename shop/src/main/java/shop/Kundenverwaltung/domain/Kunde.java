@@ -47,11 +47,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonSubTypes.Type;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.ScriptAssert;
@@ -225,12 +222,12 @@ public abstract class Kunde extends AbstractAuditable {
 	
 	@Transient
 	private URI bestellungenUri;
-//TODO ?!
-//	@OneToMany
-//	@JoinColumn(name = "kunde_fk", nullable = false)
-//	@OrderColumn(name = "idx", nullable = false)
-//	@XmlTransient
-//	private List<Wartungsvertrag> wartungsvertraege;
+
+	@OneToMany
+	@JoinColumn(name = "kunde_fk", nullable = false)
+	@OrderColumn(name = "idx", nullable = false)
+	@XmlTransient
+	private List<Wartungsvertrag> wartungsvertraege;
 
 	@PostPersist
 	protected void postPersist() {
@@ -393,35 +390,35 @@ public abstract class Kunde extends AbstractAuditable {
 	public void setBestellungenUri(URI bestellungenUri) {
 		this.bestellungenUri = bestellungenUri;
 	}
-//TODO ?!
-//	public List<Wartungsvertrag> getWartungsvertraege() {
-//		if (wartungsvertraege == null) {
-//			return null;
-//		}
-//		
-//		return Collections.unmodifiableList(wartungsvertraege);
-//	}
-//
-//	public void setWartungsvertraege(List<Wartungsvertrag> wartungsvertraege) {
-//		if (this.wartungsvertraege == null) {
-//			this.wartungsvertraege = wartungsvertraege;
-//			return;
-//		}
-//		
-//		// Wiederverwendung der vorhandenen Collection
-//		this.wartungsvertraege.clear();
-//		if (wartungsvertraege != null) {
-//			this.wartungsvertraege.addAll(wartungsvertraege);
-//		}
-//	}
-//	
-//	public Kunde addWartungsvertrag(Wartungsvertrag wartungsvertrag) {
-//		if (wartungsvertraege == null) {
-//			wartungsvertraege = new ArrayList<>();
-//		}
-//		wartungsvertraege.add(wartungsvertrag);
-//		return this;
-//	}
+
+	public List<Wartungsvertrag> getWartungsvertraege() {
+		if (wartungsvertraege == null) {
+			return null;
+		}
+		
+		return Collections.unmodifiableList(wartungsvertraege);
+	}
+
+	public void setWartungsvertraege(List<Wartungsvertrag> wartungsvertraege) {
+		if (this.wartungsvertraege == null) {
+			this.wartungsvertraege = wartungsvertraege;
+			return;
+		}
+		
+		// Wiederverwendung der vorhandenen Collection
+		this.wartungsvertraege.clear();
+		if (wartungsvertraege != null) {
+			this.wartungsvertraege.addAll(wartungsvertraege);
+		}
+	}
+	
+	public Kunde addWartungsvertrag(Wartungsvertrag wartungsvertrag) {
+		if (wartungsvertraege == null) {
+			wartungsvertraege = new ArrayList<>();
+		}
+		wartungsvertraege.add(wartungsvertrag);
+		return this;
+	}
 
 
 	@Override
