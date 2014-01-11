@@ -16,6 +16,9 @@ import shop.util.interceptor.Log;
 import shop.util.rest.Messages;
 
 
+/**
+ * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
+ */
 @Provider
 @ApplicationScoped
 @Log
