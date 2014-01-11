@@ -123,7 +123,7 @@ public class BestellungResource {
 		}
 	}
 	
-	private Link[] getTransitionalLinks(Bestellung bestellung, UriInfo uriInfo) {
+	public Link[] getTransitionalLinks(Bestellung bestellung, UriInfo uriInfo) {
 		final Link self = Link.fromUri(getUriBestellung(bestellung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
