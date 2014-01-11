@@ -32,7 +32,7 @@ import shop.Bestellverwaltung.domain.Bestellposition;
 import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Bestellverwaltung.domain.Lieferung;
 import shop.Kundenverwaltung.domain.Kunde;
-//import shop.Kundenverwaltung.service.KundeService;
+import shop.Kundenverwaltung.service.KundeService;
 //import shop.util.Mock;
 //import shop.Bestellverwaltung.service.Mock;
 import shop.util.interceptor.Log;
@@ -95,8 +95,8 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@Inject
 	private transient EntityManager em;
 	
-//	@Inject
-//	private KundeService ks;
+	@Inject
+	private KundeService ks;
 	
 	@Inject
 	@NeueBestellung
@@ -216,14 +216,14 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	//TODO Fertig machen .... vorsichtshalber alles auskommentiert
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
-//		if (bestellung == null) {
-//			return null;
-//		}
-//		
-//		// Den persistenten Kunden mit der transienten Bestellung verknuepfen
-//		final Kunde kunde = ks.findKundeById(kundeId, KundeService.FetchType.MIT_BESTELLUNGEN);
-//		return createBestellung(bestellung, kunde);
-		return null;
+		if (bestellung == null) {
+			return null;
+		}
+		
+		// Den persistenten Kunden mit der transienten Bestellung verknuepfen
+		final Kunde kunde = ks.findKundeById(kundeId, KundeService.FetchType.MIT_BESTELLUNGEN);
+		return createBestellung(bestellung, kunde);
+//		return null;
 	}
 	
 	/**
@@ -235,32 +235,32 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	//TODO Fertig machen .... vorsichtshalber alles auskommentiert
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
-//		if (bestellung == null) {
-//			return null;
-//		}
-//		
-//		// Den persistenten Kunden mit der transienten Bestellung verknuepfen
-//		if (!em.contains(kunde)) {
-//			kunde = ks.findKundeById(kunde.getId(), KundeService.FetchType.MIT_BESTELLUNGEN);
-//		}
-//		kunde.addBestellung(bestellung);
-//		bestellung.setKunde(kunde);
-//		
-//		// Vor dem Abspeichern IDs zuruecksetzen:
-//		// IDs koennten einen Wert != null haben, wenn sie durch einen Web Service uebertragen wurden
-//		bestellung.setId(KEINE_ID);
-//		for (Bestellposition bp : bestellung.getBestellpositionen()) {
-//			bp.setId(KEINE_ID);
-//		}
-//		// FIXME JDK 8 hat Lambda-Ausdruecke
-//		//bestellung.getBestellpositionen()
-//		//          .forEach(bp -> bp.setId(KEINE_ID));
-//		
-//		em.persist(bestellung);
-//		event.fire(bestellung);
-//
-//		return bestellung;
-		return null;
+		if (bestellung == null) {
+			return null;
+		}
+		
+		// Den persistenten Kunden mit der transienten Bestellung verknuepfen
+		if (!em.contains(kunde)) {
+			kunde = ks.findKundeById(kunde.getId(), KundeService.FetchType.MIT_BESTELLUNGEN);
+		}
+		kunde.addBestellung(bestellung);
+		bestellung.setKunde(kunde);
+		
+		// Vor dem Abspeichern IDs zuruecksetzen:
+		// IDs koennten einen Wert != null haben, wenn sie durch einen Web Service uebertragen wurden
+		bestellung.setId(KEINE_ID);
+		for (Bestellposition bp : bestellung.getBestellpositionen()) {
+			bp.setId(KEINE_ID);
+		}
+		// FIXME JDK 8 hat Lambda-Ausdruecke
+		//bestellung.getBestellpositionen()
+		//          .forEach(bp -> bp.setId(KEINE_ID));
+		
+		em.persist(bestellung);
+		event.fire(bestellung);
+
+		return bestellung;
+//		return null;
 	}
 	
 	/**

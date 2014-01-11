@@ -1,5 +1,6 @@
 package shop.Bestellverwaltung.rest;
 
+import static shop.Bestellverwaltung.service.BestellungService.FetchType.NUR_BESTELLUNG;
 import static shop.util.Constants.SELF_LINK;
 import static shop.util.Constants.ADD_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -77,20 +78,20 @@ public class BestellungResource {
 	@Inject
 	private KundeResource kundeResource;
 	
-//	@GET
-//	@Path("{id:[1-9][0-9]*}")
-//	public Response findBestellungById(@PathParam("id") Long id) {
-//		final Bestellung bestellung = bs.findBestellungById(id,NUR_BESTELLUNG);
-//
-//		setStructuralLinks(bestellung, uriInfo);
-//		
-//		// Link-Header setzen
-//		final Response response = Response.ok(bestellung)
-//                                          .links(getTransitionalLinks(bestellung, uriInfo))
-//                                          .build();
-//		
-//		return response;
-//	}
+	@GET
+	@Path("{id:[1-9][0-9]*}")
+	public Response findBestellungById(@PathParam("id") Long id) {
+		final Bestellung bestellung = bs.findBestellungById(id, NUR_BESTELLUNG);
+
+		setStructuralLinks(bestellung, uriInfo);
+		
+		// Link-Header setzen
+		final Response response = Response.ok(bestellung)
+                                          .links(getTransitionalLinks(bestellung, uriInfo))
+                                          .build();
+		
+		return response;
+	}
 	
 	@GET
 	@Path("{id:[1-9][0-9]*}/kunde")
