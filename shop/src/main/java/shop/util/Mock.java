@@ -36,125 +36,125 @@ public final class Mock {
 	private static final int ERSVAL = 300;
 	private static final int SICHVAL = 400;
 	private static final double GESAMT = 50.4;
-
-	public static Kunde findKundeById(Long id) {
-		if (id > MAX_ID) {
-			return null;
-		}
-		
-		final Kunde kunde = new Kunde(); //id % 2 == 1 ? new Privatkunde() : new Firmenkunde();
-		kunde.setId(id);
-		kunde.setVorname("Vorname");
-		kunde.setNachname("Nachname");
-		kunde.setEmail("" + id + "@hska.de");
-		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
-		final Date seit = seitCal.getTime();
-		kunde.setSeit(seit);
-		
-		final Adresse adresse = new Adresse();
-		adresse.setId(id + 1);        // andere ID fuer die Adresse
-		adresse.setPlz("12345");
-		adresse.setOrt("Testort");
-		adresse.setStrasse("Testweg");
-		adresse.setHausnummer("12");
-		adresse.setKunde(kunde);
-		kunde.setAdresse(adresse);
-		
-//		if (kunde.getClass().equals(Privatkunde.class)) {
-//			final Privatkunde privatkunde = (Privatkunde) kunde;
-//			final Set<HobbyType> hobbies = new HashSet<>();
-//			hobbies.add(HobbyType.LESEN);
-//			hobbies.add(HobbyType.REISEN);
-//			privatkunde.setHobbies(hobbies);
+//TODO Fehler korrigieren
+//	public static Kunde findKundeById(Long id) {
+//		if (id > MAX_ID) {
+//			return null;
 //		}
-		
-		return kunde;
-	}
-
-	public static List<Kunde> findAllKunden() {
-		final int anzahl = MAX_KUNDEN;
-		final List<Kunde> kunden = new ArrayList<>(anzahl);
-		for (int i = 1; i <= anzahl; i++) {
-			final Kunde kunde = findKundeById(Long.valueOf(i));
-			kunden.add(kunde);			
-		}
-		return kunden;
-	}
-
-	public static List<Kunde> findKundenByVorname(String vorname) {
-		final int anzahl = vorname.length();
-		final List<Kunde> kunden = new ArrayList<>(anzahl);
-		for (int i = 1; i <= anzahl; i++) {
-			final Kunde kunde = findKundeById(Long.valueOf(i));
-			kunde.setNachname(vorname);
-			kunden.add(kunde);			
-		}
-		return kunden;
-	}
-	public static List<Kunde> findKundenByNachname(String nachname) {
-		final int anzahl = nachname.length();
-		final List<Kunde> kunden = new ArrayList<>(anzahl);
-		for (int i = 1; i <= anzahl; i++) {
-			final Kunde kunde = findKundeById(Long.valueOf(i));
-			kunde.setNachname(nachname);
-			kunden.add(kunde);			
-		}
-		return kunden;
-	}
-	public static Kunde findKundeByEmail(String email) {
-		if (email.startsWith("x")) {
-			return null;
-		}
-		
-		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
-		kunde.setId(Long.valueOf(email.length()));
-		kunde.setVorname("Vorname");
-		kunde.setNachname("Nachname");
-		kunde.setEmail(email);
-		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
-		final Date seit = seitCal.getTime();
-		kunde.setSeit(seit);
-		
-		final Adresse adresse = new Adresse();
-		adresse.setId(kunde.getId() + 1);        // andere ID fuer die Adresse
-		adresse.setPlz("12345");
-		adresse.setOrt("Testort");
-		adresse.setKunde(kunde);
-		kunde.setAdresse(adresse);
-		
-//		if (kunde.getClass().equals(Privatkunde.class)) {
-//			final Privatkunde privatkunde = (Privatkunde) kunde;
-//			final Set<HobbyType> hobbies = new HashSet<>();
-//			hobbies.add(HobbyType.LESEN);
-//			hobbies.add(HobbyType.REISEN);
-//			privatkunde.setHobbies(hobbies);
+//		
+//		final Kunde kunde = new Kunde(); //id % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+//		kunde.setId(id);
+//		kunde.setVorname("Vorname");
+//		kunde.setNachname("Nachname");
+//		kunde.setEmail("" + id + "@hska.de");
+//		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+//		final Date seit = seitCal.getTime();
+//		kunde.setSeit(seit);
+//		
+//		final Adresse adresse = new Adresse();
+//		adresse.setId(id + 1);        // andere ID fuer die Adresse
+//		adresse.setPlz("12345");
+//		adresse.setOrt("Testort");
+//		adresse.setStrasse("Testweg");
+//		adresse.setHausnr("12");
+//		adresse.setKunde(kunde);
+//		kunde.setAdresse(adresse);
+//		
+////		if (kunde.getClass().equals(Privatkunde.class)) {
+////			final Privatkunde privatkunde = (Privatkunde) kunde;
+////			final Set<HobbyType> hobbies = new HashSet<>();
+////			hobbies.add(HobbyType.LESEN);
+////			hobbies.add(HobbyType.REISEN);
+////			privatkunde.setHobbies(hobbies);
+////		}
+//		
+//		return kunde;
+//	}
+//
+//	public static List<Kunde> findAllKunden() {
+//		final int anzahl = MAX_KUNDEN;
+//		final List<Kunde> kunden = new ArrayList<>(anzahl);
+//		for (int i = 1; i <= anzahl; i++) {
+//			final Kunde kunde = findKundeById(Long.valueOf(i));
+//			kunden.add(kunde);			
 //		}
-		
-		return kunde;
-	}
-	public static Kunde findKundeByPlz(String plz) {
-		if (plz == null) {
-			return null;
-		}
-		
-		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
-		kunde.setId(Long.valueOf(plz.length()));
-		kunde.setVorname("Vorname");
-		kunde.setNachname("Nachname");
-		kunde.setEmail("" + Long.valueOf(plz.length()) + "@hska.de");
-		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
-		final Date seit = seitCal.getTime();
-		kunde.setSeit(seit);
-		
-		final Adresse adresse = new Adresse();
-		adresse.setId(kunde.getId() + 1);        // andere ID fuer die Adresse
-		adresse.setPlz(plz);
-		adresse.setOrt("Testort");
-		adresse.setKunde(kunde);
-		kunde.setAdresse(adresse);
-		
-		return kunde;
-	}
+//		return kunden;
+//	}
+//
+//	public static List<Kunde> findKundenByVorname(String vorname) {
+//		final int anzahl = vorname.length();
+//		final List<Kunde> kunden = new ArrayList<>(anzahl);
+//		for (int i = 1; i <= anzahl; i++) {
+//			final Kunde kunde = findKundeById(Long.valueOf(i));
+//			kunde.setNachname(vorname);
+//			kunden.add(kunde);			
+//		}
+//		return kunden;
+//	}
+//	public static List<Kunde> findKundenByNachname(String nachname) {
+//		final int anzahl = nachname.length();
+//		final List<Kunde> kunden = new ArrayList<>(anzahl);
+//		for (int i = 1; i <= anzahl; i++) {
+//			final Kunde kunde = findKundeById(Long.valueOf(i));
+//			kunde.setNachname(nachname);
+//			kunden.add(kunde);			
+//		}
+//		return kunden;
+//	}
+//	public static Kunde findKundeByEmail(String email) {
+//		if (email.startsWith("x")) {
+//			return null;
+//		}
+//		
+//		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+//		kunde.setId(Long.valueOf(email.length()));
+//		kunde.setVorname("Vorname");
+//		kunde.setNachname("Nachname");
+//		kunde.setEmail(email);
+//		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+//		final Date seit = seitCal.getTime();
+//		kunde.setSeit(seit);
+//		
+//		final Adresse adresse = new Adresse();
+//		adresse.setId(kunde.getId() + 1);        // andere ID fuer die Adresse
+//		adresse.setPlz("12345");
+//		adresse.setOrt("Testort");
+//		adresse.setKunde(kunde);
+//		kunde.setAdresse(adresse);
+//		
+////		if (kunde.getClass().equals(Privatkunde.class)) {
+////			final Privatkunde privatkunde = (Privatkunde) kunde;
+////			final Set<HobbyType> hobbies = new HashSet<>();
+////			hobbies.add(HobbyType.LESEN);
+////			hobbies.add(HobbyType.REISEN);
+////			privatkunde.setHobbies(hobbies);
+////		}
+//		
+//		return kunde;
+//	}
+//	public static Kunde findKundeByPlz(String plz) {
+//		if (plz == null) {
+//			return null;
+//		}
+//		
+//		final Kunde kunde = new Kunde(); //email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+//		kunde.setId(Long.valueOf(plz.length()));
+//		kunde.setVorname("Vorname");
+//		kunde.setNachname("Nachname");
+//		kunde.setEmail("" + Long.valueOf(plz.length()) + "@hska.de");
+//		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+//		final Date seit = seitCal.getTime();
+//		kunde.setSeit(seit);
+//		
+//		final Adresse adresse = new Adresse();
+//		adresse.setId(kunde.getId() + 1);        // andere ID fuer die Adresse
+//		adresse.setPlz(plz);
+//		adresse.setOrt("Testort");
+//		adresse.setKunde(kunde);
+//		kunde.setAdresse(adresse);
+//		
+//		return kunde;
+//	}
 	public static List<Bestellung> findBestellungenByKunde(Kunde kunde) {
 		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
 		final int anzahl = kunde.getId().intValue() % MAX_BESTELLUNGEN + 1;  // 1, 2, 3 oder 4 Bestellungen
@@ -173,14 +173,14 @@ public final class Mock {
 		if (id > MAX_ID) {
 			return null;
 		}
-
-		final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
+//TODO wurde ausgeklammert genau eine Zeile darunter gibt sonst Fehlernund set Kunde auch
+		//final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setId(id);
 		bestellung.setGesamtpreis(GESAMT);
 		bestellung.setVersendet(false);
-		bestellung.setKunde(kunde);
+		//bestellung.setKunde(kunde);
 		
 		return bestellung;
 	}
