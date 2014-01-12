@@ -35,7 +35,7 @@ import javax.persistence.PostPersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 //import javax.xml.bind.annotation.XmlElement;
 //import javax.validation.Valid;
@@ -97,11 +97,7 @@ public class Bestellung extends AbstractAuditable  {
 	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)
 	@XmlTransient
 	private Kunde kunde;
-	//TODO bestelldatum entfernen
-	private Date bestelldatum;
-	//TODO gesamtpreis entfernen
-	@NotNull(message = "Eine Bestellung ist bei uns nicht umsonst!")
-	private double gesamtpreis;
+
 	//TODO boolean versendet entfernen
 	private boolean versendet;
 	
@@ -159,22 +155,6 @@ public class Bestellung extends AbstractAuditable  {
 
 	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
-	}
-
-	public Date getBestelldatum() {
-		return bestelldatum;
-	}
-
-	public void setBestelldatum(Date bestelldatum) {
-		this.bestelldatum = bestelldatum;
-	}
-
-	public double getGesamtpreis() {
-		return gesamtpreis;
-	}
-
-	public void setGesamtpreis(double gesamtpreis) {
-		this.gesamtpreis = gesamtpreis;
 	}
 
 	public boolean isVersendet() {
@@ -259,11 +239,6 @@ public class Bestellung extends AbstractAuditable  {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((bestelldatum == null) ? 0 : bestelldatum.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(gesamtpreis);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
 		result = prime * result + (versendet ? 1231 : 1237);
@@ -279,15 +254,6 @@ public class Bestellung extends AbstractAuditable  {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellung other = (Bestellung) obj;
-		if (bestelldatum == null) {
-			if (other.bestelldatum != null)
-				return false;
-		} 
-			else if (!bestelldatum.equals(other.bestelldatum))
-			return false;
-		if (Double.doubleToLongBits(gesamtpreis) != Double
-				.doubleToLongBits(other.gesamtpreis))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -308,7 +274,7 @@ public class Bestellung extends AbstractAuditable  {
 	@Override
 	public String toString() {
 		return "Bestellung [id=" + id + ", kunde=" + kunde + "kundeUri=" + kundeUri
-				+ ", bestelldatum=" + bestelldatum + "]";
+				+ "]";
 	}
 
 }

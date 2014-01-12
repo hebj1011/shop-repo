@@ -24,16 +24,16 @@ public final class Mock {
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final int MAX_ID = 99;
-	private static final int MAX_KUNDEN = 8;
+//	private static final int MAX_KUNDEN = 8;
 	private static final int MAX_ARTIKEL = 500;
 	private static final int MAX_BESTELLUNGEN = 4;
-	private static final int JAHR = 2001;
-	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
-	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
+//	private static final int JAHR = 2001;
+//	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
+//	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
 	private static final int FAHVAL = 200;
 	private static final int ERSVAL = 300;
 	private static final int SICHVAL = 400;
-	private static final double GESAMT = 50.4;
+//	private static final double GESAMT = 50.4;
 //TODO Fehler korrigieren
 //	public static Kunde findKundeById(Long id) {
 //		if (id > MAX_ID) {
@@ -176,7 +176,6 @@ public final class Mock {
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setId(id);
-		bestellung.setGesamtpreis(GESAMT);
 		bestellung.setVersendet(false);
 		//bestellung.setKunde(kunde);
 		
