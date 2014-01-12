@@ -34,6 +34,7 @@ import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -57,8 +58,7 @@ import org.jboss.logging.Logger;
  */
 
 @Entity
-@Table(indexes = @Index(columnList = "bezeichnung"))
-////TODO Auskommentieren wenn angelegt
+@Table(name = "artikel",indexes = @Index(columnList = "bezeichnung"))
 @NamedQueries({
 	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
             	query = "SELECT      a"
@@ -109,22 +109,21 @@ public abstract class AbstractArtikel implements Serializable {
 		
 	@Id
 	@GeneratedValue
-	@Column(nullable = false, updatable = false)
+	@Basic(optional = false)
 	private Long id = KEINE_ID;
 	
-	@Column(length = NAME_LENGTH_MAX, nullable = false)
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(max = NAME_LENGTH_MAX, message = "{artikel.name.length}")
-	private String name = "";
+	private String name;
 	
-	@Column(precision = 8, scale = 2)
-	@NotNull(message = "{artikel.einzelpreis.notNull}")
+	@Digits(integer = 10, fraction = 2, message = "{artikel.einzelpreispreis.digits}")
 	private BigDecimal einzelpreis;
 	
 	@Min(0)
 	@Max(100000)
 	private Integer bestand;
 	
+	@Basic(optional = false)
 	private boolean ausgesondert;
 	
 	@Basic(optional = false)
