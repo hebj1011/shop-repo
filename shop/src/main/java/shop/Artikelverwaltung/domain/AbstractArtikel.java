@@ -59,6 +59,8 @@ import org.jboss.logging.Logger;
 
 @Entity
 @Table(name = "artikel",indexes = @Index(columnList = "bezeichnung"))
+@Inheritance
+@DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({
 	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
             	query = "SELECT      a"
