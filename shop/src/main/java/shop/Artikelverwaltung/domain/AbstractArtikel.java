@@ -1,83 +1,83 @@
 package shop.Artikelverwaltung.domain;
 
 import static shop.util.Constants.KEINE_ID;
-//import static javax.persistence.TemporalType.TIMESTAMP;
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
-//import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
-//import java.util.Date;
+import java.util.Date;
 
-//import javax.persistence.Basic;
-//import javax.persistence.Column;
-//import javax.persistence.DiscriminatorColumn;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import javax.persistence.Index;
-//import javax.persistence.NamedQueries;
-//import javax.persistence.Inheritance;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.NamedAttributeNode;
-//import javax.persistence.NamedEntityGraph;
-//import javax.persistence.NamedEntityGraphs;
-//import javax.persistence.NamedQuery;
-//import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
-//import javax.persistence.OrderColumn;
-//import javax.persistence.PostLoad;
-//import javax.persistence.PostPersist;
-//import javax.persistence.PrePersist;
-//import javax.persistence.PreUpdate;
-//import javax.persistence.Table;
-//import javax.persistence.Temporal;
-//import javax.persistence.Transient;
-//import javax.validation.Valid;
-//import javax.validation.constraints.DecimalMax;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.NamedQueries;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Past;
-//import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-//import javax.validation.groups.Default;
+import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-//import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonSubTypes.Type;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
-//import org.hibernate.validator.constraints.Email;
-//import org.hibernate.validator.constraints.ScriptAssert;
-//import org.jboss.logging.Logger;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.ScriptAssert;
+import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
  */
 
-//@Entity
-//@Table(indexes = @Index(columnList = "bezeichnung"))
+@Entity
+@Table(indexes = @Index(columnList = "bezeichnung"))
 ////TODO Auskommentieren wenn angelegt
-//@NamedQueries({
-//	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
-//            	query = "SELECT      a"
-//            	        + " FROM     Artikel a"
-//						+ " WHERE    a.ausgesondert = FALSE"
-//                        + " ORDER BY a.id ASC"),
-//	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_BY_NAME,
-//            	query = "SELECT      a"
-//                        + " FROM     Artikel a"
-//						+ " WHERE    a.name LIKE :" + AbstractArtikel.PARAM_NAME
-//						+ "          AND a.ausgesondert = FALSE"
-//			 	        + " ORDER BY a.id ASC"),
-//   	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
-//            	query = "SELECT      a"
-//                        + " FROM     Artikel a"
-//						+ " WHERE    a.preis < :" + AbstractArtikel.PARAM_PREIS
-//			 	        + " ORDER BY a.id ASC")
-//})
-//
+@NamedQueries({
+	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
+            	query = "SELECT      a"
+            	        + " FROM     Artikel a"
+						+ " WHERE    a.ausgesondert = FALSE"
+                        + " ORDER BY a.id ASC"),
+	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_BY_NAME,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.name LIKE :" + AbstractArtikel.PARAM_NAME
+						+ "          AND a.ausgesondert = FALSE"
+			 	        + " ORDER BY a.id ASC"),
+   	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.preis < :" + AbstractArtikel.PARAM_PREIS
+			 	        + " ORDER BY a.id ASC")
+})
+
 
 @XmlRootElement
 @XmlSeeAlso({ Ersatzteil.class, Fahrrad.class, Sicherheitszubehoer.class })
@@ -91,7 +91,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 public abstract class AbstractArtikel implements Serializable {
 	
 	private static final long serialVersionUID = -4773398465078397947L;
-//	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	public static final String ERSATZTEIL = "E";
 	public static final String FAHRRAD = "F";
@@ -107,17 +107,17 @@ public abstract class AbstractArtikel implements Serializable {
 	public static final String PARAM_NAME = "name";
 	public static final String PARAM_PREIS = "preis";
 		
-//	@Id
-//	@GeneratedValue
-//	@Column(nullable = false, updatable = false)
+	@Id
+	@GeneratedValue
+	@Column(nullable = false, updatable = false)
 	private Long id = KEINE_ID;
 	
-//	@Column(length = NAME_LENGTH_MAX, nullable = false)
+	@Column(length = NAME_LENGTH_MAX, nullable = false)
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(max = NAME_LENGTH_MAX, message = "{artikel.name.length}")
 	private String name = "";
 	
-//	@Column(precision = 8, scale = 2)
+	@Column(precision = 8, scale = 2)
 	@NotNull(message = "{artikel.einzelpreis.notNull}")
 	private BigDecimal einzelpreis;
 	
@@ -127,38 +127,38 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	private boolean ausgesondert;
 	
-//	@Basic(optional = false)
-//	@Temporal(TIMESTAMP)
-//	@XmlTransient
-//	private Date erzeugt;
-//
-//	@Basic(optional = false)
-//	@Temporal(TIMESTAMP)
-//	@XmlTransient
-//	private Date aktualisiert;
-//	
-//	@PrePersist
-//	protected void prePersist() {
-//		erzeugt = new Date();
-//		aktualisiert = new Date();
-//	}
-//	
-//	@PostPersist
-//	protected void postPersist() {
-//		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
-//	}
-//	
-//	@PreUpdate
-//	protected void preUpdate() {
-//		aktualisiert = new Date();
-//	}
-//	
-//	public void setValues(AbstractArtikel a) {
-//		name = a.name;
-//		einzelpreis = a.einzelpreis;
-//		bestand = a.bestand;
-//	}
-//		
+	@Basic(optional = false)
+	@Temporal(TIMESTAMP)
+	@XmlTransient
+	private Date erzeugt;
+
+	@Basic(optional = false)
+	@Temporal(TIMESTAMP)
+	@XmlTransient
+	private Date aktualisiert;
+	
+	@PrePersist
+	protected void prePersist() {
+		erzeugt = new Date();
+		aktualisiert = new Date();
+	}
+	
+	@PostPersist
+	protected void postPersist() {
+		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
+	}
+	
+	@PreUpdate
+	protected void preUpdate() {
+		aktualisiert = new Date();
+	}
+	
+	public void setValues(AbstractArtikel a) {
+		name = a.name;
+		einzelpreis = a.einzelpreis;
+		bestand = a.bestand;
+	}
+		
 	public Long getId() {
 		return id;
 	}
@@ -191,21 +191,21 @@ public abstract class AbstractArtikel implements Serializable {
 	public void setAusgesondert(boolean ausgesondert) {
 		this.ausgesondert = ausgesondert;
 	}
-//	public Date getErzeugt() {
-//		return erzeugt == null ? null : (Date) erzeugt.clone();
-//	}
-//
-//	public void setErzeugt(Date erzeugt) {
-//		this.erzeugt = erzeugt == null ? null : (Date) erzeugt.clone();
-//	}
-//
-//	public Date getAktualisiert() {
-//		return aktualisiert == null ? null : (Date) aktualisiert.clone();
-//	}
-//
-//	public void setAktualisiert(Date aktualisiert) {
-//		this.aktualisiert = aktualisiert == null ? null : (Date) aktualisiert.clone();
-//	}
+	public Date getErzeugt() {
+		return erzeugt == null ? null : (Date) erzeugt.clone();
+	}
+
+	public void setErzeugt(Date erzeugt) {
+		this.erzeugt = erzeugt == null ? null : (Date) erzeugt.clone();
+	}
+
+	public Date getAktualisiert() {
+		return aktualisiert == null ? null : (Date) aktualisiert.clone();
+	}
+
+	public void setAktualisiert(Date aktualisiert) {
+		this.aktualisiert = aktualisiert == null ? null : (Date) aktualisiert.clone();
+	}
 	
 	@Override
 	public int hashCode() {
@@ -248,9 +248,9 @@ public abstract class AbstractArtikel implements Serializable {
 	@Override
 	public String toString() {
 		return "Artikel [ID=" + id + ", name=" + name
-		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert + "]";
-//		       + ", erzeugt=" + erzeugt
-//			   + ", aktualisiert=" + aktualisiert + "]";
+		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert + "]"
+		       + ", erzeugt=" + erzeugt
+			   + ", aktualisiert=" + aktualisiert + "]";
 	}
 
 }
