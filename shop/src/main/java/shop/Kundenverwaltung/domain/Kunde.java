@@ -39,6 +39,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -200,13 +201,13 @@ public abstract class Kunde extends AbstractAuditable {
 	@Transient
 	private String passwordWdh;
 	
-//	@AssertTrue(groups = PasswordGroup.class, message = "{kunde.password.notEqual}")
-//	public boolean isPasswordEqual() {
-//		if (password == null) {
-//			return passwordWdh == null;
-//		}
-//		return password.equals(passwordWdh);
-//	}
+	@AssertTrue(groups = PasswordGroup.class, message = "{kunde.password.notEqual}")
+	public boolean isPasswordEqual() {
+		if (password == null) {
+			return passwordWdh == null;
+		}
+		return password.equals(passwordWdh);
+	}
 	
 	@OneToOne(cascade = { PERSIST, REMOVE }, mappedBy = "kunde")
 	@Valid
