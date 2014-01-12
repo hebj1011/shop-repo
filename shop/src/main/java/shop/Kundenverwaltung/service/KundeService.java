@@ -36,7 +36,7 @@ import shop.util.interceptor.Log;
 
 
 /**
- * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
+ * @author <a href="mailto:hosi1015@HS-Karlsruhe.de">Simon Holzmayer</a>
  */
 @Dependent
 @Log
