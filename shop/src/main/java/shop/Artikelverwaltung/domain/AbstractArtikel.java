@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Basic;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,31 +17,31 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.NamedQueries;
 import javax.persistence.Inheritance;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedAttributeNode;
-import javax.persistence.NamedEntityGraph;
-import javax.persistence.NamedEntityGraphs;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.NamedAttributeNode;
+//import javax.persistence.NamedEntityGraph;
+//import javax.persistence.NamedEntityGraphs;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.OrderColumn;
-import javax.persistence.PostLoad;
+//import javax.persistence.OneToMany;
+//import javax.persistence.OneToOne;
+//import javax.persistence.OrderColumn;
+//import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.persistence.Transient;
-import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
+//import javax.persistence.Transient;
+//import javax.validation.Valid;
+//import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
+//import javax.validation.constraints.Past;
+//import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.validation.groups.Default;
+//import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
@@ -49,8 +49,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonSubTypes.Type;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.ScriptAssert;
+//import org.hibernate.validator.constraints.Email;
+//import org.hibernate.validator.constraints.ScriptAssert;
 import org.jboss.logging.Logger;
 
 /**
@@ -58,7 +58,7 @@ import org.jboss.logging.Logger;
  */
 
 @Entity
-@Table(name = "artikel",indexes = @Index(columnList = "bezeichnung"))
+@Table(name = "artikel", indexes = @Index(columnList = "bezeichnung"))
 @Inheritance
 @DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({

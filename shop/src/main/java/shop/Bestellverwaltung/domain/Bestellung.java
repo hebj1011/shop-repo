@@ -3,6 +3,7 @@ package shop.Bestellverwaltung.domain;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
 import static javax.persistence.FetchType.EAGER;
+import static shop.util.Constants.KEINE_ID;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
@@ -91,7 +92,7 @@ public class Bestellung extends AbstractAuditable  {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private Long id;
+	private Long id = KEINE_ID;
 	
 	@ManyToOne
 	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)

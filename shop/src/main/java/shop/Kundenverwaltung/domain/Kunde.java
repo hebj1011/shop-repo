@@ -111,7 +111,7 @@ import shop.util.persistence.AbstractAuditable;
 	@NamedQuery(name = Kunde.FIND_KUNDEN_BY_DATE,
 			    query = "SELECT k"
 			            + " FROM  Kunde k"
-			    		+ " WHERE k.seit = :" + Kunde.PARAM_KUNDE_SEIT),
+			    		+ " WHERE k.seit = :" + Kunde.PARAM_KUNDE_SEIT)
 //	@NamedQuery(name = Kunde.FIND_PRIVATKUNDEN_FIRMENKUNDEN,
 //			    query = "SELECT k"
 //			            + " FROM  Kunde k"
