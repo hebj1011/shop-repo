@@ -14,12 +14,14 @@ import java.lang.invoke.MethodHandles;
 import java.net.URI;
 //import java.util.List;
 
+
 import org.jboss.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -52,6 +54,7 @@ import shop.util.rest.UriHelper;
 		TEXT_XML + ";qs=0.75" })
 @Consumes
 @RequestScoped
+@Transactional
 @Log
 public class ArtikelResource {
 
