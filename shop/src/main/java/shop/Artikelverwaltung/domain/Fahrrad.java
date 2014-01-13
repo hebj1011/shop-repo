@@ -23,7 +23,7 @@ public class Fahrrad extends AbstractArtikel {
 
 	private static final long serialVersionUID = 7087800972131210358L;
 	
-	@Column(length = 1)
+	@Column(length = 10)
 	//@Convert(converter = FarbeConverter.class)
 	private Set<Farbe> farbe;
 	
