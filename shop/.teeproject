@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Default Connection</comment>
+<entry key="uuid">dc27a0e2-fe8f-4285-8b31-c9a4b4faad58</entry>
+<entry key="use_color">false</entry>
+<entry key="sid">xe</entry>
+<entry key="port">1521</entry>
+<entry key="color">123 123 123</entry>
+<entry key="autoCommit">false</entry>
+<entry key="adapterId">ORACLE</entry>
+<entry key="customJdbcConnectString">jdbc:oracle:thin:@localhost:1521:xe</entry>
+<entry key="displayName">shop@localhost/xe</entry>
+<entry key="userName">shop</entry>
+<entry key="last_connected">1389616711617</entry>
+<entry key="restore_state">false</entry>
+<entry key="host">localhost</entry>
+</properties>
