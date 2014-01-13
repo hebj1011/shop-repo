@@ -124,9 +124,9 @@ public class ArtikelService implements Serializable {
 	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
 	 */
 	@Size(min = 1, message = "{kunde.notFound.maxPreis}")
-	public List<AbstractArtikel> findArtikelByMaxPreis(BigDecimal preis) {
+	public List<AbstractArtikel> findArtikelByMaxPreis(BigDecimal einzelpreis) {
 		return em.createNamedQuery(AbstractArtikel.FIND_ARTIKEL_MAX_PREIS, AbstractArtikel.class)
-				 .setParameter(AbstractArtikel.PARAM_PREIS, preis)
+				 .setParameter(AbstractArtikel.PARAM_PREIS, einzelpreis)
 				 .getResultList();
 	}
 }

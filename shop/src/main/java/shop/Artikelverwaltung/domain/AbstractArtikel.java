@@ -76,7 +76,7 @@ import org.jboss.logging.Logger;
    	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
             	query = "SELECT      a"
                         + " FROM     AbstractArtikel a"
-						+ " WHERE    a.preis < :" + AbstractArtikel.PARAM_PREIS
+						+ " WHERE    a.einzelpreis < :" + AbstractArtikel.PARAM_PREIS
 			 	        + " ORDER BY a.id ASC")
 })
 
@@ -107,7 +107,7 @@ public abstract class AbstractArtikel implements Serializable {
 	public static final String FIND_ARTIKEL_MAX_PREIS = PREFIX + "findArtikelByMaxPreis";
 
 	public static final String PARAM_NAME = "name";
-	public static final String PARAM_PREIS = "preis";
+	public static final String PARAM_PREIS = "einzelpreispreis";
 		
 	@Id
 	@GeneratedValue
