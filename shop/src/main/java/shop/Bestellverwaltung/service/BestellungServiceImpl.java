@@ -45,52 +45,6 @@ import shop.util.interceptor.Log;
 public class BestellungServiceImpl implements BestellungService, Serializable {
 
 	private static final long serialVersionUID = -1849298236445138031L;
-/*	
-	@Inject
-	@NeueBestellung
-	private transient Event<Bestellung> event;
-
-	@Override
-	@NotNull(message = "{bestellung.notFound.id}")
-	public Bestellung findBestellungById(Long id) {
-
-		return Mock.findBestellungById(id);
-	}
-
-	@Override
-	@Size(min = 1, message = "{bestellung.notFound.kunde}")
-	public List<Bestellung> findBestellungenByKunde(Kunde kunde) {
-
-		return Mock.findBestellungenByKunde(kunde);
-	}
-
-	@Override
-	public Bestellung createBestellung(Bestellung bestellung, Kunde kunde,
-			Locale locale) {
-
-		bestellung = Mock.createBestellung(bestellung, kunde);
-		event.fire(bestellung);
-		
-		return bestellung;
-	}
-	
-	@Override
-	public Bestellung createBestellung(Bestellung bestellung) {
-
-		bestellung = Mock.createBestellung(bestellung);
-		event.fire(bestellung);
-		
-		return bestellung;
-	}
-
-	@Override
-	public Bestellung createBestellung(Bestellung bestellung, Locale locale) {
-		
-		bestellung = Mock.createBestellung(bestellung);
-		event.fire(bestellung);
-		
-		return bestellung;
-	}*/
 	
 	@Inject
 	private transient EntityManager em;
@@ -213,7 +167,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	 * Der Kunde ist fuer den EntityManager bekannt, die Bestellung dagegen nicht. Das Zusammenbauen
 	 * wird sowohl fuer einen Web Service aus auch fuer eine Webanwendung benoetigt.
 	 */
-	//TODO Fertig machen .... vorsichtshalber alles auskommentiert
+
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
 		if (bestellung == null) {
@@ -231,8 +185,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	 * Der Kunde ist fuer den EntityManager bekannt, die Bestellung dagegen nicht. Das Zusammenbauen
 	 * wird sowohl fuer einen Web Service aus auch fuer eine Webanwendung benoetigt.
 	 */
-	
-	//TODO Fertig machen .... vorsichtshalber alles auskommentiert
+
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
 		if (bestellung == null) {
@@ -252,10 +205,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		for (Bestellposition bp : bestellung.getBestellpositionen()) {
 			bp.setId(KEINE_ID);
 		}
-		// FIXME JDK 8 hat Lambda-Ausdruecke
-		//bestellung.getBestellpositionen()
-		//          .forEach(bp -> bp.setId(KEINE_ID));
-		
+
 		em.persist(bestellung);
 		event.fire(bestellung);
 
@@ -303,16 +253,12 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		for (Bestellung b : bestellungen) {
 			ids.add(b.getId());
 		}
-		// FIXME JDK 8 hat Lambda-Ausdruecke
-		//bestellungen.forEach(b -> ids.add(b.getId()));
 		
 		bestellungen = findBestellungenByIds(ids, FetchType.MIT_LIEFERUNGEN);
 		lieferung.setBestellungenAsList(bestellungen);
 		for (Bestellung bestellung : bestellungen) {
 			bestellung.addLieferung(lieferung);
 		}
-		// FIXME JDK 8 hat Lambda-Ausdruecke
-		//bestellungen.forEach(b -> b.addLieferung(lieferung));
 		
 		lieferung.setId(KEINE_ID);
 		em.persist(lieferung);		

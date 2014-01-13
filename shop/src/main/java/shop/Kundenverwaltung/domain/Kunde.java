@@ -123,7 +123,7 @@ import shop.util.persistence.AbstractAuditable;
 	@NamedEntityGraph(name = Kunde.GRAPH_WARTUNGSVERTRAEGE,
 					  attributeNodes = @NamedAttributeNode("wartungsvertraege"))
 })
-public abstract class Kunde extends AbstractAuditable {
+public class Kunde extends AbstractAuditable {
 	private static final long serialVersionUID = 5685115602958386843L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
