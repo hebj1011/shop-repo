@@ -64,18 +64,18 @@ import org.jboss.logging.Logger;
 @NamedQueries({
 	@NamedQuery(name  = AbstractArtikel.FIND_VERFUEGBARE_ARTIKEL,
             	query = "SELECT      a"
-            	        + " FROM     Artikel a"
+            	        + " FROM     AbstractArtikel a"
 						+ " WHERE    a.ausgesondert = FALSE"
                         + " ORDER BY a.id ASC"),
 	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_BY_NAME,
             	query = "SELECT      a"
-                        + " FROM     Artikel a"
+                        + " FROM     AbstractArtikel a"
 						+ " WHERE    a.name LIKE :" + AbstractArtikel.PARAM_NAME
 						+ "          AND a.ausgesondert = FALSE"
 			 	        + " ORDER BY a.id ASC"),
    	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
             	query = "SELECT      a"
-                        + " FROM     Artikel a"
+                        + " FROM     AbstractArtikel a"
 						+ " WHERE    a.preis < :" + AbstractArtikel.PARAM_PREIS
 			 	        + " ORDER BY a.id ASC")
 })
