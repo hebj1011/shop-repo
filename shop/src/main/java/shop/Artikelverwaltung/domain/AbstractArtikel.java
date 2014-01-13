@@ -58,7 +58,7 @@ import org.jboss.logging.Logger;
  */
 
 @Entity
-@Table(indexes = @Index(columnList = "bezeichnung"))
+@Table(name = "artikel", indexes = @Index(columnList = "name"))
 @Inheritance
 @DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({
@@ -116,7 +116,7 @@ public abstract class AbstractArtikel implements Serializable {
 	
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(max = NAME_LENGTH_MAX, message = "{artikel.name.length}")
-	private String name;
+	private String name = "";
 	
 	@Digits(integer = 10, fraction = 2, message = "{artikel.einzelpreispreis.digits}")
 	private BigDecimal einzelpreis;
