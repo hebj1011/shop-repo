@@ -69,7 +69,7 @@ public class Lieferung implements Serializable {
 	private String lieferNr;
 	
 	@Column(name = "transport_art", length = 3)
-	@Convert(converter = TransportTypeConverter.class)
+	//@Convert(converter = TransportTypeConverter.class)
 	private TransportType transportArt;
 
 	@ManyToMany(mappedBy = "lieferungen", cascade = { PERSIST, MERGE })
