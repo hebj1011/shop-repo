@@ -7,10 +7,15 @@
 	<persistence-unit name="shop.PU">
 	    <jta-data-source>java:jboss/datasources/shopDS</jta-data-source>
 				
+		<!-- Caching von Objekten mit @Cacheable -->
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<!--
+		-->
 
 		<!-- Umschalten fuer Hibernate Console -->
-		
+		<!--
 		<shared-cache-mode>NONE</shared-cache-mode>
+		-->
 
 		<properties>
 		    <!-- im Produktivbetrieb auskommentieren -->
