@@ -58,7 +58,7 @@ import org.jboss.logging.Logger;
  */
 
 @Entity
-@Table(name = "artikel", indexes = @Index(columnList = "bezeichnung"))
+@Table(indexes = @Index(columnList = "bezeichnung"))
 @Inheritance
 @DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({
