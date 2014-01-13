@@ -42,7 +42,7 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
 @NamedQueries({
  @NamedQuery(name  = Bestellposition.FIND_LADENHUETER,
 	            query = "SELECT a"
-	            	    + " FROM   Artikel a"
+	            	    + " FROM   AbstractArtikel a"
 	            	    + " WHERE  a NOT IN (SELECT bp.artikel FROM Bestellposition bp)")
 })
 public class Bestellposition extends AbstractAuditable {
