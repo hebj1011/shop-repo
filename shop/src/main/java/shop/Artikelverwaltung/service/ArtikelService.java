@@ -129,6 +129,35 @@ public class ArtikelService implements Serializable {
 				 .setParameter(AbstractArtikel.PARAM_PREIS, einzelpreis)
 				 .getResultList();
 	}
+	
+	public <T extends AbstractArtikel> T createArtikel(T artikel) {
+		if (artikel == null) {
+			return artikel;
+		}
+	
+		em.persist(artikel);
+		return artikel;		
+	}
+	
+	public <T extends AbstractArtikel> T updateArtikel(T artikel) {
+		if (artikel == null) {
+			return null;
+		}
+		
+		em.detach(artikel);
+
+
+		em.merge(artikel);
+		return artikel;
+	}
+	
+	public void deleteArtikel(long id) {
+		if (id == -1) {
+			return;
+		}
+
+		em.remove(id);
+	}
 }
 
 
