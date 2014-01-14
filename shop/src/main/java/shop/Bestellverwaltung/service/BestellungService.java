@@ -41,7 +41,8 @@ public interface BestellungService {
 	
 	/**
 	 * Bestellungen zu gegebenen IDs suchen
-	 * @param kunde Gegebener Kunde
+	 * @param ids der Bestellungen
+	 * @param fetch mit Lieferung oder nur Bestellungen
 	 * @return Liste der Bestellungen
 	 */
 	List<Bestellung> findBestellungenByIds(List<Long> ids, FetchType fetch);
