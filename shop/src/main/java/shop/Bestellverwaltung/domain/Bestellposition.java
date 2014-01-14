@@ -1,7 +1,7 @@
 package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
-import static shop.util.Constants.KEINE_ID;
+//import static shop.util.Constants.KEINE_ID;
 //import java.io.Serializable;
 
 import java.lang.invoke.MethodHandles;
@@ -57,7 +57,7 @@ public class Bestellposition extends AbstractAuditable {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private long id = KEINE_ID;
+	private long id ;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "artikel_fk", nullable = false)
