@@ -55,7 +55,6 @@ import shop.util.persistence.AbstractAuditable;;
 
 @XmlRootElement
 @Entity
-//TODO MySQL 5.7 kann einen Index nicht 2x anlegen
 @Table(indexes = {
 	@Index(columnList = "kunde_fk"),
 	@Index(columnList = "erzeugt")
@@ -98,9 +97,6 @@ public class Bestellung extends AbstractAuditable  {
 	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)
 	@XmlTransient
 	private Kunde kunde;
-
-	//TODO boolean versendet entfernen
-	private boolean versendet;
 	
 	@Transient
 	private URI kundeUri;
@@ -156,14 +152,6 @@ public class Bestellung extends AbstractAuditable  {
 
 	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
-	}
-
-	public boolean isVersendet() {
-		return versendet;
-	}
-
-	public void setVersendet(boolean versendet) {
-		this.versendet = versendet;
 	}
 	
 	public URI getKundeUri() {
@@ -242,7 +230,7 @@ public class Bestellung extends AbstractAuditable  {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
-		result = prime * result + (versendet ? 1231 : 1237);
+		result = prime * result + ((getErzeugt() == null) ? 0 : getErzeugt().hashCode());
 		return result;
 	}
 
@@ -255,26 +243,37 @@ public class Bestellung extends AbstractAuditable  {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellung other = (Bestellung) obj;
+		
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} 
 			else if (!id.equals(other.id))
 			return false;
+		
 		if (kunde == null) {
 			if (other.kunde != null)
 				return false;
 		} 
 			else if (!kunde.equals(other.kunde))
 			return false;
-		if (versendet != other.versendet)
+		
+		if (getErzeugt() == null) {
+			if (other.getErzeugt() != null) {
+				return false;
+			}
+		}
+		else if (!getErzeugt().equals(other.getErzeugt())) {
 			return false;
+		}
+		
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Bestellung [id=" + id + ", kunde=" + kunde + "kundeUri=" + kundeUri
+		final Long kundeId = kunde == null ? null : kunde.getId();
+		return "Bestellung [id=" + id + ", kundeID=" + kundeId + "kundeUri=" + kundeUri
 				+ "]";
 	}
 
