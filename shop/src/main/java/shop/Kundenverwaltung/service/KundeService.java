@@ -366,7 +366,7 @@ public class KundeService implements Serializable {
 	 * @param kunde Der Kunde mit aktualisierten Attributwerten
 	 * @return Der aktualisierte Kunde
 	 */
-	public <T extends Kunde> T updateKunde(T kunde) {
+	public Kunde updateKunde(Kunde kunde) {
 		if (kunde == null) {
 			return null;
 		}
