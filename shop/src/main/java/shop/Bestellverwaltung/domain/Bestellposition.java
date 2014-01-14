@@ -57,7 +57,7 @@ public class Bestellposition extends AbstractAuditable {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private long id ;
+	private long id;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "artikel_fk", nullable = false)
