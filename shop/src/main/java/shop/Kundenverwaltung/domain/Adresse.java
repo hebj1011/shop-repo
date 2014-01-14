@@ -35,6 +35,8 @@ public class Adresse extends AbstractAuditable {
 	private static final int PLZ_LENGTH_MAX = 5;
 	private static final int ORT_LENGTH_MIN = 2;
 	private static final int ORT_LENGTH_MAX = 32;
+	private static final int LAND_LENGTH_MIN = 2;
+	private static final int LAND_LENGTH_MAX = 32;
 	private static final int STRASSE_LENGTH_MIN = 2;
 	private static final int STRASSE_LENGTH_MAX = 32;
 	private static final int HAUSNR_LENGTH_MAX = 4;
@@ -48,6 +50,10 @@ public class Adresse extends AbstractAuditable {
 	@Pattern(regexp = "\\d{" + PLZ_LENGTH_MAX + "}", message = "{adresse.plz}")
 	@Column(length = PLZ_LENGTH_MAX)
 	private String plz;
+	
+	@NotNull(message = "{adresse.land.notNull}")
+	@Size(min = LAND_LENGTH_MIN, max = LAND_LENGTH_MAX, message = "{adresse.ort.length}")
+	private String land;
 
 	@NotNull(message = "{adresse.ort.notNull}")
 	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")

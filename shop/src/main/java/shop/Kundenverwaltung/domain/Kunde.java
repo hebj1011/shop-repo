@@ -149,7 +149,6 @@ public class Kunde extends AbstractAuditable {
 	public static final String FIND_KUNDE_BY_EMAIL = PREFIX + "findKundeByEmail";
 	public static final String FIND_KUNDEN_BY_PLZ = PREFIX + "findKundenByPlz";
 	public static final String FIND_KUNDEN_BY_DATE = PREFIX + "findKundenByDate";
-	public static final String FIND_PRIVATKUNDEN_FIRMENKUNDEN = PREFIX + "findPrivatkundenFirmenkunden";
 	
 	public static final String PARAM_KUNDE_ID = "kundeId";
 	public static final String PARAM_KUNDE_ID_PREFIX = "idPrefix";

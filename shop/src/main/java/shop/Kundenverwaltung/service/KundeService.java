@@ -233,14 +233,6 @@ public class KundeService implements Serializable {
                  .getResultList();
 	}
 	
-	/**
-	 * Alle Privat- und Firmenkunden suchen.
-	 * @return Liste der Privat- und Firmenkunden.
-	 */
-	public List<Kunde> findPrivatkundenFirmenkunden() {
-		return em.createNamedQuery(Kunde.FIND_PRIVATKUNDEN_FIRMENKUNDEN, Kunde.class)
-                 .getResultList();
-	}
 	
 	/**
 	 * Kunden mit gleichem Nachnamen durch eine Criteria-Query suchen.
@@ -291,7 +283,7 @@ public class KundeService implements Serializable {
 	 * @param email Email-Adresse
 	 * @param nachname Nachname
 	 * @param plz Postleitzahl
-	 * @üaram seit Datum seit
+	 * @param seit Datum seit
 	 * @param minBestMenge Mindestbestellmenge
 	 * @return Die gefundenen Kunden
 	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
