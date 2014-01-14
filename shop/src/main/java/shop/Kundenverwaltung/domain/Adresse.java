@@ -76,9 +76,10 @@ public class Adresse extends AbstractAuditable {
 		super();
 	}
 	
-	public Adresse(String plz, String ort, String strasse, String hausnr, Kunde kunde) {
+	public Adresse(String plz, String land, String ort, String strasse, String hausnr, Kunde kunde) {
 		super();
 		this.plz = plz;
+		this.land = land;
 		this.ort = ort;
 		this.strasse = strasse;
 		this.hausnr = hausnr;
@@ -104,6 +105,13 @@ public class Adresse extends AbstractAuditable {
 		this.plz = plz;
 	}
 
+	public String getLand() {
+		return ort;
+	}
+	public void setLand(String land) {
+		this.ort = land;
+	}
+	
 	public String getOrt() {
 		return ort;
 	}
@@ -134,7 +142,7 @@ public class Adresse extends AbstractAuditable {
 	}
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", plz=" + plz + ", ort=" + ort + ", strasse=" + strasse + ", hausnr=" + hausnr
+		return "Adresse [id=" + id + ", plz=" + plz + ", land=" + land + ", ort=" + ort + ", strasse=" + strasse + ", hausnr=" + hausnr
 				+ ", " + super.toString() + ']';
 	}
 
@@ -143,6 +151,7 @@ public class Adresse extends AbstractAuditable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((hausnr == null) ? 0 : hausnr.hashCode());
+		result = prime * result + ((land == null) ? 0 : land.hashCode());
 		result = prime * result + ((ort == null) ? 0 : ort.hashCode());
 		result = prime * result + ((plz == null) ? 0 : plz.hashCode());
 		result = prime * result + ((strasse == null) ? 0 : strasse.hashCode());
@@ -201,145 +210,3 @@ public class Adresse extends AbstractAuditable {
 		return true;
 	}
 }
-
-
-//package shop.Kundenverwaltung.domain;
-//
-//import java.io.Serializable;
-//
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Size;
-//import javax.validation.constraints.Pattern;
-//import javax.xml.bind.annotation.XmlTransient;
-//
-///**
-// * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
-// */
-//public class Adresse implements Serializable {
-//	
-//	private static final long serialVersionUID = 5409525327538622905L;
-//	
-//	private static final int ORT_LENGTH_MIN = 2;
-//	private static final int ORT_LENGTH_MAX = 32;
-//	private static final int STRASSE_LENGTH_MIN = 2;
-//	private static final int STRASSE_LENGTH_MAX = 32;
-//	private static final int HAUSNUMMER_LENGTH_MIN = 1;
-//	
-//	private Long id;
-//	
-//	@NotNull(message = "{adresse.plz.notNull}")
-//	@Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
-//	private String plz;
-//	
-//	@NotNull(message = "{adresse.ort.notNull}")
-//	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")
-//	private String ort;
-//	
-//	@NotNull(message = "{adresse.strasse.notNull}")
-//	@Size(min = STRASSE_LENGTH_MIN, max = STRASSE_LENGTH_MAX, message = "{adresse.strasse.length}")
-//	private String strasse;
-//	
-//	@NotNull(message = "{adresse.hausnummer.notNull}")
-//	@Size(min = HAUSNUMMER_LENGTH_MIN, message = "{adresse.hausnummer.length}")
-//	private String hausnummer;
-//	
-//	@XmlTransient
-//	private Kunde kunde;
-//	
-//	public Long getId() {
-//		return id;
-//	}
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-//	public String getPlz() {
-//		return plz;
-//	}
-//	public void setPlz(String plz) {
-//		this.plz = plz;
-//	}
-//	public String getOrt() {
-//		return ort;
-//	}
-//	public void setOrt(String ort) {
-//		this.ort = ort;
-//	}
-//	
-//	public String getStrasse() {
-//		return strasse;
-//	}
-//	public void setStrasse(String strasse) {
-//		this.strasse = strasse;
-//	}
-//	public String getHausnummer() {
-//		return hausnummer;
-//	}
-//	public void setHausnummer(String hausnummer) {
-//		this.hausnummer = hausnummer;
-//	}
-//	public Kunde getKunde() {
-//		return kunde;
-//	}
-//	public void setKunde(Kunde kunde) {
-//		this.kunde = kunde;
-//	}
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((id == null) ? 0 : id.hashCode());
-//		result = prime * result + ((ort == null) ? 0 : ort.hashCode());
-//		result = prime * result + ((plz == null) ? 0 : plz.hashCode());
-//		result = prime * result + ((strasse == null) ? 0 : strasse.hashCode());
-//		result = prime * result + ((hausnummer == null) ? 0 : hausnummer.hashCode());
-//		return result;
-//	}
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		final Adresse other = (Adresse) obj;
-//		if (id == null) {
-//			if (other.id != null)
-//				return false;
-//		}
-//		else if (!id.equals(other.id))
-//			return false;
-//		if (ort == null) {
-//			if (other.ort != null)
-//				return false;
-//		}
-//		else if (!ort.equals(other.ort))
-//			return false;
-//		if (plz == null) {
-//			if (other.plz != null)
-//				return false;
-//		}
-//		else if (!plz.equals(other.plz))
-//			return false;
-//		if (strasse == null) {
-//			if (other.strasse != null)
-//				return false;
-//		}
-//		else if (!strasse.equals(other.strasse))
-//			return false;
-//		if (hausnummer == null) {
-//			if (other.hausnummer != null)
-//				return false;
-//		}
-//		else if (!hausnummer.equals(other.hausnummer))
-//			return false;
-//		return true;
-//	}
-//	
-//	@Override
-//	public String toString() {
-//		String tmp = "Adresse [Id=" + id + ", Plz=" + plz + ", Ort=" + ort + "]";
-//		tmp += ", Strasse=" + strasse + "Hausnummer=" + hausnummer + "]";
-//		return tmp;
-//	}
-//}
