@@ -12,7 +12,7 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
 import shop.Artikelverwaltung.domain.Ersatzteil;
 import shop.Artikelverwaltung.domain.Fahrrad;
 import shop.Artikelverwaltung.domain.Sicherheitszubehoer;
-import shop.Bestellverwaltung.domain.Bestellung;
+//import shop.Bestellverwaltung.domain.Bestellung;
 import shop.Kundenverwaltung.domain.Kunde;
 import shop.Kundenverwaltung.domain.Adresse;
 
@@ -23,10 +23,10 @@ import shop.Kundenverwaltung.domain.Adresse;
 public final class Mock {
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 
-	private static final int MAX_ID = 99;
+//	private static final int MAX_ID = 99;
 //	private static final int MAX_KUNDEN = 8;
 	private static final int MAX_ARTIKEL = 500;
-	private static final int MAX_BESTELLUNGEN = 4;
+//	private static final int MAX_BESTELLUNGEN = 4;
 //	private static final int JAHR = 2001;
 //	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
 //	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
@@ -153,33 +153,33 @@ public final class Mock {
 //		
 //		return kunde;
 //	}
-	public static List<Bestellung> findBestellungenByKunde(Kunde kunde) {
-		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
-		final int anzahl = kunde.getId().intValue() % MAX_BESTELLUNGEN + 1;  // 1, 2, 3 oder 4 Bestellungen
-		final List<Bestellung> bestellungen = new ArrayList<>(anzahl);
-		for (int i = 1; i <= anzahl; i++) {
-			final Bestellung bestellung = findBestellungById(Long.valueOf(i));
-			bestellung.setKunde(kunde);
-			bestellungen.add(bestellung);			
-		}
-		kunde.setBestellungen(bestellungen);
-		
-		return bestellungen;
-	}
+//	public static List<Bestellung> findBestellungenByKunde(Kunde kunde) {
+//		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
+//		final int anzahl = kunde.getId().intValue() % MAX_BESTELLUNGEN + 1;  // 1, 2, 3 oder 4 Bestellungen
+//		final List<Bestellung> bestellungen = new ArrayList<>(anzahl);
+//		for (int i = 1; i <= anzahl; i++) {
+//			final Bestellung bestellung = findBestellungById(Long.valueOf(i));
+//			bestellung.setKunde(kunde);
+//			bestellungen.add(bestellung);			
+//		}
+//		kunde.setBestellungen(bestellungen);
+//		
+//		return bestellungen;
+//	}
 
-	public static Bestellung findBestellungById(Long id) {
-		if (id > MAX_ID) {
-			return null;
-		}
-//TODO wurde ausgeklammert genau eine Zeile darunter gibt sonst Fehlernund set Kunde auch
-		//final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
-
-		final Bestellung bestellung = new Bestellung();
-		bestellung.setId(id);
-		//bestellung.setKunde(kunde);
-		
-		return bestellung;
-	}
+//	public static Bestellung findBestellungById(Long id) {
+//		if (id > MAX_ID) {
+//			return null;
+//		}
+////TODO wurde ausgeklammert genau eine Zeile darunter gibt sonst Fehlernund set Kunde auch
+//		//final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
+//
+//		final Bestellung bestellung = new Bestellung();
+//		bestellung.setId(id);
+//		//bestellung.setKunde(kunde);
+//		
+//		return bestellung;
+//	}
 
 	public static Kunde createKunde(Kunde kunde) {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
@@ -203,16 +203,16 @@ public final class Mock {
 		LOGGER.infof("Geloeschter Kunde: %s", kunde);
 	}
 
-	public static Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
-		LOGGER.infof("Neue Bestellung: %s fuer Kunde: %s", bestellung, kunde);
-		return bestellung;
-	}
-	
-	public static Bestellung createBestellung(Bestellung bestellung) {
-		
-		LOGGER.infof("Neue Bestellung: %s ", bestellung);
-		return bestellung;
-	}
+//	public static Bestellung createBestellung(Bestellung bestellung, Kunde kunde) {
+//		LOGGER.infof("Neue Bestellung: %s fuer Kunde: %s", bestellung, kunde);
+//		return bestellung;
+//	}
+//	
+//	public static Bestellung createBestellung(Bestellung bestellung) {
+//		
+//		LOGGER.infof("Neue Bestellung: %s ", bestellung);
+//		return bestellung;
+//	}
 	
 	public static AbstractArtikel findArtikelById(Long id) {
 		if (id == null) {

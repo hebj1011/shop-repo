@@ -13,21 +13,9 @@ import shop.Kundenverwaltung.domain.Kunde;
  */
 
 public interface BestellungService {
-	
-//	Bestellung findBestellungById(Long id);
-//	List<Bestellung> findBestellungenByKunde(Kunde kunde);
-//	Bestellung createBestellung(Bestellung bestellung, Kunde kunde, Locale locale);
-//	Bestellung createBestellung(Bestellung bestellung);
-//	Bestellung createBestellung(Bestellung bestellung, Locale locale);
+
 	
 	public enum FetchType { NUR_BESTELLUNG, MIT_LIEFERUNGEN }
-
-	/*
-	 * Java 8 hat zwar Default-Methoden in Interfaces, wie z.B.
-	 *    default public Bestellung findBestellungById(Long id, FetchType fetch) {...}
-	 * ABER:
-	 *    Es duerfen keine Attribute definiert werden - auch nicht injizierte.
-	 */
 
 	/**
 	 * Bestellung zu gegebener ID suchen
