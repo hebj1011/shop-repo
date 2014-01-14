@@ -346,7 +346,7 @@ public class KundeService implements Serializable {
 	 * @param kunde Der anzulegende Kunde.
 	 * @return Der neue Kunde einschliesslich generierter ID.
 	 */
-	public <T extends Kunde> T createKunde(T kunde) {
+	public Kunde createKunde(Kunde kunde) {
 		if (kunde == null) {
 			return kunde;
 		}
