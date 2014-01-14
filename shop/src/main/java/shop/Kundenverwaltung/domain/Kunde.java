@@ -77,7 +77,7 @@ import shop.util.persistence.AbstractAuditable;
 //Zu email wird unten ein UNIQUE Index definiert
 @Table(name = "kunde", indexes = @Index(columnList = "nachname"))
 @Inheritance
-@DiscriminatorColumn(name = "art", length = 1)
+//@DiscriminatorColumn(name = "art", length = 1)
 @NamedQueries({
 	@NamedQuery(name  = Kunde.FIND_KUNDEN,
                 query = "SELECT k"

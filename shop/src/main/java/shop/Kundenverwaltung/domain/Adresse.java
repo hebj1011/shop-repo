@@ -180,6 +180,15 @@ public class Adresse extends AbstractAuditable {
 			return false;
 		}
 		
+		if (land == null) {
+			if (other.land != null) {
+				return false;
+			}
+		}
+		else if (!land.equals(other.land)) {
+			return false;
+		}
+		
 		if (ort == null) {
 			if (other.ort != null) {
 				return false;
