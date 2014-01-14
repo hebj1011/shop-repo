@@ -1,6 +1,7 @@
 package shop.Bestellverwaltung.domain;
 
 import java.net.URI;
+import static shop.util.Constants.KEINE_ID;
 //import java.io.Serializable;
 
 import java.lang.invoke.MethodHandles;
@@ -34,7 +35,6 @@ import shop.Artikelverwaltung.domain.AbstractArtikel;
  */
 
 @Entity
-//TODO MySQL 5.7 kann einen Index nicht 2x anlegen
 @Table(indexes =  {
 	@Index(columnList = "bestellung_fk"),
 	@Index(columnList = "artikel_fk")
@@ -57,7 +57,7 @@ public class Bestellposition extends AbstractAuditable {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private long id;
+	private long id = KEINE_ID;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "artikel_fk", nullable = false)
@@ -123,8 +123,6 @@ public class Bestellposition extends AbstractAuditable {
 		int result = 1;
 		result = prime * result + anzahl;
 		result = prime * result + ((artikel == null) ? 0 : artikel.hashCode());
-		result = prime * result
-				+ ((artikelUri == null) ? 0 : artikelUri.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
@@ -137,22 +135,24 @@ public class Bestellposition extends AbstractAuditable {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellposition other = (Bestellposition) obj;
-		if (anzahl != other.anzahl)
-			return false;
+		
+		if (id != other.id) {
+				return false;
+			}
+		
+
+
+		// Wenn eine neue Bestellung angelegt wird, dann wird jeder zu bestellende Artikel
+		// genau 1x referenziert (nicht zu verwechseln mit der "anzahl")
 		if (artikel == null) {
-			if (other.artikel != null)
+			if (other.artikel != null) {
 				return false;
-		} 
-		else if (!artikel.equals(other.artikel))
+			}
+		}
+		else if (!artikel.equals(other.artikel)) {
 			return false;
-		if (artikelUri == null) {
-			if (other.artikelUri != null)
-				return false;
-		} 
-		else if (!artikelUri.equals(other.artikelUri))
-			return false;
-		if (id != other.id)
-			return false;
+		}
+		
 		return true;
 	}
 
