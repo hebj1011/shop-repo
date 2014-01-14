@@ -118,6 +118,14 @@ public class Bestellposition extends AbstractAuditable {
 	}
 	
 	@Override
+	public String toString() {
+		final Long artikelId = artikel == null ? null : artikel.getId();
+		return "Bestellposition [id=" + id + ", artikel=" + artikelId
+			   + ", artikelUri=" + artikelUri + ", anzahl=" + anzahl
+			   + ", " + super.toString() + "]";
+	}
+	
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -126,6 +134,7 @@ public class Bestellposition extends AbstractAuditable {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -139,9 +148,6 @@ public class Bestellposition extends AbstractAuditable {
 		if (id != other.id) {
 				return false;
 			}
-		
-
-
 		// Wenn eine neue Bestellung angelegt wird, dann wird jeder zu bestellende Artikel
 		// genau 1x referenziert (nicht zu verwechseln mit der "anzahl")
 		if (artikel == null) {
