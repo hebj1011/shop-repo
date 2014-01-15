@@ -12,25 +12,25 @@ import javax.ws.rs.ext.Provider;
 
 import shop.util.interceptor.Log;
 
-
-/**
- * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
- */
-@Provider
-@Log
-public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
-	@Context
-	private HttpHeaders headers;
-	
-	@Inject
-	private Messages messages;
-	
-	@Override
-	public Response toResponse(NotFoundException e) {
-		final String msg = messages.getMessage(headers, e.getMessage(), e.getArgs());
-		return Response.status(NOT_FOUND)
-		               .type(TEXT_PLAIN)
-		               .entity(msg)
-		               .build();
-	}
-}
+//
+///**
+// * @author <a href="mailto:hebj1011@HS-Karlsruhe.de">Bjoern Hetzel</a>
+// */
+//@Provider
+//@Log
+//public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
+//	@Context
+//	private HttpHeaders headers;
+//	
+//	@Inject
+//	private Messages messages;
+//	
+//	@Override
+//	public Response toResponse(NotFoundException e) {
+//		final String msg = messages.getMessage(headers, e.getMessage(), e.getArgs());
+//		return Response.status(NOT_FOUND)
+//		               .type(TEXT_PLAIN)
+//		               .entity(msg)
+//		               .build();
+//	}
+//}
