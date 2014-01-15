@@ -1,16 +1,16 @@
 package shop.util.rest;
 
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
-
-import javax.inject.Inject;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
-
-import shop.util.interceptor.Log;
+//import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
+//import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+//
+//import javax.inject.Inject;
+//import javax.ws.rs.core.Context;
+//import javax.ws.rs.core.HttpHeaders;
+//import javax.ws.rs.core.Response;
+//import javax.ws.rs.ext.ExceptionMapper;
+//import javax.ws.rs.ext.Provider;
+//
+//import shop.util.interceptor.Log;
 
 //
 ///**
