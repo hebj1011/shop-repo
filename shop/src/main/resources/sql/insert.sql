@@ -10,3 +10,5 @@ INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualis
 INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',304,'Spiegel ''Mach mich schöner''',60,0,'05.08.2006 00:00:00','05.08.2006 00:00:00', 'Gross', null, null);
 INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',305,'Kleiderschrank ''Viel Platz''',500,0,'06.08.2006 00:00:00','06.08.2006 00:00:00', 'Gross', null, null);
 INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',306,'Bett ''Mit Holzwurm''',600,0,'07.08.2006 00:00:00','07.08.2006 00:00:00', 'Gross', null, null);
+
+INSERT INTO kunde (id, nachname, vorname, seit, geschlecht, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (1,'Hans','Treuer','01.01.2001',NULL,1,NULL,NULL,'hans@hs-karlsruhe.de','1','01.08.2006 00:00:00','01.08.2006 00:00:00');
