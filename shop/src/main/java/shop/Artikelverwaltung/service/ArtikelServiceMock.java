@@ -1,4 +1,4 @@
-//package shop.Artikelverwaltung.service;
+package shop.Artikelverwaltung.service;
 //
 //import javax.enterprise.context.Dependent;
 //

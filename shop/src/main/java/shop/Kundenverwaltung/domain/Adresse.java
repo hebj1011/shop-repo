@@ -27,11 +27,13 @@ import shop.util.persistence.AbstractAuditable;
  * @author <a href="mailto:lade1011@HS-Karlsruhe.de">Denis Langer</a>
  */
 @Entity
-@Table(indexes = @Index(columnList = "plz"))   // Zu kunde_fk wird unten ein UNIQUE Index definiert
+@Table(indexes = @Index(columnList = "plz"))
+// Zu kunde_fk wird unten ein UNIQUE Index definiert
 public class Adresse extends AbstractAuditable {
 	private static final long serialVersionUID = -5108148468525006134L;
-	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles
+			.lookup().lookupClass());
+
 	private static final int PLZ_LENGTH_MAX = 5;
 	private static final int ORT_LENGTH_MIN = 2;
 	private static final int ORT_LENGTH_MAX = 32;
@@ -50,7 +52,7 @@ public class Adresse extends AbstractAuditable {
 	@Pattern(regexp = "\\d{" + PLZ_LENGTH_MAX + "}", message = "{adresse.plz}")
 	@Column(length = PLZ_LENGTH_MAX)
 	private String plz;
-	
+
 	@NotNull(message = "{adresse.land.notNull}")
 	@Size(min = LAND_LENGTH_MIN, max = LAND_LENGTH_MAX, message = "{adresse.ort.length}")
 	private String land;
@@ -68,15 +70,17 @@ public class Adresse extends AbstractAuditable {
 
 	@OneToOne
 	@JoinColumn(name = "kunde_fk", nullable = false, unique = true)
-	//NICHT @NotNull, weil beim Anlegen ueber REST der Rueckwaertsverweis noch nicht existiert
+	// NICHT @NotNull, weil beim Anlegen ueber REST der Rueckwaertsverweis noch
+	// nicht existiert
 	@XmlTransient
 	private Kunde kunde;
-	
+
 	public Adresse() {
 		super();
 	}
-	
-	public Adresse(String plz, String land, String ort, String strasse, String hausnr, Kunde kunde) {
+
+	public Adresse(String plz, String land, String ort, String strasse,
+			String hausnr, Kunde kunde) {
 		super();
 		this.plz = plz;
 		this.land = land;
@@ -85,7 +89,7 @@ public class Adresse extends AbstractAuditable {
 		this.hausnr = hausnr;
 		this.kunde = kunde;
 	}
-	
+
 	@PostPersist
 	private void postPersist() {
 		LOGGER.debugf("Neue Adresse mit ID=%s", id);
@@ -94,6 +98,7 @@ public class Adresse extends AbstractAuditable {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -101,6 +106,7 @@ public class Adresse extends AbstractAuditable {
 	public String getPlz() {
 		return plz;
 	}
+
 	public void setPlz(String plz) {
 		this.plz = plz;
 	}
@@ -108,13 +114,15 @@ public class Adresse extends AbstractAuditable {
 	public String getLand() {
 		return ort;
 	}
+
 	public void setLand(String land) {
 		this.ort = land;
 	}
-	
+
 	public String getOrt() {
 		return ort;
 	}
+
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
@@ -130,6 +138,7 @@ public class Adresse extends AbstractAuditable {
 	public String getHausnr() {
 		return hausnr;
 	}
+
 	public void setHausnr(String hausnr) {
 		this.hausnr = hausnr;
 	}
@@ -137,13 +146,16 @@ public class Adresse extends AbstractAuditable {
 	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
 	}
+
 	public Kunde getKunde() {
 		return kunde;
 	}
+
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", plz=" + plz + ", land=" + land + ", ort=" + ort + ", strasse=" + strasse + ", hausnr=" + hausnr
-				+ ", " + super.toString() + ']';
+		return "Adresse [id=" + id + ", plz=" + plz + ", land=" + land
+				+ ", ort=" + ort + ", strasse=" + strasse + ", hausnr="
+				+ hausnr + ", " + super.toString() + ']';
 	}
 
 	@Override
@@ -170,52 +182,52 @@ public class Adresse extends AbstractAuditable {
 			return false;
 		}
 		final Adresse other = (Adresse) obj;
-		
+
 		if (plz == null) {
 			if (other.plz != null) {
 				return false;
 			}
-		}
+		} 
 		else if (!plz.equals(other.plz)) {
 			return false;
 		}
-		
+
 		if (land == null) {
 			if (other.land != null) {
 				return false;
 			}
-		}
+		} 
 		else if (!land.equals(other.land)) {
 			return false;
 		}
-		
+
 		if (ort == null) {
 			if (other.ort != null) {
 				return false;
 			}
-		}
+		} 
 		else if (!ort.equals(other.ort)) {
 			return false;
 		}
-		
+
 		if (strasse == null) {
 			if (other.strasse != null) {
 				return false;
 			}
-		}
+		} 
 		else if (!strasse.equals(other.strasse)) {
 			return false;
 		}
-		
+
 		if (hausnr == null) {
 			if (other.hausnr != null) {
 				return false;
 			}
-		}
+		} 
 		else if (!hausnr.equals(other.hausnr)) {
 			return false;
 		}
-		
+
 		return true;
 	}
 }
