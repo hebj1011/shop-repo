@@ -70,3 +70,12 @@ INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,601);
 INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,602);
 INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (403,602);
 INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (404,603);
+
+--
+-- artikel_farbe SCHWARZ=S ROT=R WEISS=W BLAU=B GELB=G
+--
+INSERT INTO artikel_farbe (artikel_fk, farbe) VALUES (301,'S');
+INSERT INTO artikel_farbe (artikel_fk, farbe) VALUES (301,'G');
+INSERT INTO artikel_farbe (artikel_fk, farbe) VALUES (304,'B');
+INSERT INTO artikel_farbe (artikel_fk, farbe) VALUES (306,'W');
+INSERT INTO artikel_farbe (artikel_fk, farbe) VALUES (306,'R');
