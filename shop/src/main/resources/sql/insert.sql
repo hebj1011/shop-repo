@@ -39,3 +39,16 @@ INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (401,10
 INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (402,102,0,'15.01.2014 01:10:00','16.01.2014 01:10:00');
 INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (403,102,1,'16.01.2014 01:10:00','16.01.2014 01:10:00');
 INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (404,103,0,'11.01.2014 01:10:00','16.01.2014 01:10:00');
+
+--
+-- bestellposition
+--
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (500,400,300,1,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (501,400,301,4,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (502,401,302,5,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (503,402,303,3,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (504,402,304,2,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (505,403,305,1,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (506,404,300,5,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (507,404,301,2,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (508,404,302,8,'16.01.2014 00:00:00','16.01.2014 00:00:00');
