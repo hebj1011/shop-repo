@@ -71,11 +71,10 @@ import org.jboss.logging.Logger;
 						+ " WHERE    a.ausgesondert = FALSE"
                         + " ORDER BY a.id ASC"),
 	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_BY_NAME,
-            	query = "SELECT      a"
+            	query = "SELECT  DISTINCT    a"
                         + " FROM     AbstractArtikel a"
 						+ " WHERE    a.name LIKE :" + AbstractArtikel.PARAM_NAME
-						+ "          AND a.ausgesondert = FALSE"
-			 	        + " ORDER BY a.id ASC"),
+						+ "          AND a.ausgesondert = FALSE"),
    	@NamedQuery(name  = AbstractArtikel.FIND_ARTIKEL_MAX_PREIS,
             	query = "SELECT      a"
                         + " FROM     AbstractArtikel a"

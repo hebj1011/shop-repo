@@ -5,6 +5,7 @@ import static shop.util.Constants.LIST_LINK;
 import static shop.util.Constants.REMOVE_LINK;
 import static shop.util.Constants.SELF_LINK;
 import static shop.util.Constants.UPDATE_LINK;
+import static shop.util.Constants.KEINE_ID;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
@@ -129,7 +130,9 @@ public class ArtikelResource {
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createArtikel(@Valid AbstractArtikel artikel) {
+		artikel.setId(KEINE_ID);
 		artikel = as.createArtikel(artikel);
+		LOGGER.tracef("Artikel: %s", artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo)).build();
 	}
 
@@ -137,14 +140,21 @@ public class ArtikelResource {
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateArtikel(@Valid AbstractArtikel artikel) {
-		as.updateArtikel(artikel);
+		final AbstractArtikel origArtikel = as.findArtikelById(artikel.getId());
+		LOGGER.tracef("Artikel vorher: %s", origArtikel);
+		
+		origArtikel.setValues(artikel);
+		LOGGER.tracef("Artikel nachher: %s", origArtikel);
+		
+		as.updateArtikel(origArtikel);
 	}
 
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteArtikel(@PathParam("id") Long id) {
-		as.deleteArtikel(id);
+		final AbstractArtikel artikel = as.findArtikelById(id);
+		as.deleteArtikel(artikel);
 	}
 
 }
