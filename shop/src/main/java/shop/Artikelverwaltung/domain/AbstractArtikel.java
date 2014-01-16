@@ -1,7 +1,6 @@
 package shop.Artikelverwaltung.domain;
 
 import static shop.util.Constants.KEINE_ID;
-import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
@@ -49,7 +48,6 @@ import javax.validation.constraints.Size;
 //import javax.validation.groups.Default;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonSubTypes.Type;

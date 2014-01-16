@@ -1,10 +1,12 @@
 package shop.Artikelverwaltung.domain;
 
+import javax.persistence.Basic;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import static shop.Artikelverwaltung.domain.AbstractArtikel.SICHERHEITSZUBEHOER;
 
 @Entity
@@ -14,9 +16,10 @@ import static shop.Artikelverwaltung.domain.AbstractArtikel.SICHERHEITSZUBEHOER;
 public class Sicherheitszubehoer extends AbstractArtikel {
 
 	private static final long serialVersionUID = -4684331848134556129L;
+	@Basic(optional = false)
 	private Boolean tuev;
 	
-	@Column(length = 10, nullable = false)
+	@Column(length = 10)
 	private String groesse;
 
 	public Boolean getTuev() {
