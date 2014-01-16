@@ -195,6 +195,41 @@ public class KundeService implements Serializable {
 		
 		return query.getResultList();
 	}
+	
+	/**
+	 * Suche alle Kunden mit gleichem Vornamen
+	 * @param vorname Der gemeinsame Vorname
+	 * @param fetch Angabe, welche Objekte aus der DB mitgeladen werden sollen, z.B. Bestellungen.
+	 * @return Liste der gefundenen Kunden
+	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
+	 */
+	@Size(min = 1, message = "{kunde.notFound.nachname}")
+	public List<Kunde> findKundenByVorname(String vorname, FetchType fetch) {
+		final TypedQuery<Kunde> query = em.createNamedQuery(Kunde.FIND_KUNDEN_BY_VORNAME,
+                                                                    Kunde.class)
+                                                  .setParameter(Kunde.PARAM_KUNDE_VORNAME, vorname);
+		
+		EntityGraph<?> entityGraph;
+		switch (fetch) {
+			case NUR_KUNDE:
+				break;
+				
+			case MIT_BESTELLUNGEN:
+				entityGraph = em.getEntityGraph(Kunde.GRAPH_BESTELLUNGEN);
+				query.setHint(LOADGRAPH, entityGraph);
+				break;
+				
+			case MIT_WARTUNGSVERTRAEGEN:
+				entityGraph = em.getEntityGraph(Kunde.GRAPH_WARTUNGSVERTRAEGE);
+				query.setHint(LOADGRAPH, entityGraph);
+				break;
+				
+			default:
+				break;
+		}
+		
+		return query.getResultList();
+	}
 
 	/**
 	 * Suche alle Nachnamen mit gleichem Praefix
@@ -204,6 +239,17 @@ public class KundeService implements Serializable {
 	public List<String> findNachnamenByPrefix(String nachnamePrefix) {
 		return em.createNamedQuery(Kunde.FIND_NACHNAMEN_BY_PREFIX, String.class)
 				 .setParameter(Kunde.PARAM_KUNDE_NACHNAME_PREFIX, nachnamePrefix + '%')
+				 .getResultList();
+	}
+	
+	/**
+	 * Suche alle Nachnamen mit gleichem Praefix
+	 * @param nachnamePrefix Der gemeinsame Praefix
+	 * @return Liste der passenden Nachnamen
+	 */
+	public List<String> findVornamenByPrefix(String vornamePrefix) {
+		return em.createNamedQuery(Kunde.FIND_VORNAMEN_BY_PREFIX, String.class)
+				 .setParameter(Kunde.PARAM_KUNDE_VORNAME_PREFIX, vornamePrefix + '%')
 				 .getResultList();
 	}
 	

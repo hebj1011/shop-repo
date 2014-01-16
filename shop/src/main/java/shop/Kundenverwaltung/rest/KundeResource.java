@@ -72,6 +72,7 @@ public class KundeResource {
 	
 	public static final String KUNDEN_ID_PATH_PARAM = "kundeId";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
+	public static final String KUNDEN_VORNAME_QUERY_PARAM = "vorname";
 	public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	public static final String KUNDEN_EMAIL_QUERY_PARAM = "email";
 	
@@ -162,17 +163,23 @@ public class KundeResource {
 	public Response findKunden(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
                                @Pattern(regexp = Kunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 	                           String nachname,
+	                           @QueryParam(KUNDEN_VORNAME_QUERY_PARAM)
+                               @Pattern(regexp = Kunde.VORNAME_PATTERN, message = "{kunde.vorname.pattern}")
+	                           String vorname,
                                @QueryParam(KUNDEN_PLZ_QUERY_PARAM)
                                @Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
                                String plz,
                                @QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
                                @Email(message = "{kunde.email}")
                                String email) {
-		List<? extends Kunde> kunden = null;
+		List<Kunde> kunden = null;
 		Kunde kunde = null;
 		// TODO Mehrere Query-Parameter koennen angegeben sein
 		if (!Strings.isNullOrEmpty(nachname)) {
 			kunden = ks.findKundenByNachname(nachname, FetchType.NUR_KUNDE);
+		}
+		else if (!Strings.isNullOrEmpty(vorname)) {
+			kunden = ks.findKundenByVorname(vorname, FetchType.NUR_KUNDE);
 		}
 		else if (!Strings.isNullOrEmpty(plz)) {
 			kunden = ks.findKundenByPLZ(plz);
@@ -193,7 +200,7 @@ public class KundeResource {
 			// FIXME JDK 8 hat Lambda-Ausdruecke
 			//kunden.parallelStream()
 			//      .forEach(k -> setStructuralLinks(k, uriInfo));
-			entity = new GenericEntity<List<? extends Kunde>>(kunden) { };
+			entity = new GenericEntity<List<Kunde>>(kunden) { };
 			links = getTransitionalLinksKunden(kunden, uriInfo);
 		}
 		else if (kunde != null) {
@@ -206,7 +213,7 @@ public class KundeResource {
 		               .build();
 	}
 	
-	private Link[] getTransitionalLinksKunden(List<? extends Kunde> kunden, UriInfo uriInfo) {
+	private Link[] getTransitionalLinksKunden(List<Kunde> kunden, UriInfo uriInfo) {
 		if (kunden == null || kunden.isEmpty()) {
 			return null;
 		}
@@ -245,6 +252,20 @@ public class KundeResource {
 	public Collection<String> findNachnamenByPrefix(@PathParam("nachname") String nachnamePrefix) {
 		final Collection<String> nachnamen = ks.findNachnamenByPrefix(nachnamePrefix);
 		return nachnamen;
+	}
+	
+	
+	/**
+	 * Vornamen mit gleichem Praefix suchen
+	 * @param vornamePrefix Der gemeinsame Praefix
+	 * @return Collection der Nachnamen mit gleichem Praefix
+	 */
+	@GET
+	@Path("/prefix/vorname/{vorname}")
+	@Produces({ APPLICATION_JSON, TEXT_PLAIN + ";qs=0.75" })
+	public Collection<String> findVornamenByPrefix(@PathParam("vorname") String vornamePrefix) {
+		final Collection<String> vornamen = ks.findVornamenByPrefix(vornamePrefix);
+		return vornamen;
 	}
 
 	
