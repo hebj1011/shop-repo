@@ -10,8 +10,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
-import javax.xml.bind.annotation.XmlElement;
-//import javax.xml.bind.annotation.XmlTransient;
+//import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @MappedSuperclass
 public abstract class AbstractAuditable implements Serializable {
@@ -20,14 +20,12 @@ public abstract class AbstractAuditable implements Serializable {
 	
 	@Temporal(TIMESTAMP)
 	@Basic(optional = false)
-//	@XmlTransient
-	@XmlElement
+	@XmlTransient
 	private Date erzeugt;
 
 	@Temporal(TIMESTAMP)
 	@Basic(optional = false)
-//	@XmlTransient
-	@XmlElement
+	@XmlTransient
 	private Date aktualisiert;
 	
 	@PrePersist

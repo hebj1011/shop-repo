@@ -37,7 +37,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 //import javax.validation.constraints.NotNull;
-//import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElement;
 //import javax.xml.bind.annotation.XmlElement;
 //import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -115,7 +115,7 @@ public class Bestellung extends AbstractAuditable  {
 	@XmlTransient
 	private Set<Lieferung> lieferungen;
 	
-//	@XmlElement
+	@XmlElement
 	public Date getDatum() {
 		return getErzeugt();
 	}
