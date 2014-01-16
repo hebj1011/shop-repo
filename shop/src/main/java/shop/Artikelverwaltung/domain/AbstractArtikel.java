@@ -249,7 +249,7 @@ public abstract class AbstractArtikel implements Serializable {
 	@Override
 	public String toString() {
 		return "Artikel [ID=" + id + ", name=" + name
-		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert + "]"
+		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert
 		       + ", erzeugt=" + erzeugt
 			   + ", aktualisiert=" + aktualisiert + "]";
 	}
