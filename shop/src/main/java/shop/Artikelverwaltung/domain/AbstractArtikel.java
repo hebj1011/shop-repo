@@ -1,7 +1,7 @@
 package shop.Artikelverwaltung.domain;
 
 import static shop.util.Constants.KEINE_ID;
-import static javax.persistence.TemporalType.TIMESTAMP;
+import static javax.persistence.TemporalType.DATE;
 
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
@@ -131,11 +131,11 @@ public abstract class AbstractArtikel implements Serializable {
 	@Basic(optional = false)
 	private boolean ausgesondert;
 	
-	@Temporal(TIMESTAMP)
+	@Temporal(DATE)
 	@Past(message = "{artikel.erzeugt.past}")
 	private Date erzeugt;
 
-	@Temporal(TIMESTAMP)
+	@Temporal(DATE)
 	@Past(message = "{artikel.aktualisiert.past}")
 	private Date aktualisiert;
 	
