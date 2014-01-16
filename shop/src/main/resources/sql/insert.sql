@@ -11,9 +11,22 @@ INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualis
 INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',305,'Kleiderschrank ''Viel Platz''',500,0,'06.08.2006 00:00:00','06.08.2006 00:00:00', 'Gross', null, null);
 INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',306,'Bett ''Mit Holzwurm''',600,0,'07.08.2006 00:00:00','07.08.2006 00:00:00', 'Gross', null, null);
 
+--
+-- kunde
+--
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (100,'Hans','Treuer','01.01.2001',1,NULL,NULL,'hans@hs-karlsruhe.de','1','01.08.2006 00:00:00','01.08.2006 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (101,'Lustig','Peter','01.07.1990',1,'0,1','300','lustig@hs-karlsruhe.de','12345678','16.01.2014 00:00:00','16.01.2014 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (102,'Brady','Tom','01.04.1990',1,'0,15','130','brady@hs-karlsruhe.de','7777','16.01.2014 00:00:00','16.01.2014 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (103,'Gronkowski','Robert','12.04.1992',1,'0,04','500','gronkwoski@hs-karlsruhe.de','171717','16.01.2014 00:00:00','16.01.2014 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (104,'Manning','Peyton','09.06.1994',1,null,'1200','manning@hs-karlsruhe.de','237','16.01.2014 01:10:00','16.01.2014 01:10:00');
 INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, email, password, erzeugt, aktualisiert) VALUES (105,'Kaepernick','Colin','21.10.1996',1,'0,1','230','kaepernick@hs-karlsruhe.de','17','16.01.2014 01:10:00','16.01.2014 01:10:00');
+
+--
+-- adresse
+--
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (200,'76133','Karlsruhe','Moltkestraﬂe','30',100,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (201,'76596','Forbach','Im Wiesengrund','15',101,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (202,'76133','Karlsruhe','Patriots','12',102,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (203,'76133','Karlsruhe','Patriots','87',103,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (204,'76133','Denver','Broncos','18',104,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (205,'76133','Karlsruhe','SanFrancisco','7',105,'16.01.2014 01:10:00','16.01.2014 01:10:00');
