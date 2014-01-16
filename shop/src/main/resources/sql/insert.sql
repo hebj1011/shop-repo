@@ -56,10 +56,10 @@ INSERT INTO bestellposition (id, idx, bestellung_fk, artikel_fk, anzahl, erzeugt
 --
 -- lieferung
 --
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (600,'20051005-001','ST');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (601,'20051005-002','SCH');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (602,'20051005-003','L');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (603,'20051008-001','W');
+INSERT INTO lieferung (id, liefernr, transport_art) VALUES (600,'20051005-001','ST');
+INSERT INTO lieferung (id, liefernr, transport_art) VALUES (601,'20051005-002','SCH');
+INSERT INTO lieferung (id, liefernr, transport_art) VALUES (602,'20051005-003','L');
+INSERT INTO lieferung (id, liefernr, transport_art) VALUES (603,'20051008-001','W');
 
 --
 -- bestellung_lieferung
