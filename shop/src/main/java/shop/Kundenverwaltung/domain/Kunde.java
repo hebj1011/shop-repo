@@ -191,6 +191,13 @@ public class Kunde extends AbstractAuditable {
 	@Column(unique = true)
 	private String email;
 	
+	@Column(length = 2)
+	//@Convert(converter = FamilienstandTypeConverter.class)
+	private FamilienstandType familienstand = FamilienstandType.VERHEIRATET;
+	
+	@Column(length = 1)
+	private GeschlechtType geschlecht = GeschlechtType.WEIBLICH;
+	
 	@Basic(optional = false)
 	private boolean newsletter = false;
 	
@@ -322,6 +329,20 @@ public class Kunde extends AbstractAuditable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public FamilienstandType getFamilienstand() {
+		return familienstand;
+	}
+	public void setFamilienstand(FamilienstandType familienstand) {
+		this.familienstand = familienstand;
+	}
+	
+	public GeschlechtType getGeschlecht() {
+		return geschlecht;
+	}
+	public void setGeschlecht(GeschlechtType geschlecht) {
+		this.geschlecht = geschlecht;
 	}
 
 	public void setNewsletter(boolean newsletter) {
