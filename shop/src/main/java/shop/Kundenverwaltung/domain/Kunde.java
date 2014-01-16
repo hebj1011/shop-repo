@@ -104,11 +104,11 @@ import shop.util.persistence.AbstractAuditable;
 				        + " FROM  Kunde k "
 	            		+ " WHERE UPPER(k.nachname) LIKE UPPER(:"
 	            		+ Kunde.PARAM_KUNDE_NACHNAME_PREFIX + ")"),
-	@NamedQuery(name = Kunde.FIND_VORNAMEN_BY_PREFIX,
-				query = "SELECT DISTINCT k.vorname"
-						+ "FROM Kunde k"
-						+ "WHERE UPPER(k.vorname) LIKE UPPER(:"
-						+ Kunde.PARAM_KUNDE_VORNAME_PREFIX +")"),
+//	@NamedQuery(name = Kunde.FIND_VORNAMEN_BY_PREFIX,
+//				query = "SELECT DISTINCT k.vorname"
+//						+ "FROM Kunde k"
+//						+ "WHERE UPPER(k.vorname) LIKE UPPER(:"
+//						+ Kunde.PARAM_KUNDE_VORNAME_PREFIX +")"),
    	@NamedQuery(name  = Kunde.FIND_KUNDE_BY_EMAIL,
    	            query = "SELECT DISTINCT k"
    			            + " FROM   Kunde k"
@@ -185,6 +185,7 @@ public class Kunde extends AbstractAuditable {
 	@Pattern(regexp = NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 	private String nachname;
 
+	@NotNull(message = "{kunde.vorname.notNull}")
 	@Size(max = VORNAME_LENGTH_MAX, message = "{kunde.vorname.length}")
 	@Pattern(regexp = VORNAME_PATTERN, message = "{kunde.vorname.pattern}")
 	private String vorname;

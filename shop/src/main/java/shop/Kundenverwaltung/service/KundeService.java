@@ -203,7 +203,7 @@ public class KundeService implements Serializable {
 	 * @return Liste der gefundenen Kunden
 	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
 	 */
-	@Size(min = 1, message = "{kunde.notFound.nachname}")
+	@Size(min = 1, message = "{kunde.notFound.vorname}")
 	public List<Kunde> findKundenByVorname(String vorname, FetchType fetch) {
 		final TypedQuery<Kunde> query = em.createNamedQuery(Kunde.FIND_KUNDEN_BY_VORNAME,
                                                                     Kunde.class)
@@ -304,6 +304,28 @@ public class KundeService implements Serializable {
 	}
 	
 	/**
+	 * Kunden mit gleichem Vornamen durch eine Criteria-Query suchen.
+	 * @param vorname Der gemeinsame Vorname.
+	 * @return Liste der passenden Kunden
+	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
+	 */
+	@Size(min = 1, message = "{kunde.notFound.vorname}")
+	public List<Kunde> findKundenByVornameCriteria(String vorname) {
+		final CriteriaBuilder builder = em.getCriteriaBuilder();
+		final CriteriaQuery<Kunde> criteriaQuery = builder.createQuery(Kunde.class);
+		final Root<Kunde> k = criteriaQuery.from(Kunde.class);
+
+		final Path<String> vornamePath = k.get(Kunde_.vorname);
+		
+		final Predicate pred = builder.equal(vornamePath, vorname);
+		criteriaQuery.where(pred);
+		
+		// Ausgabe des komponierten Query-Strings. Voraussetzung: das Modul "org.hibernate" ist aktiviert
+		//LOGGER.tracef("", em.createQuery(criteriaQuery).unwrap(org.hibernate.Query.class).getQueryString());
+		return em.createQuery(criteriaQuery).getResultList();
+	}
+	
+	/**
 	 * Die Kunden mit einer bestimmten Mindestbestellmenge suchen.
 	 * @param minMenge Die Mindestbestellmenge
 	 * @return Liste der passenden Kunden
@@ -335,15 +357,15 @@ public class KundeService implements Serializable {
 	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
 	 */
 	@NotNull(message = "{kunde.notFound.criteria}")
-	public List<Kunde> findKundenByCriteria(String email, String nachname, String plz, Date seit,
+	public List<Kunde> findKundenByCriteria(String email, String nachname, String vorname, String plz, Date seit,
 			                                        Short minBestMenge) {
 		// SELECT DISTINCT k
 		// FROM   Kunde k
-		// WHERE  email = ? AND nachname = ? AND k.adresse.plz = ? and seit = ?
+		// WHERE  email = ? AND nachname = ? AND vorname = ? AND k.adresse.plz = ? and seit = ?
 		
 		final CriteriaBuilder builder = em.getCriteriaBuilder();
 		final CriteriaQuery<Kunde> criteriaQuery  = builder.createQuery(Kunde.class);
-		final Root<? extends Kunde> k = criteriaQuery.from(Kunde.class);
+		final Root<Kunde> k = criteriaQuery.from(Kunde.class);
 		
 		Predicate pred = null;
 		if (email != null) {
@@ -353,6 +375,11 @@ public class KundeService implements Serializable {
 		if (nachname != null) {
 			final Path<String> nachnamePath = k.get(Kunde_.nachname);
 			final Predicate tmpPred = builder.equal(nachnamePath, nachname);
+			pred = pred == null ? tmpPred : builder.and(pred, tmpPred);
+		}
+		if (vorname != null) {
+			final Path<String> vornamePath = k.get(Kunde_.vorname);
+			final Predicate tmpPred = builder.equal(vornamePath, vorname);
 			pred = pred == null ? tmpPred : builder.and(pred, tmpPred);
 		}
 		if (plz != null) {
