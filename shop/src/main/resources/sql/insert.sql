@@ -30,3 +30,12 @@ INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, akt
 INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (203,'76133','USA','Karlsruhe','Patriots','87',103,'16.01.2014 01:10:00','16.01.2014 01:10:00');
 INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (204,'76133','USA','Denver','Broncos','18',104,'16.01.2014 01:10:00','16.01.2014 01:10:00');
 INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (205,'76133','USA','Karlsruhe','SanFrancisco','7',105,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+
+--
+-- bestellung
+--
+INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (400,105,0,'12.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (401,105,1,'13.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (402,102,0,'15.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (403,102,1,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO bestellung (id, kunde_fk, idx, erzeugt, aktualisiert) VALUES (404,103,0,'11.01.2014 01:10:00','16.01.2014 01:10:00');
