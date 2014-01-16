@@ -36,6 +36,15 @@ public class Fahrrad extends AbstractArtikel {
 	@Column(table = "artikel_farbe", name = "farbe", length = 1, nullable = false)
 	private Set<Farbe> farben;
 	
+	
+	public Set<Farbe> getFarben() {
+		return farben;
+	}
+	
+	public void setFarben(Set<Farbe> farbe) {
+		this.farben = farbe;
+	}
+		
 	@Override
 	public String toString() {
 		return "Fahrrad [" + super.toString() + ", Farbe:" + farben + "]";
