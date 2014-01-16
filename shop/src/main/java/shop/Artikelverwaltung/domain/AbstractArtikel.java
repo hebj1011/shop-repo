@@ -133,11 +133,11 @@ public abstract class AbstractArtikel implements Serializable {
 	@Basic(optional = false)
 	private boolean ausgesondert;
 	
-	@Temporal(DATE)
+	@Temporal(TIMESTAMP)
 	@Past(message = "{artikel.erzeugt.past}")
 	private Date erzeugt;
 
-	@Temporal(DATE)
+	@Temporal(TIMESTAMP)
 	@Past(message = "{artikel.aktualisiert.past}")
 	private Date aktualisiert;
 	
