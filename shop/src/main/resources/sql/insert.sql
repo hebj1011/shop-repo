@@ -52,3 +52,21 @@ INSERT INTO bestellposition (id, idx, bestellung_fk, artikel_fk, anzahl, erzeugt
 INSERT INTO bestellposition (id, idx, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (506,0,404,300,5,'16.01.2014 00:00:00','16.01.2014 00:00:00');
 INSERT INTO bestellposition (id, idx, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (507,1,404,301,2,'16.01.2014 00:00:00','16.01.2014 00:00:00');
 INSERT INTO bestellposition (id, idx, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (508,2,404,302,8,'16.01.2014 00:00:00','16.01.2014 00:00:00');
+
+--
+-- lieferung
+--
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (600,'20051005-001','ST','16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (601,'20051005-002','SCH','16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (602,'20051005-003','L','16.01.2014 00:00:00','16.01.2014 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (603,'20051008-001','W','16.01.2014 00:00:00','16.01.2014 00:00:00');
+
+--
+-- bestellung_lieferung
+--
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (400,600);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (401,600);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,601);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,602);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (403,602);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (404,603);
