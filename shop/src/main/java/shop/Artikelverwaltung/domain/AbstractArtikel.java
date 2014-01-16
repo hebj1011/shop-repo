@@ -6,7 +6,10 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.Basic;
 //import javax.persistence.Column;
@@ -199,6 +202,29 @@ public abstract class AbstractArtikel implements Serializable {
 	public void setErzeugt(Date erzeugt) {
 		this.erzeugt = erzeugt == null ? null : (Date) erzeugt.clone();
 	}
+	
+	// Parameter, z.B. DateFormat.MEDIUM, Locale.GERMANY
+	// MEDIUM fuer Format dd.MM.yyyy
+	public String getErzeugtAsString(int style, Locale locale) {
+		Date temp = erzeugt;
+		if (temp == null) {
+			temp = new Date();
+		}
+		final DateFormat f = DateFormat.getDateInstance(style, locale);
+		return f.format(temp);
+	}
+	
+	// Parameter, z.B. DateFormat.MEDIUM, Locale.GERMANY
+	// MEDIUM fuer Format dd.MM.yyyy
+	public void setErzeugt(String erzeugtStr, int style, Locale locale) {
+		final DateFormat f = DateFormat.getDateInstance(style, locale);
+		try {
+			this.erzeugt = f.parse(erzeugtStr);
+		}
+		catch (ParseException e) {
+			throw new RuntimeException("Kein gueltiges Datumsformat fuer: " + erzeugtStr, e);
+		}
+	}
 
 	public Date getAktualisiert() {
 		return aktualisiert == null ? null : (Date) aktualisiert.clone();
@@ -206,6 +232,29 @@ public abstract class AbstractArtikel implements Serializable {
 
 	public void setAktualisiert(Date aktualisiert) {
 		this.aktualisiert = aktualisiert == null ? null : (Date) aktualisiert.clone();
+	}
+	
+	// Parameter, z.B. DateFormat.MEDIUM, Locale.GERMANY
+	// MEDIUM fuer Format dd.MM.yyyy
+	public String getAktualisiertAsString(int style, Locale locale) {
+		Date temp = aktualisiert;
+		if (temp == null) {
+			temp = new Date();
+		}
+		final DateFormat f = DateFormat.getDateInstance(style, locale);
+		return f.format(temp);
+	}
+	
+	// Parameter, z.B. DateFormat.MEDIUM, Locale.GERMANY
+	// MEDIUM fuer Format dd.MM.yyyy
+	public void setAktualisiert(String aktualisiertStr, int style, Locale locale) {
+		final DateFormat f = DateFormat.getDateInstance(style, locale);
+		try {
+			this.erzeugt = f.parse(aktualisiertStr);
+		}
+		catch (ParseException e) {
+			throw new RuntimeException("Kein gueltiges Datumsformat fuer: " + aktualisiertStr, e);
+		}
 	}
 	
 	@Override
@@ -250,8 +299,9 @@ public abstract class AbstractArtikel implements Serializable {
 	public String toString() {
 		return "Artikel [ID=" + id + ", name=" + name
 		       + ", einzelpreis=" + einzelpreis + ", ausgesondert=" + ausgesondert
-		       + ", erzeugt=" + erzeugt
-			   + ", aktualisiert=" + aktualisiert + "]";
+		       + ", erzeugt=" + getErzeugtAsString(DateFormat.MEDIUM, Locale.GERMANY)
+			   + ", aktualisiert=" + getAktualisiertAsString(DateFormat.MEDIUM, Locale.GERMANY)
+			   + "]";
 	}
 
 }
