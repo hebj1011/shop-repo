@@ -24,9 +24,9 @@ INSERT INTO kunde (id, nachname, vorname, seit, newsletter, rabatt, umsatz, emai
 --
 -- adresse
 --
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (200,'76133','Karlsruhe','Moltkestraﬂe','30',100,'16.01.2014 01:10:00','16.01.2014 01:10:00');
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (201,'76596','Forbach','Im Wiesengrund','15',101,'16.01.2014 01:10:00','16.01.2014 01:10:00');
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (202,'76133','Karlsruhe','Patriots','12',102,'16.01.2014 01:10:00','16.01.2014 01:10:00');
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (203,'76133','Karlsruhe','Patriots','87',103,'16.01.2014 01:10:00','16.01.2014 01:10:00');
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (204,'76133','Denver','Broncos','18',104,'16.01.2014 01:10:00','16.01.2014 01:10:00');
-INSERT INTO adresse (id, plz, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (205,'76133','Karlsruhe','SanFrancisco','7',105,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (200,'76133','Deutschland','Karlsruhe','Moltkestraﬂe','30',100,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (201,'76596','Deutschland','Forbach','Im Wiesengrund','15',101,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (202,'76133','USA','Karlsruhe','Patriots','12',102,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (203,'76133','USA','Karlsruhe','Patriots','87',103,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (204,'76133','USA','Denver','Broncos','18',104,'16.01.2014 01:10:00','16.01.2014 01:10:00');
+INSERT INTO adresse (id, plz, land, ort, strasse, hausnr, kunde_fk, erzeugt, aktualisiert) VALUES (205,'76133','USA','Karlsruhe','SanFrancisco','7',105,'16.01.2014 01:10:00','16.01.2014 01:10:00');
