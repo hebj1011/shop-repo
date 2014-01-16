@@ -139,26 +139,17 @@ public abstract class AbstractArtikel implements Serializable {
 	@Past(message = "{artikel.aktualisiert.past}")
 	private Date aktualisiert;
 	
-	@PrePersist
-	protected void prePersist() {
-		erzeugt = new Date();
-		aktualisiert = new Date();
-	}
-	
 	@PostPersist
 	protected void postPersist() {
 		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
-	}
-	
-	@PreUpdate
-	protected void preUpdate() {
-		aktualisiert = new Date();
 	}
 	
 	public void setValues(AbstractArtikel a) {
 		name = a.name;
 		einzelpreis = a.einzelpreis;
 		bestand = a.bestand;
+		aktualisiert = a.aktualisiert;
+		erzeugt = a.erzeugt;
 	}
 		
 	public Long getId() {
