@@ -1,6 +1,7 @@
 package shop.Artikelverwaltung.domain;
 
 import static shop.util.Constants.KEINE_ID;
+import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
@@ -41,6 +42,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 //import javax.validation.constraints.Past;
 //import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -131,14 +133,12 @@ public abstract class AbstractArtikel implements Serializable {
 	@Basic(optional = false)
 	private boolean ausgesondert;
 	
-	@Basic(optional = false)
-	@Temporal(TIMESTAMP)
-	@XmlTransient
+	@Temporal(DATE)
+	@Past(message = "{artikel.erzeugt.past}")
 	private Date erzeugt;
 
-	@Basic(optional = false)
-	@Temporal(TIMESTAMP)
-	@XmlTransient
+	@Temporal(DATE)
+	@Past(message = "{artikel.aktualisiert.past}")
 	private Date aktualisiert;
 	
 	@PrePersist
