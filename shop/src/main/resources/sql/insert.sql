@@ -3,13 +3,13 @@
 -- Kommentare durch -- am Zeilenanfang
 -- ===============================================================================
 
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',300,'Tisch ''Oval''',80,0,'01.08.2006','01.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',301,'Stuhl ''Sitz bequem''',10,0,'02.08.2006','02.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('E',302,'Tür ''Hoch und breit''',300,0,'03.08.2006','03.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('E',303,'Fenster ''Glasklar''',150,0,'04.08.2006','04.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',304,'Spiegel ''Mach mich schöner''',60,0,'05.08.2006','05.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',305,'Kleiderschrank ''Viel Platz''',500,0,'06.08.2006','06.08.2006', 'Gross', null, null);
-INSERT INTO artikel (art, id, name, einzelpreis, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',306,'Bett ''Mit Holzwurm''',600,0,'07.08.2006','07.08.2006', 'Gross', null, null);
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',300,'Helm',80,5,0,'01.08.2006','01.08.2006', 'Gross', 1, null);
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',301,'Mountainbike',10000.12,2,0,'02.08.2006','02.08.2006', null, null, null);
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('E',302,'Klingel',3,18,0,'03.08.2006','03.08.2006', null, null, 'des nenn ich mal ne klingel');
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('E',303,'Sattel',150.54,189,0,'04.08.2006','04.08.2006', null, null, 'da sitzt sich gut drauf');
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',304,'Omarad',600.45,8,0,'05.08.2006','05.08.2006', null, null, null);
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('S',305,'Schuetzer',5.24,0,1,'06.08.2006','06.08.2006', 'klein', 0, null);
+INSERT INTO artikel (art, id, name, einzelpreis,bestand, ausgesondert, erzeugt, aktualisiert, groesse, tuev, datenblatt) VALUES ('F',306,'Rennrad',60000.76,1,0,'07.08.2006','07.08.2006', null, null, null);
 
 --
 -- kunde
