@@ -120,7 +120,7 @@ public abstract class AbstractArtikel implements Serializable {
 	@Size(max = NAME_LENGTH_MAX, message = "{artikel.name.length}")
 	private String name = "";
 	
-	@Digits(integer = 10, fraction = 2, message = "{artikel.einzelpreispreis.digits}")
+	@Digits(integer = 10, fraction = 2, message = "{artikel.preis.digits}")
 	private BigDecimal einzelpreis;
 	
 	@Min(0)
